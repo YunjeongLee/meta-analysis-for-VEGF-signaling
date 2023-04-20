@@ -20,7 +20,7 @@ adip_obese = compute_weighted_stats(table_adip_size{:, "Obese average"}, table_a
 
 % CBM thickness of lean and obese mouse
 cbm_lean = compute_weighted_stats(table_cbm{:, "Lean average"}, table_cbm{:, "Lean SD"});
-[cbm_obese_mean, cbm_obese_err] = compute_weighted_stats(table_cbm{:, "Obese average"}, table_cbm{:, "Obese SD"});
+cbm_obese = compute_weighted_stats(table_cbm{:, "Obese average"}, table_cbm{:, "Obese SD"});
 
 %% Compute weighted mean and weighted error for binding affinities
 % VEGFA-165:VEGFR1 SPR vs radioligand
