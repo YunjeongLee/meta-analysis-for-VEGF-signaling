@@ -6,6 +6,9 @@ ind = isnan(err);
 average(ind) = [];
 err(ind) = [];
 
+%% The number of samples
+result.sample_size = length(average);
+
 %% Define weight
 weight = 1./err.^2;
 
