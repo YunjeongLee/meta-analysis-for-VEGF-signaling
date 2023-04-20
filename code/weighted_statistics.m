@@ -16,7 +16,7 @@ table_nrp1 = readtable(filename, "ReadVariableNames", true, "ReadRowNames", true
 %% Compute weighted mean and weighted error for geometric parameters
 % Adipocyte size for lean and obese mouse
 adip_lean = compute_weighted_stats(table_adip_size{:, "Lean average"}, table_adip_size{:, "Lean SE"});
-[adip_obese_mean, adip_obese_err] = compute_weighted_stats(table_adip_size{:, "Obese average"}, table_adip_size{:, "Obese SE"});
+adip_obese = compute_weighted_stats(table_adip_size{:, "Obese average"}, table_adip_size{:, "Obese SE"});
 
 % CBM thickness of lean and obese mouse
 [cbm_lean_mean, cbm_lean_err] = compute_weighted_stats(table_cbm{:, "Lean average"}, table_cbm{:, "Lean SD"});
