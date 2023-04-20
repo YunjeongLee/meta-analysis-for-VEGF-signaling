@@ -19,7 +19,7 @@ adip_lean = compute_weighted_stats(table_adip_size{:, "Lean average"}, table_adi
 adip_obese = compute_weighted_stats(table_adip_size{:, "Obese average"}, table_adip_size{:, "Obese SE"});
 
 % CBM thickness of lean and obese mouse
-[cbm_lean_mean, cbm_lean_err] = compute_weighted_stats(table_cbm{:, "Lean average"}, table_cbm{:, "Lean SD"});
+cbm_lean = compute_weighted_stats(table_cbm{:, "Lean average"}, table_cbm{:, "Lean SD"});
 [cbm_obese_mean, cbm_obese_err] = compute_weighted_stats(table_cbm{:, "Obese average"}, table_cbm{:, "Obese SD"});
 
 %% Compute weighted mean and weighted error for binding affinities
