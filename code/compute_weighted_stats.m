@@ -1,4 +1,4 @@
-function [weighted_mean, weighted_error] = compute_weighted_stats(average, err)
+function result = compute_weighted_stats(average, err)
 %% Find NaN weight
 ind = isnan(err);
 
