@@ -4,7 +4,7 @@ sample1.squared_se = sample1.sd^2/sample1.size;
 sample2.squared_se = sample2.sd^2/sample2.size;
 
 mean_difference = sample1.mean - sample2.mean;
-variance = sqrt(sample1.sd^2/sample1.size + sample2.sd^2/sample2.size);
+variance = sqrt(sample1.squared_se + sample2.squared_se);
 
 % Calculate degree of freedom (df)
 df = (sample1.sd^2/sample1.size + sample2.sd^2/sample2.size)^2 ...
