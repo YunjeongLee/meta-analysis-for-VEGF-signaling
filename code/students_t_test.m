@@ -24,11 +24,3 @@ elseif OneSideOrTwoSide == "two-side"
 else
     sprintf('You should put either "one-side" or "two-side" into "OneSideOrTwoSide" input.');
 end
-
-pval = 1 - tcdf(tval, df);
-
-if pval <= alpha
-    RejectOrNot = "reject";
-else
-    RejectOrNot = "accept";
-end
