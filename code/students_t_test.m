@@ -21,6 +21,11 @@ tval = mean_difference/variance;
 %% Find critical value
 if OneSideOrTwoSide == "one-side"
     pval = tcdf(-tval, df);
+    if pval <= alpha
+        RejectOrNot = "reject";
+    else
+        RejectOrNot = "accept";
+    end
 elseif OneSideOrTwoSide == "two-side"
     pval = 2 * tcdf(-abs(tval), df);
 else
