@@ -1,10 +1,10 @@
 function [tval, pval, RejectOrNot] = students_t_test(sample1, sample2, alpha, OneSideOrTwoSide)
 %% Calculate tvalue
 mean_difference = sample1.mean - sample2.mean;
-    variance = sqrt(sample1.error^2/sample1.sample_size + sample2.error^2/sample2.sample_size);
-    df = (sample1.error^2/sample1.sample_size + sample2.error^2/sample2.sample_size)^2 ...
-        / (sample1.error^4/sample1.sample_size^2/(sample1.sample_size - 1) ...
-        + sample2.error^4/sample2.sample_size^2/(sample2.sample_size - 1));
+variance = sqrt(sample1.error^2/sample1.sample_size + sample2.error^2/sample2.sample_size);
+df = (sample1.error^2/sample1.sample_size + sample2.error^2/sample2.sample_size)^2 ...
+    / (sample1.error^4/sample1.sample_size^2/(sample1.sample_size - 1) ...
+    + sample2.error^4/sample2.sample_size^2/(sample2.sample_size - 1));
 
 % Round down
 df = floor(df);
