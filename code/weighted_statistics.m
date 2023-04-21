@@ -44,3 +44,18 @@ nrp1_radio = compute_weighted_stats(table_nrp1{table_nrp1.Method == "Radioligand
 %% Perform Student's t-test
 alpha = 0.05;
 
+% Adipocyte size
+[t_adip, pval_adip, reject_adip] = students_t_test(adip_obese, adip_lean, alpha, "one-side");
+
+% CBM thickness
+[t_cbm, pval_cbm, reject_cbm] = students_t_test(cbm_obese, cbm_lean, alpha, "one-side");
+
+% VEGFA-165:VEGFR1
+[t_vegfr1, pval_vegfr1, reject_vegfr1] = students_t_test(vegfr1_radio, vegfr1_spr, alpha, "two-side");
+
+% VEGFA-165:VEGFR2
+[t_vegfr2, pval_vegfr2, reject_vegfr2] = students_t_test(vegfr2_radio, vegfr2_spr, alpha, "two-side");
+
+% VEGFA-165:NRP1
+[t_nrp1, pval_nrp1, reject_nrp1] = students_t_test(nrp1_spr, nrp1_radio, alpha, "two-side");
+
