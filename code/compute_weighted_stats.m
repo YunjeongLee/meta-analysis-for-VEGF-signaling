@@ -11,6 +11,7 @@ result.size = length(average);
 
 %% Define weight
 weight = 1./err.^2;
+result.weight = weight;
 
 %% Calculate weighted mean
 weighted_mean = sum(average .* weight)/sum(weight);
