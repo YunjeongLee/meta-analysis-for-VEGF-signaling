@@ -20,6 +20,7 @@ tval = mean_difference/variance;
 
 %% Find critical value
 if OneSideOrTwoSide == "one-side"
+    pval = tcdf(-tval, df);
 elseif OneSideOrTwoSide == "two-side"
 else
     sprintf('You should put either "one-side" or "two-side" into "OneSideOrTwoSide" input.');
