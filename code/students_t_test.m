@@ -13,6 +13,9 @@ else
         / (sample1.error^4/(sample1.sample_size - 1) + sample2.error^4/(sample2.sample_size - 1));
 end
 
+% Round down
+df = floor(df);
+
 tval = mean_difference/variance;
 
 %% Find critical value
