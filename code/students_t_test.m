@@ -16,7 +16,7 @@ df = floor(df);
 
 tval = mean_difference/sd_difference;
 
-%% Find critical value
+%% Nonpooled t-test
 if OneSideOrTwoSide == "one-side"
     pval = tcdf(-tval, df);
     if pval <= alpha
