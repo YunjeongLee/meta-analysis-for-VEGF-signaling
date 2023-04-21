@@ -16,7 +16,7 @@ weight = 1./err.^2;
 weighted_mean = sum(average .* weight)/sum(weight);
 
 %% Calculate weighted standard error or standard deviation
-weighted_error = sqrt(sum(weight .* (average - weighted_mean).^2)/sum(weight));
+weighted_sd = sqrt(sum(weight .* (average - weighted_mean).^2)/sum(weight));
 
 result.mean = weighted_mean;
 result.error = weighted_error;
