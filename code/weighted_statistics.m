@@ -40,3 +40,7 @@ nrp1_spr = compute_weighted_stats(table_nrp1{table_nrp1.Method == "SPR", "Kd ave
     table_nrp1{table_nrp1.Method == "SPR", "Kd SE"});
 nrp1_radio = compute_weighted_stats(table_nrp1{table_nrp1.Method == "Radioligand", "Kd average"}, ...
     ones(size(table_nrp1{table_nrp1.Method == "Radioligand", "Kd average"}, 1), 1));
+
+%% Perform Student's t-test
+alpha = 0.05;
+
