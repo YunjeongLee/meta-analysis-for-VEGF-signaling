@@ -19,11 +19,8 @@ df = floor(df);
 tval = mean_difference/variance;
 
 %% Find critical value
-
 if OneSideOrTwoSide == "one-side"
-    critical_val = tinv(1-alpha, df);
 elseif OneSideOrTwoSide == "two-side"
-    critical_val = tinv(1-alpha/2, df);
 else
     sprintf('You should put either "one-side" or "two-side" into "OneSideOrTwoSide" input.');
 end
