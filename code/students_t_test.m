@@ -22,6 +22,7 @@ tval = mean_difference/variance;
 if OneSideOrTwoSide == "one-side"
     pval = tcdf(-tval, df);
 elseif OneSideOrTwoSide == "two-side"
+    pval = 2 * tcdf(-abs(tval), df);
 else
     sprintf('You should put either "one-side" or "two-side" into "OneSideOrTwoSide" input.');
 end
