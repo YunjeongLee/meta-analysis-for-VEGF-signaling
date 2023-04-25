@@ -65,6 +65,7 @@ sgtitle('Geometric parameters', 'fontsize', 20)
 
 subplot(1, 2, 1);
 set(gca, 'fontsize', 13);
+title("Adipocyte size (µm)", " ")
 hold on;
 lean1 = plot(1, table_adip_size{"Morange2000", "Lean average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 lean2 = plot(1, table_adip_size{"Lijnen2001", "Lean average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -96,6 +97,7 @@ lgd2 = legend(a, [obese1, obese2, obese3, obese4, obese5, obese6], ...
 title(lgd2, "Obese mouse")
 
 subplot(1, 2, 2);
+title("Capillary basement membrane thickness (nm)", " ")
 set(gca, 'fontsize', 13);
 hold on;
 lean1 = plot(1, table_cbm{"Creutzfeldt", "Lean average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -139,6 +141,7 @@ figure('pos', [10 10 2000 500]);
 sgtitle('Binding affinities of VEGF to its receptors', 'fontsize', 20)
 
 subplot(1, 3, 1);
+title("Binding affinity of VEGF to VEGFR1 (pM)", " ")
 set(gca, 'fontsize', 13);
 hold on;
 radio1 = plot(1, table_vegfr1{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -165,6 +168,7 @@ lgd2 = legend(a, [spr1, spr2, spr3], ...
 title(lgd2, "SPR")
 
 subplot(1, 3, 2);
+title("Binding affinity of VEGF to VEGFR2 (pM)", " ")
 set(gca, 'fontsize', 13);
 hold on;
 radio1 = plot(1, table_vegfr2{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -195,6 +199,7 @@ lgd2 = legend(a, [spr1, spr2, spr3, spr4, spr5], ...
 title(lgd2, "SPR")
 
 subplot(1, 3, 3);
+title("Binding affinity of VEGF to NRP1 (nM)", " ")
 set(gca, 'fontsize', 13);
 hold on;
 radio1 = plot(1, table_nrp1{"Soker1996", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
