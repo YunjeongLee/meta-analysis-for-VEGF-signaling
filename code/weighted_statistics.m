@@ -84,7 +84,6 @@ xlim([0, 3])
 ylim([0, 100])
 xticks(0:3)
 xticklabels({"", "Lean", "Obese", ""})
-xlabel("Adipocyte size (µm)")
 lgd1 = legend([lean1, lean2, lean3, lean4, lean5], ...
     {"Morange, 2000"; "Lijnen, 2001"; "Voros, 2005"; "Lijnen, 2006"; "Weighted average"}, ...
     'Location', 'northeastoutside');
@@ -118,7 +117,6 @@ xlim([0, 3])
 ylim([30, 130])
 xticks(0:3)
 xticklabels({"", "Lean", "Obese", ""})
-xlabel("CBM thickness (nm)")
 lgd1 = legend([lean1, lean2, lean3, lean4, lean5, lean6, lean7, lean8, lean9], ...
     {"Creutzfeldt, 1970"; "Rodrigues, 1983"; "Lash, 1989 (11 wk.)"; "Lash, 1989 (18 wk.)"; "Danis, 1993"; ...
     "Calson, 2003 (retina)"; "Calson, 2003 (muscle)"; "Ceafalan2019"; "Weighted average"}, ...
@@ -155,7 +153,6 @@ xlim([0, 3])
 ylim([0, 50])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
-xlabel("Binding affinity of VEGF to VEGFR1 (pM)")
 lgd1 = legend([radio1, radio2, radio3], ...
     {"Waltenberger, 1994"+ newline + "(PAE)"; "Waltenberger, 1994"+ newline + "(HUVEC)"; "Weighted average"}, ...
     'Location', 'northeastoutside');
@@ -186,7 +183,6 @@ xlim([0, 3])
 ylim([0, 1000])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
-xlabel("Binding affinity of VEGF to VEGFR2 (pM)")
 lgd1 = legend([radio1, radio2, radio3, radio4], ...
     {"Waltenberger, 1994" + newline + "(PAE)"; "Waltenberger, 1994" + newline + "(HUVEC)"; "Whitaker, 2001"; "Weighted average"}, ...
     'Location', 'northeastoutside');
@@ -217,7 +213,6 @@ xlim([0, 3])
 ylim([0, 150])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
-xlabel("Binding affinity of VEGF to NRP1 (nM)")
 lgd1 = legend([radio1, radio2, radio3, radio4, radio5], ...
     {"Soker, 1996" + newline + "(HUVEC)"; "Soker, 1996" + newline + "(231 cell)"; "Soker, 1998"; "Whitaker, 2001"; "Weighted average"}, ...
     'Location', 'northeastoutside');
