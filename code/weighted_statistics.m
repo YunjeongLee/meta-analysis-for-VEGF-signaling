@@ -67,17 +67,17 @@ subplot(1, 2, 1);
 set(gca, 'fontsize', 13);
 title("Adipocyte size (µm)", " ")
 hold on;
-lean1 = plot(1, table_adip_size{"Morange2000", "Lean average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean2 = plot(1, table_adip_size{"Lijnen2001", "Lean average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean3 = plot(1, table_adip_size{"Voros2005", "Lean average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean4 = plot(1, table_adip_size{"Lijnen2006", "Lean average"}, 'kdiamond', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean5 = plot(1, adip_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-obese1 = plot(2, table_adip_size{"Morange2000", "Obese average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese2 = plot(2, table_adip_size{"Lijnen2001", "Obese average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese3 = plot(2, table_adip_size{"Maquoi2002", "Obese average"}, 'kpentagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese4 = plot(2, table_adip_size{"Voros2005", "Obese average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese5 = plot(2, table_adip_size{"Lijnen2006", "Obese average"}, 'kdiamond', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese6 = plot(2, adip_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+lean1 = plot(1, table_adip_size{"Morange2000", "Lean average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean2 = plot(1, table_adip_size{"Lijnen2001", "Lean average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean3 = plot(1, table_adip_size{"Voros2005", "Lean average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean4 = plot(1, table_adip_size{"Lijnen2006", "Lean average"}, 'kdiamond', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean5 = plot(1, adip_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+obese1 = plot(2, table_adip_size{"Morange2000", "Obese average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese2 = plot(2, table_adip_size{"Lijnen2001", "Obese average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese3 = plot(2, table_adip_size{"Maquoi2002", "Obese average"}, 'kpentagram', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese4 = plot(2, table_adip_size{"Voros2005", "Obese average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese5 = plot(2, table_adip_size{"Lijnen2006", "Obese average"}, 'kdiamond', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese6 = plot(2, adip_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, adip_obese.mean, ' *', 'color', 'r', 'fontsize', 20)
 text(2, adip_obese.mean, sprintf('    p=%.4f', pval_adip), 'color', 'r', 'fontsize', 12)
 hold off;
@@ -100,20 +100,20 @@ subplot(1, 2, 2);
 title("Capillary basement membrane thickness (nm)", " ")
 set(gca, 'fontsize', 13);
 hold on;
-lean1 = plot(1, table_cbm{"Creutzfeldt", "Lean average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean2 = plot(1, table_cbm{"Rodrigues1983", "Lean average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean3 = plot(1, table_cbm{"Lash1989", "Lean average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean4 = plot(1, table_cbm{"Lash1989_1", "Lean average"}, 'kdiamond', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean5 = plot(1, table_cbm{"Danis1993", "Lean average"}, 'kpentagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean6 = plot(1, table_cbm{"Calson2003", "Lean average"}, 'kx', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean7 = plot(1, table_cbm{"Calson2003_1", "Lean average"}, 'kv', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean8 = plot(1, table_cbm{"Ceafalan2019", "Lean average"}, 'khexagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-lean9 = plot(1, cbm_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-obese1 = plot(2, table_cbm{"Lash1989", "Obese average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese2 = plot(2, table_cbm{"Lash1989_1", "Obese average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese3 = plot(2, table_cbm{"Danis1993", "Obese average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-obese4 = plot(2, cbm_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-text(2, cbm_obese.mean, sprintf('    p=%.4f', pval_cbm), 'color', 'r', 'fontsize', 12)
+lean1 = plot(1, table_cbm{"Creutzfeldt", "Lean average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean2 = plot(1, table_cbm{"Rodrigues1983", "Lean average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean3 = plot(1, table_cbm{"Lash1989", "Lean average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean4 = plot(1, table_cbm{"Lash1989_1", "Lean average"}, 'kdiamond', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean5 = plot(1, table_cbm{"Danis1993", "Lean average"}, 'kpentagram', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean6 = plot(1, table_cbm{"Calson2003", "Lean average"}, 'kx', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean7 = plot(1, table_cbm{"Calson2003_1", "Lean average"}, 'kv', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean8 = plot(1, table_cbm{"Ceafalan2019", "Lean average"}, 'khexagram', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+lean9 = plot(1, cbm_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+obese1 = plot(2, table_cbm{"Lash1989", "Obese average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese2 = plot(2, table_cbm{"Lash1989_1", "Obese average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese3 = plot(2, table_cbm{"Danis1993", "Obese average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+obese4 = plot(2, cbm_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+text(2, cbm_obese.mean, sprintf('  p=%.3f', pval_cbm), 'color', 'r', 'fontsize', 16)
 hold off;
 xlim([0, 3])
 ylim([30, 130])
@@ -144,13 +144,13 @@ subplot(1, 3, 1);
 title("Binding affinity of VEGF to VEGFR1 (pM)", " ")
 set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
-radio1 = plot(1, table_vegfr1{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio2 = plot(1, table_vegfr1{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio3 = plot(1, vegfr1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-spr1 = plot(2, table_vegfr1{"Tiedemann2002", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr2 = plot(2, table_vegfr1{"Mamer2020", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr3 = plot(2, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-text(2, vegfr1_spr.mean, sprintf('    p=%.4f', pval_vegfr1), 'color', 'r', 'fontsize', 12)
+radio1 = plot(1, table_vegfr1{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio2 = plot(1, table_vegfr1{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio3 = plot(1, vegfr1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+spr1 = plot(2, table_vegfr1{"Tiedemann2002", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr2 = plot(2, table_vegfr1{"Mamer2020", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr3 = plot(2, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+text(2, vegfr1_spr.mean, sprintf('   p=%.3f', pval_vegfr1), 'color', 'r', 'fontsize', 16)
 hold off;
 xlim([0, 3])
 ylim([1e-1, 1e3])
@@ -171,16 +171,16 @@ subplot(1, 3, 2);
 title("Binding affinity of VEGF to VEGFR2 (pM)", " ")
 set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
-radio1 = plot(1, table_vegfr2{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio2 = plot(1, table_vegfr2{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio3 = plot(1, table_vegfr2{"Whitaker2001", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio4 = plot(1, vegfr2_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-spr1 = plot(2, table_vegfr2{"Huang1998", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr2 = plot(2, table_vegfr2{"Cunningham1999", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr3 = plot(2, table_vegfr2{"Cunningham1999_1", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr4 = plot(2, table_vegfr2{"Mamer2020", "Kd average"}, 'kpentagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr5 = plot(2, table_vegfr2{"Shobhan2023", "Kd average"}, 'kx', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr6 = plot(2, vegfr2_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+radio1 = plot(1, table_vegfr2{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio2 = plot(1, table_vegfr2{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio3 = plot(1, table_vegfr2{"Whitaker2001", "Kd average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio4 = plot(1, vegfr2_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+spr1 = plot(2, table_vegfr2{"Huang1998", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr2 = plot(2, table_vegfr2{"Cunningham1999", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr3 = plot(2, table_vegfr2{"Cunningham1999_1", "Kd average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr4 = plot(2, table_vegfr2{"Mamer2020", "Kd average"}, 'kpentagram', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr5 = plot(2, table_vegfr2{"Shobhan2023", "Kd average"}, 'kx', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr6 = plot(2, vegfr2_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, vegfr2_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 text(2, vegfr2_spr.mean, sprintf('    p=%.4f', pval_vegfr2), 'color', 'r', 'fontsize', 12)
 hold off;
@@ -203,15 +203,15 @@ subplot(1, 3, 3);
 title("Binding affinity of VEGF to NRP1 (nM)", " ")
 set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
-radio1 = plot(1, table_nrp1{"Soker1996", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio2 = plot(1, table_nrp1{"Soker1996_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio3 = plot(1, table_nrp1{"Soker1998", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio4 = plot(1, table_nrp1{"Whitaker2001", "Kd average"}, 'kpentagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-radio5 = plot(1, nrp1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
-spr1 = plot(2, table_nrp1{"Fuh2000", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr2 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr3 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
-spr4 = plot(2, nrp1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+radio1 = plot(1, table_nrp1{"Soker1996", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio2 = plot(1, table_nrp1{"Soker1996_1", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio3 = plot(1, table_nrp1{"Soker1998", "Kd average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio4 = plot(1, table_nrp1{"Whitaker2001", "Kd average"}, 'kpentagram', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+radio5 = plot(1, nrp1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+spr1 = plot(2, table_nrp1{"Fuh2000", "Kd average"}, 'ko', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr2 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'ksquare', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr3 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'k^', 'Markersize', 10, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr4 = plot(2, nrp1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 10, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, nrp1_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 text(2, nrp1_spr.mean, sprintf('    p=%.4f', pval_nrp1), 'color', 'r', 'fontsize', 12)
 hold off;
