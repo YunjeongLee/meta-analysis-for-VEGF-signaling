@@ -153,7 +153,7 @@ spr3 = plot(2, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize'
 text(2, vegfr1_spr.mean, sprintf('    p=%.4f', pval_vegfr1), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
-ylim([1, 100])
+ylim([1e-1, 1e3])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
 lgd1 = legend([radio1, radio2, radio3], ...
@@ -185,7 +185,7 @@ text(2, vegfr2_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 text(2, vegfr2_spr.mean, sprintf('    p=%.4f', pval_vegfr2), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
-ylim([1, 1000])
+ylim([1e-1, 1e3])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
 lgd1 = legend([radio1, radio2, radio3, radio4], ...
@@ -216,7 +216,7 @@ text(2, nrp1_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 text(2, nrp1_spr.mean, sprintf('    p=%.4f', pval_nrp1), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
-ylim([1, 200])
+ylim([1e-1, 1e3])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
 lgd1 = legend([radio1, radio2, radio3, radio4, radio5], ...
