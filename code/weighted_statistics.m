@@ -140,7 +140,7 @@ sgtitle('Binding affinities of VEGF to its receptors', 'fontsize', 20)
 
 subplot(1, 3, 1);
 title("Binding affinity of VEGF to VEGFR1 (pM)", " ")
-set(gca, 'fontsize', 13);
+set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
 radio1 = plot(1, table_vegfr1{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 radio2 = plot(1, table_vegfr1{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -166,7 +166,7 @@ title(lgd2, "SPR")
 
 subplot(1, 3, 2);
 title("Binding affinity of VEGF to VEGFR2 (pM)", " ")
-set(gca, 'fontsize', 13);
+set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
 radio1 = plot(1, table_vegfr2{"Waltenberger1994", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 radio2 = plot(1, table_vegfr2{"Waltenberger1994_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
@@ -196,7 +196,7 @@ title(lgd2, "SPR")
 
 subplot(1, 3, 3);
 title("Binding affinity of VEGF to NRP1 (nM)", " ")
-set(gca, 'fontsize', 13);
+set(gca, 'fontsize', 13, 'yscale', 'log');
 hold on;
 radio1 = plot(1, table_nrp1{"Soker1996", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 radio2 = plot(1, table_nrp1{"Soker1996_1", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
