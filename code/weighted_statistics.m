@@ -150,7 +150,7 @@ spr2 = plot(2, table_vegfr1{"Mamer2020", "Kd average"}, 'ksquare', 'Markersize',
 spr3 = plot(2, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 hold off;
 xlim([0, 3])
-ylim([0, 25])
+ylim([0, 100])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
 lgd1 = legend([radio1, radio2, radio3], ...
@@ -210,7 +210,7 @@ spr4 = plot(2, nrp1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 
 text(2, nrp1_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 hold off;
 xlim([0, 3])
-ylim([0, 150])
+ylim([0, 200])
 xticks(0:3)
 xticklabels({"", "Radioligand", "SPR", ""})
 lgd1 = legend([radio1, radio2, radio3, radio4, radio5], ...
