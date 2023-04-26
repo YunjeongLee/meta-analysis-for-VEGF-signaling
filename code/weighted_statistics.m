@@ -176,6 +176,7 @@ spr1 = plot(2, table_vegfr2{"Huang1998", "Kd average"}, 'ko', 'Markersize', 7, '
 spr2 = plot(2, table_vegfr2{"Cunningham1999", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr3 = plot(2, table_vegfr2{"Cunningham1999_1", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr4 = plot(2, table_vegfr2{"Mamer2020", "Kd average"}, 'kpentagram', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
+spr5 = plot(2, table_vegfr2{"Shobhan2023", "Kd average"}, 'kx', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr5 = plot(2, vegfr2_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, vegfr2_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
 hold off;
