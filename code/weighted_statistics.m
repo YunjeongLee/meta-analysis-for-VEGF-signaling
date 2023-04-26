@@ -61,7 +61,6 @@ alpha = 0.05;
 
 %% Draw figures for geometric parameters
 figure('pos', [10 10 1200 500]);
-sgtitle('Geometric parameters', 'fontsize', 20)
 
 subplot(1, 2, 1);
 set(gca, 'fontsize', 18);
@@ -138,7 +137,6 @@ saveas(gca, sprintf('%s/geometric_parameters.png', foldername), 'png')
 
 %% Draw figures for binding affinities
 figure('pos', [10 10 2000 500]);
-sgtitle('Binding affinities of VEGF to its receptors', 'fontsize', 20)
 
 subplot(1, 3, 1);
 title("Binding affinity of VEGF to VEGFR1 (pM)", " ")
