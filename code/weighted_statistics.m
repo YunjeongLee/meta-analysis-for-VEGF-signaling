@@ -79,6 +79,7 @@ obese4 = plot(2, table_adip_size{"Voros2005", "Obese average"}, 'k^', 'Markersiz
 obese5 = plot(2, table_adip_size{"Lijnen2006", "Obese average"}, 'kdiamond', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 obese6 = plot(2, adip_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, adip_obese.mean, ' *', 'color', 'r', 'fontsize', 20)
+text(2, adip_obese.mean, sprintf('    p=%.4f', pval_adip), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
 ylim([0, 100])
@@ -112,6 +113,7 @@ obese1 = plot(2, table_cbm{"Lash1989", "Obese average"}, 'ko', 'Markersize', 7, 
 obese2 = plot(2, table_cbm{"Lash1989_1", "Obese average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 obese3 = plot(2, table_cbm{"Danis1993", "Obese average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 obese4 = plot(2, cbm_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+text(2, cbm_obese.mean, sprintf('    p=%.4f', pval_cbm), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
 ylim([30, 130])
@@ -148,6 +150,7 @@ radio3 = plot(1, vegfr1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markers
 spr1 = plot(2, table_vegfr1{"Tiedemann2002", "Kd average"}, 'ko', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr2 = plot(2, table_vegfr1{"Mamer2020", "Kd average"}, 'ksquare', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr3 = plot(2, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
+text(2, vegfr1_spr.mean, sprintf('    p=%.4f', pval_vegfr1), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
 ylim([1, 100])
@@ -179,6 +182,7 @@ spr4 = plot(2, table_vegfr2{"Mamer2020", "Kd average"}, 'kpentagram', 'Markersiz
 spr5 = plot(2, table_vegfr2{"Shobhan2023", "Kd average"}, 'kx', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr6 = plot(2, vegfr2_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, vegfr2_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
+text(2, vegfr2_spr.mean, sprintf('    p=%.4f', pval_vegfr2), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
 ylim([1, 1000])
@@ -209,6 +213,7 @@ spr2 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'ksquare', 'Markersize', 7
 spr3 = plot(2, table_nrp1{"Teran2019", "Kd average"}, 'k^', 'Markersize', 7, 'MarkerFaceColor', 'none', 'linewidth', 1.5);
 spr4 = plot(2, nrp1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 7, 'MarkerEdgeColor', 'r', 'linewidth', 1.5);
 text(2, nrp1_spr.mean, ' *', 'color', 'r', 'fontsize', 20)
+text(2, nrp1_spr.mean, sprintf('    p=%.4f', pval_nrp1), 'color', 'r', 'fontsize', 12)
 hold off;
 xlim([0, 3])
 ylim([1, 200])
