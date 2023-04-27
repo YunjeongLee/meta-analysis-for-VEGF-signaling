@@ -150,6 +150,14 @@ set(gca, 'Yscale', 'log')
 ylim([1e-4, 1e3])
 ylabel('Equilibrium dissociation constant (Kd, nM)')
 
+a = axes('position', get(gca, 'position'), 'visible', 'off');
+set(gca, 'fontsize', 25);
+lgd2 = legend(a, [tiedemann, mamer, huang, cunningham1, cunningham2, shobhan, fuh, teran1, teran2, spr_mean], ...
+    {"Tiedemann, 2002", "Mamer, 2020", "Huang, 1998", "Cunningham, 1999"+newline+"(pre-dimer)", "Cunningham, 1999"+newline+"(monomer)", ...
+    "Shobhan, 2023", "Fuh, 2000", "Teran, 2019"+newline+"(chimera)", "Teran, 2019"+newline+"(monomer)", "Weighted average"}, ...
+    'Location', 'southeastoutside');
+title(lgd2, "Chip-based"+newline+"(SPR)");
+
 
 foldername = '../results/figures';
 mkdir(foldername)
