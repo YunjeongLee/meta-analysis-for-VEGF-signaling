@@ -161,3 +161,4 @@ title(lgd2, "Chip-based"+newline+"(SPR)");
 
 foldername = '../results/figures';
 mkdir(foldername)
+saveas(gca, sprintf('%s/binding_affinity2.png', foldername), 'png');
