@@ -216,7 +216,6 @@ errorbar(1, table_vegfr1{"Mamer2020", "Kd average"}, table_vegfr1{"Mamer2020", "
     'Color', spr_cmap(3, :), 'LineWidth', 3)
 spr_mean = plot(1, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
     'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
-text(1, vegfr1_spr.mean, sprintf('   p=%.3f', pval_vegfr1), 'color', 'k', 'fontsize', 25)
 
 % VEGF-A:VEGFR2
 plot(2, table_vegfr2{"Waltenberger1994", "Kd average"}, 'o', 'Markersize', 20, ...
