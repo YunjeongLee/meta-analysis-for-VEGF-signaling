@@ -145,6 +145,11 @@ lgd1 = legend([waltenberger1, waltenberger2, whitaker, soker1996_1, soker1996_2,
     'Location', 'northeastoutside');
 title(lgd1, "Cell-based"+newline+"(Radioligand)");
 
+yyaxis right
+set(gca, 'Yscale', 'log')
+ylim([1e-4, 1e3])
+ylabel('Equilibrium dissociation constant (Kd, nM)')
+
 
 foldername = '../results/figures';
 mkdir(foldername)
