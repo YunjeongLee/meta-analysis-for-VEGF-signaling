@@ -59,6 +59,17 @@ alpha = 0.05;
 % VEGFA-165:NRP1
 [t_nrp1, pval_nrp1, reject_nrp1] = students_t_test(nrp1_spr, nrp1_radio, alpha, "two-side");
 
+%% Plot Kd values into one figure
+fig = figure('pos', [10 10 1200 900]);
+set(fig, 'DefaultAxesColorOrder', [0 0 0; 0 0 0])
+
+% Default settings
+set(gca, 'fontsize', 25, 'yscale', 'log');
+xlim([0 4])
+ylim([1e-1, 1e6])
+xticks(0:4)
+xticklabels(["", "VEGFR1", "VEGFR2", "NRP1"]);
+ylabel("Equilibrium dissociation constant (K_d, pM)")
 hold on;
 hold off;
     'Location', 'northeastoutside');
