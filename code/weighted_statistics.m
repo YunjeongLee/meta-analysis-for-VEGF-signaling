@@ -239,7 +239,7 @@ shobhan = plot(2, table_vegfr2{"Shobhan2023", "Kd average"}, '^', 'Markersize', 
     'MarkerEdgeColor', spr_cmap(7, :), 'MarkerFaceColor', spr_cmap(7, :));
 plot(2, vegfr2_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
     'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
-text(2, vegfr2_spr.mean, ' *', 'color', 'k', 'fontsize', 25)
+text(2, vegfr2_spr.mean, '  *', 'color', 'k', 'fontsize', 25)
 text(2, vegfr2_spr.mean, sprintf('   p=%.3f', pval_vegfr2), 'color', 'k', 'fontsize', 25)
 
 % VEGF-A:NRP1
@@ -261,7 +261,7 @@ teran2 = plot(3, table_nrp1{"Teran2019", "Kd average"}*1e3, '^', 'Markersize', 2
     'MarkerEdgeColor', spr_cmap(10, :), 'MarkerFaceColor', spr_cmap(10, :));
 plot(3, nrp1_spr.mean*1e3, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
     'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
-text(3, nrp1_spr.mean*1e3, ' *', 'color', 'k', 'fontsize', 25)
+text(3, nrp1_spr.mean*1e3, '  *', 'color', 'k', 'fontsize', 25)
 text(3, nrp1_spr.mean*1e3, sprintf('   p=%.3f', pval_nrp1), 'color', 'k', 'fontsize', 25)
 
 hold off;
