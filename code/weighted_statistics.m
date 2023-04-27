@@ -195,7 +195,7 @@ ylabel("Equilibrium dissociation constant (K_d, pM)")
 
 % Define colormaps
 colormap default
-radio_cmap = winter(11);
+radio_cmap = winter(7);
 spr_cmap = autumn(11);
 
 % VEGF-A:VEGFR1
