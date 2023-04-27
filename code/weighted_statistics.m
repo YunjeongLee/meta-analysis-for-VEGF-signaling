@@ -70,6 +70,12 @@ ylim([1e-1, 1e6])
 xticks(0:4)
 xticklabels(["", "VEGFR1", "VEGFR2", "NRP1"]);
 ylabel("Equilibrium dissociation constant (K_d, pM)")
+
+% Define colormaps
+colormap default
+radio_cmap = summer(11);
+spr_cmap = autumn(11);
+
 hold on;
 hold off;
     'Location', 'northeastoutside');
