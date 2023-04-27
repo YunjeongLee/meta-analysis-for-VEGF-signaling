@@ -59,6 +59,128 @@ alpha = 0.05;
 % VEGFA-165:NRP1
 [t_nrp1, pval_nrp1, reject_nrp1] = students_t_test(nrp1_spr, nrp1_radio, alpha, "two-side");
 
+%% Plot geometric parameters
+figure('pos', [10 10 1800 600]);
+
+subplot(1, 2, 1);
+
+% Define colormaps
+colormap default
+lean_cmap = winter(4);
+obese_cmap = autumn(5);
+
+% Default settings
+set(gca, 'fontsize', 25);
+ylabel("Adipocyte size (µm)")
+xlim([0, 3])
+ylim([0, 100])
+xticks(0:3)
+xticklabels({"", "Lean", "Obese", ""});
+
+% Plot
+hold on;
+lean1 = plot(1, table_adip_size{"Morange2000", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(1, :), 'MarkerFaceColor', lean_cmap(1, :));
+lean2 = plot(1, table_adip_size{"Lijnen2001", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(2, :), 'MarkerFaceColor', lean_cmap(2, :));
+lean3 = plot(1, table_adip_size{"Voros2005", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(3, :), 'MarkerFaceColor', lean_cmap(3, :));
+lean4 = plot(1, table_adip_size{"Lijnen2006", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(4, :), 'MarkerFaceColor', lean_cmap(4, :), 'linewidth', 1.5);
+lean5 = plot(1, adip_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [49, 87, 44]/255, 'linewidth', 7);
+obese1 = plot(2, table_adip_size{"Morange2000", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(1, :), 'MarkerFaceColor', obese_cmap(1, :));
+obese2 = plot(2, table_adip_size{"Lijnen2001", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(2, :), 'MarkerFaceColor', obese_cmap(2, :));
+obese3 = plot(2, table_adip_size{"Maquoi2002", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(3, :), 'MarkerFaceColor', obese_cmap(3, :));
+obese4 = plot(2, table_adip_size{"Voros2005", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(4, :), 'MarkerFaceColor', obese_cmap(4, :));
+obese5 = plot(2, table_adip_size{"Lijnen2006", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(5, :), 'MarkerFaceColor', obese_cmap(5, :));
+obese6 = plot(2, adip_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
+text(2, adip_obese.mean, '  *', 'color', 'k', 'fontsize', 25)
+text(2, adip_obese.mean, sprintf('   p=%.3f', pval_adip), 'color', 'k', 'fontsize', 25)
+hold off;
+
+% Add legend
+lgd1 = legend([lean1, lean2, lean3, lean4, lean5], ...
+    {"Morange, 2000", "Lijnen, 2001", "Voros, 2005", "Lijnen, 2006", "Weighted average"}, ...
+    'Location', 'northeastoutside');
+title(lgd1, "Lean mouse")
+a = axes('position',get(gca,'position'),'visible','off');
+set(gca, 'fontsize', 25);
+lgd2 = legend(a, [obese1, obese2, obese3, obese4, obese5, obese6], ...
+    {"Morange, 2000", "Lijnen, 2001", "Maquoi, 2002", "Voros, 2005", "Lijnen, 2006", "Weighted average"}, ...
+    'Location', 'southeastoutside');
+title(lgd2, "Obese mouse")
+
+subplot(1, 2, 2);
+
+% Define colormaps
+colormap default
+lean_cmap = winter(8);
+obese_cmap = autumn(3);
+
+% Default settings
+set(gca, 'fontsize', 25);
+ylabel("Capillary basement membrane thickness (nm)")
+xlim([0, 3])
+ylim([30, 130])
+xticks(0:3)
+xticklabels({"", "Lean", "Obese", ""})
+
+% Plot
+hold on;
+lean1 = plot(1, table_cbm{"Creutzfeldt", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(1, :), 'MarkerFaceColor', lean_cmap(1, :));
+lean2 = plot(1, table_cbm{"Rodrigues1983", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(2, :), 'MarkerFaceColor', lean_cmap(2, :));
+lean3 = plot(1, table_cbm{"Lash1989", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(3, :), 'MarkerFaceColor', lean_cmap(3, :));
+lean4 = plot(1, table_cbm{"Lash1989_1", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(4, :), 'MarkerFaceColor', lean_cmap(4, :));
+lean5 = plot(1, table_cbm{"Danis1993", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(5, :), 'MarkerFaceColor', lean_cmap(5, :));
+lean6 = plot(1, table_cbm{"Calson2003", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(6, :), 'MarkerFaceColor', lean_cmap(6, :));
+lean7 = plot(1, table_cbm{"Calson2003_1", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(7, :), 'MarkerFaceColor', lean_cmap(7, :));
+lean8 = plot(1, table_cbm{"Ceafalan2019", "Lean average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', lean_cmap(8, :), 'MarkerFaceColor', lean_cmap(8, :));
+lean9 = plot(1, cbm_lean.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [49, 87, 44]/255, 'linewidth', 7);
+obese1 = plot(2, table_cbm{"Lash1989", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(1, :), 'MarkerFaceColor', obese_cmap(1, :));
+obese2 = plot(2, table_cbm{"Lash1989_1", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(2, :), 'MarkerFaceColor', obese_cmap(2, :));
+obese3 = plot(2, table_cbm{"Danis1993", "Obese average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', obese_cmap(3, :), 'MarkerFaceColor', obese_cmap(3, :));
+obese4 = plot(2, cbm_obese.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
+text(2, cbm_obese.mean*0.97, sprintf('  p=%.3f', pval_cbm), 'color', 'k', 'fontsize', 25)
+hold off;
+
+% Add legend
+lgd1 = legend([lean1, lean2, lean3, lean4, lean5, lean6, lean7, lean8, lean9], ...
+    {"Creutzfeldt, 1970"; "Rodrigues, 1983"; "Lash, 1989 (11 wk.)"; "Lash, 1989 (18 wk.)"; "Danis, 1993"; ...
+    "Calson, 2003 (retina)"; "Calson, 2003 (muscle)"; "Ceafalan2019"; "Weighted average"}, ...
+    'Location', 'northeastoutside');
+title(lgd1, "Lean mouse")
+a = axes('position',get(gca,'position'),'visible','off');
+set(gca, 'fontsize', 25);
+lgd2 = legend(a, [obese1, obese2, obese3, obese4], ...
+    {"Lash, 1989 (11 wk.)"; "Lash, 1989 (18 wk.)"; "Danis, 1993"; "Weighted average"}, ...
+    'Location', 'southeastoutside');
+title(lgd2, "Obese mouse")
+
+% Save figure
+foldername = '../results/figures';
+mkdir(foldername)
+saveas(gca, sprintf('%s/geometric_parameters2.png', foldername), 'png')
+
 %% Plot Kd values into one figure
 fig = figure('pos', [10 10 1200 900]);
 set(fig, 'DefaultAxesColorOrder', [0 0 0; 0 0 0])
