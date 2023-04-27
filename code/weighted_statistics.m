@@ -76,7 +76,22 @@ colormap default
 radio_cmap = summer(11);
 spr_cmap = autumn(11);
 
+% VEGF-A:VEGFR1
 hold on;
+waltenberger1 = plot(1, table_vegfr1{"Waltenberger1994", "Kd average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', radio_cmap(2, :), 'MarkerFaceColor', radio_cmap(2, :));
+waltenberger2 = plot(1, table_vegfr1{"Waltenberger1994_1", "Kd average"}, 'o', 'Markersize', 20, ...
+    'MarkerEdgeColor', radio_cmap(3, :), 'MarkerFaceColor', radio_cmap(3, :));
+radio_mean = plot(1, vegfr1_radio.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [49, 87, 44]/255, 'linewidth', 7);
+tiedemann = plot(1, table_vegfr1{"Tiedemann2002", "Kd average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', spr_cmap(2, :), 'MarkerFaceColor', spr_cmap(2, :));
+mamer = plot(1, table_vegfr1{"Mamer2020", "Kd average"}, '^', 'Markersize', 20, ...
+    'MarkerEdgeColor', spr_cmap(3, :), 'MarkerFaceColor', spr_cmap(3, :));
+spr_mean = plot(1, vegfr1_spr.mean, 'LineStyle', 'none', 'Marker', '_', 'Markersize', 25, ...
+    'MarkerEdgeColor', [155, 34, 38]/255, 'linewidth', 7);
+text(1, vegfr1_spr.mean, sprintf('   p=%.3f', pval_vegfr1), 'color', 'k', 'fontsize', 25)
+
 hold off;
     'Location', 'northeastoutside');
 
