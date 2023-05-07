@@ -92,6 +92,7 @@ forest(rm_vessel_size_obese, slab=vessel_size_obese$Reference, header=TRUE,
        xlab=TeX("Vessel size $({\\mu}m^2)$ in adipose tissue of obese mice"), xlim = c(-100, 300), alim = c(0, 200))
 forest(rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, header=TRUE, 
        xlab=TeX("Vessel size $({\\mu}m^2)$ in mouse tumor"), xlim = c(-100, 300), alim = c(0, 200))
+
 # Vessel density
 forest(rm_vessel_density_lean, slab=vessel_density_lean$Reference, header=TRUE, 
        xlab=TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), xlim = c(-500, 1200), alim = c(0, 900))
@@ -143,3 +144,59 @@ wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
            weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
            weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
            alternative="two.tailed", samedata=FALSE)
+
+# Scatter plot ------------------------------------------------------------
+# Vessel size
+p1 = ggplot() +
+  geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Lean adipose", y=rm_vessel_size_lean$b, label="-", size=12) +
+  ylim(0, 200) + labs(color="Lean adipose")  +
+  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Obese adipose", y=rm_vessel_size_obese$b, label="-", size=12) +
+  ylim(0, 200) + labs(color="Obese adipose") +
+  lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
+  new_scale_color() +
+  geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Tumor", y=rm_vessel_size_tumor$b, label="-", size=12) +
+  ylim(0, 200) + labs(color="Tumor") +
+  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$"))
+
+show(p1)
+
+# Vessel density
+p2 = ggplot() +
+  geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Lean adipose", y=rm_vessel_density_lean$b, label="-", size=12) +
+  ylim(0, 1000) + labs(color="Lean adipose")  +
+  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Obese adipose", y=rm_vessel_density_obese$b, label="-", size=12) +
+  ylim(0, 1000) + labs(color="Obese adipose") +
+  lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
+  new_scale_color() +
+  geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Tumor", y=rm_vessel_density_tumor$b, label="-", size=12) +
+  ylim(0, 1000) + labs(color="Tumor") +
+  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  xlab("") + ylab(TeX("Vessel density $(/mm^2)$"))
+
+show(p2)
+
+# CBM thickness
+p3 = ggplot() +
+  geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Retina", y=rm_cbm_retina$b, label="-", size=12) +
+  ylim(0, 150) + labs(color="Retina")  +
+  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 3) +
+  annotate("text", x = "Muscle", y=rm_cbm_retina$b, label="-", size=12) +
+  ylim(0, 150) + labs(color="Muscle") +
+  lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
+  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)"))
+
+show(p3)
