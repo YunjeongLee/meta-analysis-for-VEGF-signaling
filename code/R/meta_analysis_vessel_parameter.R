@@ -44,6 +44,12 @@ vessel_density_lean <- vessel_density_obesity[!is.na(vessel_size_obesity$Lean_Av
                                               c('Reference', 'Lean_Average', 'Lean_SE')]
 vessel_density_obese <- vessel_density_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
 
+# Change column names -----------------------------------------------------
+colnames(vessel_size_lean) <- c("Reference", "Average", "SE")
+colnames(vessel_size_obese) <- c("Reference", "Average", "SE")
+colnames(vessel_density_lean) <- c("Reference", "Average", "SE")
+colnames(vessel_density_obese) <- c("Reference", "Average", "SE")
+
 # Meta-analysis using random effects model --------------------------------
 # Compute weighted average and SD -----------------------------------------
 # Vessel size in adipose tissue of lean mice
