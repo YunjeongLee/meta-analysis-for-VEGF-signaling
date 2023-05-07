@@ -19,7 +19,7 @@ for (i in 1:length(subfolders)) {
 }
 
 # Load libraries ----------------------------------------------------------
-pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp")
+pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", "shades", "ggnewscale")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
