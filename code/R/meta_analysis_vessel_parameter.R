@@ -53,7 +53,7 @@ colnames(vessel_density_obese) <- c("Reference", "Average", "SE")
 # Meta-analysis using random effects model --------------------------------
 # Compute weighted average and SD -----------------------------------------
 # Vessel size in adipose tissue of lean mice
-rm_vessel_size_lean <- rma(yi = Lean_Average, sei = SE, data=vessel_size_lean)
+rm_vessel_size_lean <- rma(yi = Average, sei = SE, data=vessel_size_lean)
 summary(rm_vessel_size_lean)
 
 # Vessel size in adipose tissue of obese mice
@@ -65,7 +65,7 @@ rm_vessel_size_tumor <- rma(yi = Average, sei = SE, data=vessel_size_tumor)
 summary(rm_vessel_size_tumor)
 
 # Vessel density in adipose tissue of lean mice
-rm_vessel_density_lean <- rma(yi = Lean_Average, sei = SE, data=vessel_density_lean)
+rm_vessel_density_lean <- rma(yi = Average, sei = SE, data=vessel_density_lean)
 summary(rm_vessel_density_lean)
 
 # Vessel density in adipose tissue of obese mice
@@ -107,12 +107,12 @@ forest(rm_cbm_muscle, slab=cbm_muscle$Reference, header=TRUE,
 
 # Student's t-test --------------------------------------------------------
 # Vessel size
-wtd.t.test(x=vessel_size_lean$Lean_Average, y=vessel_size_obese$Average,
+wtd.t.test(x=vessel_size_lean$Average, y=vessel_size_obese$Average,
            weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
            weighty=1/(vessel_size_obese$SE^2+rm_vessel_size_obese$tau2),
            alternative="less", samedata=FALSE)
 
-wtd.t.test(x=vessel_size_lean$Lean_Average, y=vessel_size_tumor$Average,
+wtd.t.test(x=vessel_size_lean$Average, y=vessel_size_tumor$Average,
            weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
            weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
            alternative="less", samedata=FALSE)
@@ -123,12 +123,12 @@ wtd.t.test(x=vessel_size_obese$Average, y=vessel_size_tumor$Average,
            alternative="two.tailed", samedata=FALSE)
 
 # Vessel density
-wtd.t.test(x=vessel_density_lean$Lean_Average, y=vessel_density_obese$Average,
+wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_obese$Average,
            weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
            weighty=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2),
            alternative="greater", samedata=FALSE)
 
-wtd.t.test(x=vessel_density_lean$Lean_Average, y=vessel_density_tumor$Average,
+wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_tumor$Average,
            weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
            weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
            alternative="greater", samedata=FALSE)
