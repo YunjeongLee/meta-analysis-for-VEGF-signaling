@@ -1,0 +1,139 @@
+# Clear all ---------------------------------------------------------------
+# Clear plots
+if (!is.null(dev.list())) dev.off()
+# Clear console
+cat("\014")
+# Clear workspace
+rm(list = ls())
+
+# Change working directory ------------------------------------------------
+setwd("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
+
+# Add path ----------------------------------------------------------------
+subfolders = c("etc")
+for (i in 1:length(subfolders)) {
+  a = list.files(path = subfolders[i], pattern = "[.]R$", full.names = TRUE)
+  for (j in 1:length(a)) {
+    source(a[j])
+  }
+}
+
+# Load libraries ----------------------------------------------------------
+pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp")
+instant_pkgs(pkg_list)
+
+# Load data ---------------------------------------------------------------
+filename = '../../data/vessel_parameters.xlsx'
+# Vessel size
+vessel_size_obesity <- as.data.frame(read_excel(filename, sheet = "Vessel size (adipose)"))
+vessel_size_tumor <- as.data.frame(read_excel(filename, sheet = "Vessel size (tumor)"))
+# Vessel density
+vessel_density_obesity <- as.data.frame(read_excel(filename, sheet = "Vessel density (adipose)"))
+vessel_density_tumor <- as.data.frame(read_excel(filename, sheet = "Vessel density (tumor)"))
+# CBM thickness
+cbm_retina <- as.data.frame(read_excel(filename, sheet = "CBM (retina)"))
+cbm_muscle <- as.data.frame(read_excel(filename, sheet = "CBM (muscle)"))
+
+# Divide obesity vessel data into separate dataframes ---------------------
+# Vessel size
+vessel_size_lean <- vessel_size_obesity[!is.na(vessel_size_obesity$Lean_Average), 
+                                        c('Reference', 'Lean_Average', 'Lean_SE')]
+vessel_size_obese <- vessel_size_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
+# Vessel density
+vessel_density_lean <- vessel_density_obesity[!is.na(vessel_size_obesity$Lean_Average), 
+                                              c('Reference', 'Lean_Average', 'Lean_SE')]
+vessel_density_obese <- vessel_density_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
+
+# Meta-analysis using random effects model --------------------------------
+# Compute weighted average and SD -----------------------------------------
+# Vessel size in adipose tissue of lean mice
+rm_vessel_size_lean <- rma(yi = Lean_Average, sei = Lean_SE, data=vessel_size_lean)
+summary(rm_vessel_size_lean)
+
+# Vessel size in adipose tissue of obese mice
+rm_vessel_size_obese <- rma(yi = Obese_Average, sei = Obese_SE, data=vessel_size_obese)
+summary(rm_vessel_size_obese)
+
+# Vessel size in tumor
+rm_vessel_size_tumor <- rma(yi = Average, sei = SE, data=vessel_size_tumor)
+summary(rm_vessel_size_tumor)
+
+# Vessel density in adipose tissue of lean mice
+rm_vessel_density_lean <- rma(yi = Lean_Average, sei = Lean_SE, data=vessel_density_lean)
+summary(rm_vessel_density_lean)
+
+# Vessel density in adipose tissue of obese mice
+rm_vessel_density_obese <- rma(yi = Obese_Average, sei = Obese_SE, data=vessel_density_obese)
+summary(rm_vessel_density_obese)
+
+# Vessel density in mice tumor
+rm_vessel_density_tumor <- rma(yi = Average, sei = SE, data=vessel_density_tumor)
+summary(rm_vessel_density_tumor)
+
+# CBM thickness in retina
+rm_cbm_retina <- rma(yi = Average, sei = SE, data = cbm_retina)
+summary(rm_cbm_retina)
+
+# CBM thickness in muscle
+rm_cbm_muscle <- rma(yi = Average, sei = SE, data = cbm_muscle)
+summary(rm_cbm_muscle)
+
+# Forest plot -------------------------------------------------------------
+# Vessel size
+forest(rm_vessel_size_lean, slab=vessel_size_lean$Reference, header=TRUE,
+       xlab=TeX("Vessel size $({\\mu}m^2)$ in adipose tissue of lean mice"), xlim = c(-100, 300), alim = c(0, 200))
+forest(rm_vessel_size_obese, slab=vessel_size_obese$Reference, header=TRUE, 
+       xlab=TeX("Vessel size $({\\mu}m^2)$ in adipose tissue of obese mice"), xlim = c(-100, 300), alim = c(0, 200))
+forest(rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, header=TRUE, 
+       xlab=TeX("Vessel size $({\\mu}m^2)$ in mouse tumor"), xlim = c(-100, 300), alim = c(0, 200))
+# Vessel density
+forest(rm_vessel_density_lean, slab=vessel_density_lean$Reference, header=TRUE, 
+       xlab=TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), xlim = c(-500, 1200), alim = c(0, 900))
+forest(rm_vessel_density_obese, slab=vessel_density_obese$Reference, header=TRUE, 
+       xlab=TeX("Vessel density $(no./mm^2)$ in adipose tissue of obese mice"), xlim = c(-500, 1200), alim = c(0, 900))
+forest(rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, header=TRUE, 
+       xlab=TeX("Vessel density $(no./mm^2)$ in mouse tumor"), xlim = c(-500, 1200), alim = c(0, 900))
+# CBM thickness
+forest(rm_cbm_retina, slab=cbm_retina$Reference, header=TRUE,
+       xlab="Capillary basement membrane thickness (nm) in retina", xlim = c(-20, 140), alim=c(0, 120))
+forest(rm_cbm_muscle, slab=cbm_muscle$Reference, header=TRUE,
+       xlab="Capillary basement membrane thickness (nm) in muscle", xlim = c(-20, 140), alim=c(0, 120))
+
+# Student's t-test --------------------------------------------------------
+# Vessel size
+wtd.t.test(x=vessel_size_lean$Lean_Average, y=vessel_size_obese$Obese_Average,
+           weight=1/(vessel_size_lean$Lean_SE^2+rm_vessel_size_lean$tau2), 
+           weighty=1/(vessel_size_obese$Obese_SE^2+rm_vessel_size_obese$tau2),
+           alternative="less", samedata=FALSE)
+
+wtd.t.test(x=vessel_size_lean$Lean_Average, y=vessel_size_tumor$Average,
+           weight=1/(vessel_size_lean$Lean_SE^2+rm_vessel_size_lean$tau2), 
+           weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
+           alternative="less", samedata=FALSE)
+
+wtd.t.test(x=vessel_size_obese$Obese_Average, y=vessel_size_tumor$Average,
+           weight=1/(vessel_size_obese$Obese_SE^2+rm_vessel_size_obese$tau2), 
+           weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
+           alternative="two.tailed", samedata=FALSE)
+
+# Vessel density
+wtd.t.test(x=vessel_density_lean$Lean_Average, y=vessel_density_obese$Obese_Average,
+           weight=1/(vessel_density_lean$Lean_SE^2+rm_vessel_density_lean$tau2), 
+           weighty=1/(vessel_density_obese$Obese_SE^2+rm_vessel_density_obese$tau2),
+           alternative="greater", samedata=FALSE)
+
+wtd.t.test(x=vessel_density_lean$Lean_Average, y=vessel_density_tumor$Average,
+           weight=1/(vessel_density_lean$Lean_SE^2+rm_vessel_density_lean$tau2), 
+           weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
+           alternative="greater", samedata=FALSE)
+
+wtd.t.test(x=vessel_density_obese$Obese_Average, y=vessel_density_tumor$Average,
+           weight=1/(vessel_density_obese$Obese_SE^2+rm_vessel_density_obese$tau2), 
+           weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
+           alternative="two.tailed", samedata=FALSE)
+
+# CBM thickness
+wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
+           weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+           weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
+           alternative="two.tailed", samedata=FALSE)
