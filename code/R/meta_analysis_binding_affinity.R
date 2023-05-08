@@ -137,3 +137,4 @@ p = ggplot() +
   theme(text = element_text(size = 20))
 
 show(p)
+ggsave(sprintf("%s/binding_affinity.png", results_path), width=3500, height=2500, units="px")
