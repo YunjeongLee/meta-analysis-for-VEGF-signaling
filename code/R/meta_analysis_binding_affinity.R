@@ -52,6 +52,10 @@ vegfr1[is.na(vegfr1$SE), "SE"] <- 0.1*(vegfr1[is.na(vegfr1$SE), "Average"])
 vegfr2[is.na(vegfr2$SE), "SE"] <- 0.1*(vegfr2[is.na(vegfr2$SE), "Average"])
 nrp1[is.na(nrp1$SE), "SE"] <- 0.1*(nrp1[is.na(nrp1$SE), "Average"])
 
+# Change units of Kd for VEGFR1 and VEGFR2 --------------------------------
+vegfr1[c("Average", "SE")] = vegfr1[c("Average", "SE")]/1e3
+vegfr2[c("Average", "SE")] = vegfr2[c("Average", "SE")]/1e3
+
 # Meta-analysis -----------------------------------------------------------
 # Compute weighted average and SD -----------------------------------------
 # VEGF-A165:VEGFR1
