@@ -220,6 +220,7 @@ p1 = ggplot() +
 
 show(p1)
 ggsave(sprintf("%s/vessel_size.png", results_path), width=3500, height=2500, units="px")
+dev.off()
 
 # Vessel density
 p2 = ggplot() +
@@ -246,6 +247,7 @@ p2 = ggplot() +
 
 show(p2)
 ggsave(sprintf("%s/vessel_density.png", results_path), width=3500, height=2500, units="px")
+dev.off()
 
 # CBM thickness
 p3 = ggplot() +
@@ -263,3 +265,4 @@ p3 = ggplot() +
 
 show(p3)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
+dev.off()
