@@ -95,46 +95,46 @@ summary(rm_cbm_muscle)
 # Vessel size
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
 forest(rm_vessel_size_lean, slab=vessel_size_lean$Reference, header=TRUE,
-       xlab=TeX("Vessel size $({\\mu}m^2)$ in adipose tissue of lean mice"), xlim = c(-100, 300), alim = c(0, 200))
+       xlab="", xlim = c(-100, 300), alim = c(0, 200))
 mtext(side=1, TeX("Vessel size $(µm^2)$ in adipose tissue of lean mice"), padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_obese.png", results_path), width=1300, height=700)
 forest(rm_vessel_size_obese, slab=vessel_size_obese$Reference, header=TRUE, 
-       xlab=TeX("Vessel size $({\\mu}m^2)$ in adipose tissue of obese mice"), xlim = c(-100, 300), alim = c(0, 200))
+       xlab="", xlim = c(-100, 300), alim = c(0, 200))
 mtext(side=1, TeX("Vessel size $(µm^2)$ in adipose tissue of obese mice"), padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
 forest(rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, header=TRUE, 
-       xlab=TeX("Vessel size $({\\mu}m^2)$ in mouse tumor"), xlim = c(-100, 300), alim = c(0, 200))
+       xlab="", xlim = c(-100, 300), alim = c(0, 200), mlab="c")
 mtext(side=1, TeX("Vessel size $(µm^2)$ in mouse tumor"), padj=2, cex = 2)
 dev.off()
 
 # Vessel density
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
 forest(rm_vessel_density_lean, slab=vessel_density_lean$Reference, header=TRUE, 
-       xlab=TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), xlim = c(-500, 1200), alim = c(0, 900))
+       xlab="", xlim = c(-500, 1200), alim = c(0, 900))
 mtext(side=1, TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest(rm_vessel_density_obese, slab=vessel_density_obese$Reference, header=TRUE, 
-       xlab=TeX("Vessel density $(no./mm^2)$ in adipose tissue of obese mice"), xlim = c(-500, 1200), alim = c(0, 900))
+       xlab="", xlim = c(-500, 1200), alim = c(0, 900))
 mtext(side=1, TeX("Vessel density $(no./mm^2)$ in adipose tissue of obese mice"), padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300, height=700)
 forest(rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, header=TRUE, 
-       xlab=TeX("Vessel density $(no./mm^2)$ in mouse tumor"), xlim = c(-500, 1200), alim = c(0, 900))
+       xlab="", xlim = c(-500, 1200), alim = c(0, 900))
 mtext(side=1, TeX("Vessel density $(no./mm^2)$ in mouse tumor"), padj=2, cex = 2)
 dev.off()
 
 # CBM thickness
 png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=500)
 forest(rm_cbm_retina, slab=cbm_retina$Reference, header=TRUE,
-       xlab="Capillary basement membrane thickness (nm) in retina", xlim = c(-20, 140), alim=c(0, 120))
+       xlab="", xlim = c(-20, 140), alim=c(0, 120))
 mtext(side=1, "Capillary basement membrane thickness (nm) in retina", line=1, padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
 forest(rm_cbm_muscle, slab=cbm_muscle$Reference, header=TRUE,
-       xlab="Capillary basement membrane thickness (nm) in muscle", xlim = c(-20, 140), alim=c(0, 120))
+       xlab="", xlim = c(-20, 140), alim=c(0, 120))
 mtext(side=1, "Capillary basement membrane thickness (nm) in muscle", line=1, padj=2, cex = 2)
 dev.off()
 
