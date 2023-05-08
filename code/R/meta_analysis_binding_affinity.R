@@ -118,14 +118,14 @@ p = ggplot() +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average/1e3, colour = Reference), size = 3) +
   geom_errorbar(data = vegfr1, aes(x = "VEGFR1", ymin = (rm_vegfr1$b - rm_vegfr1$se*1.645)/1e3, 
                                    ymax = (rm_vegfr1$b + rm_vegfr1$se*1.645)/1e3), width=0.2) +
-  annotate("text", x = "VEGFR1", y=rm_vegfr1$b/1e3, label="-", size=12) +
+  annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=12) +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average/1e3, colour = Reference), size = 3) +
   geom_errorbar(data = vegfr2, aes(x = "VEGFR2", ymin = (rm_vegfr2$b - rm_vegfr2$se*1.645)/1e3, 
                                    ymax = (rm_vegfr2$b + rm_vegfr2$se*1.645)/1e3), width=0.2) +
-  annotate("text", x = "VEGFR2", y=rm_vegfr2$b/1e3, label="-", size=12) +
+  annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=12) +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   new_scale_color() +
