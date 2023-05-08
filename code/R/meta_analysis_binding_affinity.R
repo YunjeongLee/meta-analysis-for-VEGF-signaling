@@ -18,6 +18,12 @@ for (i in 1:length(subfolders)) {
   }
 }
 
+# Check and generate a result folder --------------------------------------
+results_path = "../../results/figures/R"
+
+# Generate new results folder
+dir.create(results_path, recursive = TRUE)
+
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", "shades", "scales")
 instant_pkgs(pkg_list)
