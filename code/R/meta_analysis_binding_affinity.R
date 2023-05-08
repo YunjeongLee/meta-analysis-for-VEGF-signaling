@@ -138,3 +138,4 @@ p = ggplot() +
 
 show(p)
 ggsave(sprintf("%s/binding_affinity.png", results_path), width=3500, height=2500, units="px")
+dev.off()
