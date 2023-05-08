@@ -103,6 +103,16 @@ wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
            alternative="less", samedata=FALSE)
 
+# Merge dataframes for plotting -------------------------------------------
+# Vessel size
+vegfr1$Source <- "VEGFR1"
+vegfr2$Source <- "VEGFR2"
+nrp1$Source <- "NRP1"
+
+df = rbind(vegfr1[c("Source", "Average")],
+           vegfr2[c("Source", "Average")],
+           nrp1[c("Source", "Average")])
+
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average/1e3, colour = Reference), size = 3) +
