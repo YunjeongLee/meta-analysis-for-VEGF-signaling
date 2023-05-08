@@ -72,11 +72,11 @@ summary(rm_nrp1)
 
 # Forest plot -------------------------------------------------------------
 forest(rm_vegfr1, slab=vegfr1$Reference, header=TRUE,
-       xlab=TeX("Binding affinity, Kd (nM)"), xlim = c(-0.02, 0.07), alim = c(0, 0.05), cex=2)
+       xlab="", xlim = c(-0.02, 0.07), alim = c(0, 0.05), cex=2)
 forest(rm_vegfr2, slab=vegfr2$Reference, header=TRUE, 
-       xlab=TeX("Binding affinity, Kd (nM)"), xlim = c(-0.5, 1.5), alim = c(0, 1), cex=2)
+       xlab="", xlim = c(-0.5, 1.5), alim = c(0, 1), cex=2)
 forest(rm_nrp1, slab=nrp1$Reference, header=TRUE, 
-       xlab=TeX("Binding affinity, Kd (nM)"), xlim = c(-70, 300), alim = c(0, 200), cex=2)
+       xlab="", xlim = c(-70, 300), alim = c(0, 200), cex=2)
 
 # Student's t-test --------------------------------------------------------
 wtd.t.test(x=vegfr1$Average, y=vegfr2$Average,
