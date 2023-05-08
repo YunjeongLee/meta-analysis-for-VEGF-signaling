@@ -140,5 +140,6 @@ p = ggplot() +
               labels=trans_format('log10', math_format(10^.x)))
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 1, tip.length = c(0.1, 0.05), label = "p<0.01") +
+  theme(text = element_text(size = 20))
 
 show(p)
