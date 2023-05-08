@@ -115,12 +115,12 @@ df = rbind(vegfr1[c("Source", "Average")],
 
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average/1e3, colour = Reference), size = 3) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average, colour = Reference), size = 3) +
   annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=12) +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   new_scale_color() + 
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average/1e3, colour = Reference), size = 3) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average, colour = Reference), size = 3) +
   annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=12) +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
