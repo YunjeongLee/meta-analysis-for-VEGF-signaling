@@ -257,7 +257,7 @@ p3 = ggplot() +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Muscle", y=rm_cbm_retina$b, label="-", size=30) +
+  annotate("text", x = "Muscle", y=rm_cbm_muscle$b, label="-", size=30) +
   ylim(0, 150) + labs(color="Muscle") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
