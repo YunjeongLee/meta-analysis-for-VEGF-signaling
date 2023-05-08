@@ -25,7 +25,7 @@ results_path = "../../results/figures/R"
 dir.create(results_path, recursive = TRUE)
 
 # Load libraries ----------------------------------------------------------
-pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", "shades", "scales")
+pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", "shades", "scales", "ggsignif")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
