@@ -23,6 +23,12 @@ pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr",
              "shades", "ggnewscale", "ggsignif", "grDevices")
 instant_pkgs(pkg_list)
 
+# Check and generate a result folder --------------------------------------
+results_path = "../../results/figures/R"
+
+# Generate new results folder
+dir.create(results_path, recursive = TRUE)
+
 # Load data ---------------------------------------------------------------
 filename = '../../data/vessel_parameters.xlsx'
 # Vessel size
