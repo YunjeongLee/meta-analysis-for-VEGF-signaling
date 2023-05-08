@@ -184,6 +184,7 @@ p1 = ggplot() +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 180, tip.length = c(0.5, 0.1), label = "p<0.05") +
+  theme(text = element_text(size = 20))
 
 show(p1)
 
@@ -208,6 +209,7 @@ p2 = ggplot() +
                y.position = 900, tip.length = c(0.1, 0.05), label = "p<0.05") +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 800, tip.length = c(0.1, 0.5), label = "p<0.01") +
+  theme(text = element_text(size = 20))
 
 show(p2)
 
@@ -222,6 +224,7 @@ p3 = ggplot() +
   annotate("text", x = "Muscle", y=rm_cbm_retina$b, label="-", size=12) +
   ylim(0, 150) + labs(color="Muscle") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
-  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)"))
+  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
+  theme(text = element_text(size = 20))
 
 show(p3)
