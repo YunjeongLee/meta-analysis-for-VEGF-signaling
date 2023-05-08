@@ -145,6 +145,25 @@ wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
            weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
            alternative="two.tailed", samedata=FALSE)
 
+# Merge dataframes for plotting -------------------------------------------
+# Vessel size
+vessel_size_lean$Source <- "Lean adipose"
+vessel_size_obese$Source <- "Obese adipose"
+vessel_size_tumor$Source <- "Tumor adipose"
+
+df_size = rbind(vessel_size_lean[c("Source", "Average")],
+                vessel_size_obese[c("Source", "Average")],
+                vessel_size_tumor[c("Source", "Average")])
+
+# Vessel density
+vessel_density_lean$Source <- "Lean adipose"
+vessel_density_obese$Source <- "Obese adipose"
+vessel_density_tumor$Source <- "Tumor adipose"
+
+df_density = rbind(vessel_density_lean[c("Source", "Average")],
+                vessel_density_obese[c("Source", "Average")],
+                vessel_density_tumor[c("Source", "Average")])
+
 # Scatter plot ------------------------------------------------------------
 # Vessel size
 p1 = ggplot() +
