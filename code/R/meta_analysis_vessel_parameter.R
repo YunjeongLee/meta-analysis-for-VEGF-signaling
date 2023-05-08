@@ -181,7 +181,7 @@ wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
 # Vessel size
 vessel_size_lean$Source <- "Lean adipose"
 vessel_size_obese$Source <- "Obese adipose"
-vessel_size_tumor$Source <- "Tumor adipose"
+vessel_size_tumor$Source <- "Tumor"
 
 df_size = rbind(vessel_size_lean[c("Source", "Average")],
                 vessel_size_obese[c("Source", "Average")],
@@ -190,7 +190,7 @@ df_size = rbind(vessel_size_lean[c("Source", "Average")],
 # Vessel density
 vessel_density_lean$Source <- "Lean adipose"
 vessel_density_obese$Source <- "Obese adipose"
-vessel_density_tumor$Source <- "Tumor adipose"
+vessel_density_tumor$Source <- "Tumor"
 
 df_density = rbind(vessel_density_lean[c("Source", "Average")],
                 vessel_density_obese[c("Source", "Average")],
