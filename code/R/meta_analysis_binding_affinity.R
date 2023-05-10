@@ -88,17 +88,17 @@ mtext(side=1, "Binding affinity, Kd (nM)", padj=2, cex = 2, line=1)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
-wtd.t.test(x=vegfr1$Average, y=vegfr2$Average,
+vegfr1_vs_vegfr2 = wtd.t.test(x=vegfr1$Average, y=vegfr2$Average,
            weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
            weighty=1/(vegfr2$SE^2+rm_vegfr2$tau2),
            alternative="less", samedata=FALSE)
 
-wtd.t.test(x=vegfr1$Average, y=nrp1$Average,
+vegfr1_vs_nrp1 = wtd.t.test(x=vegfr1$Average, y=nrp1$Average,
            weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
            alternative="less", samedata=FALSE)
 
-wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
+vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
            weight=1/(vegfr2$SE^2+rm_vegfr2$tau2), 
            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
            alternative="less", samedata=FALSE)
