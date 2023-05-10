@@ -104,7 +104,6 @@ wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
            alternative="less", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
-# Vessel size
 vegfr1$Source <- "VEGFR1"
 vegfr2$Source <- "VEGFR2"
 nrp1$Source <- "NRP1"
