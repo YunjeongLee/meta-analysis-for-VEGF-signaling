@@ -216,7 +216,7 @@ p1 = ggplot() +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 180, tip.length = c(0.5, 0.1), 
-               label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20))
 
 show(p1)
