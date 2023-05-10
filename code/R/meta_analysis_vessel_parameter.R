@@ -141,41 +141,41 @@ dev.off()
 # Student's t-test --------------------------------------------------------
 # Vessel size
 vessel_size_lean_vs_obese = wtd.t.test(x=vessel_size_lean$Average, y=vessel_size_obese$Average,
-           weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
-           weighty=1/(vessel_size_obese$SE^2+rm_vessel_size_obese$tau2),
-           alternative="less", samedata=FALSE)
+                                       weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
+                                       weighty=1/(vessel_size_obese$SE^2+rm_vessel_size_obese$tau2),
+                                       alternative="less", samedata=FALSE)
 
 vessel_size_lean_vs_tumor = wtd.t.test(x=vessel_size_lean$Average, y=vessel_size_tumor$Average,
-           weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
-           weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
-           alternative="less", samedata=FALSE)
+                                       weight=1/(vessel_size_lean$SE^2+rm_vessel_size_lean$tau2), 
+                                       weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
+                                       alternative="less", samedata=FALSE)
 
 vessel_size_obese_vs_tumor = wtd.t.test(x=vessel_size_obese$Average, y=vessel_size_tumor$Average,
-           weight=1/(vessel_size_obese$SE^2+rm_vessel_size_obese$tau2), 
-           weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
-           alternative="less", samedata=FALSE)
+                                        weight=1/(vessel_size_obese$SE^2+rm_vessel_size_obese$tau2), 
+                                        weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
+                                        alternative="less", samedata=FALSE)
 
 # Vessel density
 vessel_density_lean_vs_obese = wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_obese$Average,
-           weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
-           weighty=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2),
-           alternative="greater", samedata=FALSE)
+                                          weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
+                                          weighty=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2),
+                                          alternative="greater", samedata=FALSE)
 
 vessel_density_lean_vs_tumor = wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_tumor$Average,
-           weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
-           weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
-           alternative="greater", samedata=FALSE)
+                                          weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
+                                          weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
+                                          alternative="greater", samedata=FALSE)
 
 vessel_density_obese_vs_tumor = wtd.t.test(x=vessel_density_obese$Average, y=vessel_density_tumor$Average,
-           weight=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2), 
-           weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
-           alternative="greater", samedata=FALSE)
+                                           weight=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2), 
+                                           weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
+                                           alternative="greater", samedata=FALSE)
 
 # CBM thickness
 cbm_retina_vs_muscle = wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
-           weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
-           weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
-           alternative="two.tailed", samedata=FALSE)
+                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+                                  weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
 # Vessel size
@@ -193,8 +193,8 @@ vessel_density_obese$Source <- "Obese adipose"
 vessel_density_tumor$Source <- "Tumor"
 
 df_density = rbind(vessel_density_lean[c("Source", "Average")],
-                vessel_density_obese[c("Source", "Average")],
-                vessel_density_tumor[c("Source", "Average")])
+                   vessel_density_obese[c("Source", "Average")],
+                   vessel_density_tumor[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
 # Vessel size

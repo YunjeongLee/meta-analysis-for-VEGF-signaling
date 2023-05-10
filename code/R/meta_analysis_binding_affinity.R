@@ -92,19 +92,19 @@ dev.off()
 
 # Student's t-test --------------------------------------------------------
 vegfr1_vs_vegfr2 = wtd.t.test(x=vegfr1$Average, y=vegfr2$Average,
-           weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
-           weighty=1/(vegfr2$SE^2+rm_vegfr2$tau2),
-           alternative="less", samedata=FALSE)
+                              weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
+                              weighty=1/(vegfr2$SE^2+rm_vegfr2$tau2),
+                              alternative="less", samedata=FALSE)
 
 vegfr1_vs_nrp1 = wtd.t.test(x=vegfr1$Average, y=nrp1$Average,
-           weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
-           weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
-           alternative="less", samedata=FALSE)
+                            weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
+                            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
+                            alternative="less", samedata=FALSE)
 
 vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
-           weight=1/(vegfr2$SE^2+rm_vegfr2$tau2), 
-           weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
-           alternative="less", samedata=FALSE)
+                            weight=1/(vegfr2$SE^2+rm_vegfr2$tau2), 
+                            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
+                            alternative="less", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Source <- "VEGFR1"
@@ -133,7 +133,7 @@ p = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Binding affinity, Kd (nM)")) +
   scale_y_continuous(trans='log10', breaks=trans_breaks('log10', function(x) 10^x),
-              labels=trans_format('log10', math_format(10^.x))) +
+                     labels=trans_format('log10', math_format(10^.x))) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 1, tip.length = c(0.4, 0.05), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
