@@ -132,7 +132,7 @@ p = ggplot() +
   scale_y_continuous(trans='log10', breaks=trans_breaks('log10', function(x) 10^x),
               labels=trans_format('log10', math_format(10^.x))) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 1, tip.length = c(0.4, 0.05), label = "p<0.01") +
+               y.position = 1, tip.length = c(0.4, 0.05), label = "p<0.05") +
   theme(text = element_text(size = 20))
 
 show(p)
