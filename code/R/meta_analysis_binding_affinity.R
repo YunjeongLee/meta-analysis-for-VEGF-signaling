@@ -44,8 +44,11 @@ colnames(nrp1) <- c("Reference", "Method", "Average", "SE")
 
 # Drop Method column ------------------------------------------------------
 vegfr1 <- vegfr1[, c("Reference", "Average", "SE")]
-vegfr2 <- vegfr2[1:8, c("Reference", "Average", "SE")]
+vegfr2 <- vegfr2[, c("Reference", "Average", "SE")]
 nrp1 <- nrp1[, c("Reference", "Average", "SE")]
+
+# Drop rows with no references from vegfr2
+vegfr2 <- vegfr2[!is.na(vegfr2$Reference), ]
 
 # Deal with missing standard error ----------------------------------------
 vegfr1[is.na(vegfr1$SE), "SE"] <- 0.1*(vegfr1[is.na(vegfr1$SE), "Average"])
