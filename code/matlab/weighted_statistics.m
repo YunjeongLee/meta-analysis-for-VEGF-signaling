@@ -1,7 +1,7 @@
 clear; close all; clc;
 
 %% Load data
-filename = '../data/parameters.xlsx';
+filename = '../../data/parameters.xlsx';
 table_adip_size = readtable(filename, "ReadVariableNames", true, "ReadRowNames", true, ...
     "VariableNamingRule", "preserve", "Sheet", "Adipocyte diameter", "Range", "A1:E6", "TreatAsMissing", "NaN");
 table_cbm = readtable(filename, "ReadVariableNames", true, "ReadRowNames", true, ...
