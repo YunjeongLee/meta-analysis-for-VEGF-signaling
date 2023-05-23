@@ -177,7 +177,7 @@ lgd2 = legend(a, [obese1, obese2, obese3, obese4], ...
 title(lgd2, "Obese mouse")
 
 % Save figure
-foldername = '../../results/figures';
+foldername = '../../results/figures/matlab';
 mkdir(foldername)
 saveas(gca, sprintf('%s/geometric_parameters2.png', foldername), 'png')
 
