@@ -1,7 +1,7 @@
 clear; close all; clc;
 
 %% Load data
-filename = '../data/parameters.xlsx';
+filename = '../../data/parameters.xlsx';
 table_adip_size = readtable(filename, "ReadVariableNames", true, "ReadRowNames", true, ...
     "VariableNamingRule", "preserve", "Sheet", "Adipocyte diameter", "Range", "A1:E6", "TreatAsMissing", "NaN");
 table_cbm = readtable(filename, "ReadVariableNames", true, "ReadRowNames", true, ...
@@ -177,7 +177,7 @@ lgd2 = legend(a, [obese1, obese2, obese3, obese4], ...
 title(lgd2, "Obese mouse")
 
 % Save figure
-foldername = '../results/figures';
+foldername = '../../results/figures/matlab';
 mkdir(foldername)
 saveas(gca, sprintf('%s/geometric_parameters2.png', foldername), 'png')
 
