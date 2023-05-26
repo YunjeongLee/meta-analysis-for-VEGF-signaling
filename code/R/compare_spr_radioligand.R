@@ -135,7 +135,7 @@ mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
-png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=500)
 forest(rm_nrp1_radio, slab=nrp1_radio$Reference, header=TRUE,
        xlab="", xlim = c(-60, 180), alim = c(20, 120), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
