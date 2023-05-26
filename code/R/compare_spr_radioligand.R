@@ -102,42 +102,42 @@ summary(rm_nrp1_radio)
 # VEGF:VEGFR1 (SPR)
 png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=500)
 forest(rm_vegfr1_spr, slab=vegfr1_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-40, 120), alim = c(20, 80), cex=2)
+       xlab="", xlim = c(-15, 30), alim = c(0, 20), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
 png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=700)
 forest(rm_vegfr1_radio, slab=vegfr1_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-60, 180), alim = c(20, 120), cex=2)
+       xlab="", xlim = c(-15, 30), alim = c(0, 20), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
 png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=500)
 forest(rm_vegfr2_spr, slab=vegfr2_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-40, 120), alim = c(20, 80), cex=2)
+       xlab="", xlim = c(-900, 1500), alim = c(0, 900), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:VEGFR2 (Radioligand)
 png(file=sprintf("%s/forest_vegfr2_radio.png", results_path), width=1300, height=500)
 forest(rm_vegfr2_radio, slab=vegfr2_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-60, 180), alim = c(20, 120), cex=2)
+       xlab="", xlim = c(-800, 1600), alim = c(200, 1000), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:NRP1 (SPR)
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=500)
 forest(rm_nrp1_spr, slab=nrp1_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-40, 120), alim = c(20, 80), cex=2)
+       xlab="", xlim = c(-120, 300), alim = c(0, 200), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
 png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=500)
 forest(rm_nrp1_radio, slab=nrp1_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-60, 180), alim = c(20, 120), cex=2)
+       xlab="", xlim = c(-4, 7), alim = c(0, 5), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
 dev.off()
 
