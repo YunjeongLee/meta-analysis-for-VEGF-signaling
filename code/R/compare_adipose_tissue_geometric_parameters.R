@@ -100,14 +100,14 @@ dev.off()
 
 # Student's t-test --------------------------------------------------------
 adipocyte_lean_vs_obese = wtd.t.test(x=adipocyte_lean$Average, y=adipocyte_obese$Average,
-                              weight=1/(adipocyte_lean$SE^2+rm_adipocyte_lean$tau2), 
-                              weighty=1/(adipocyte_obese$SE^2+rm_adipocyte_obese$tau2),
-                              alternative="less", samedata=FALSE)
+                                     weight=1/(adipocyte_lean$SE^2+rm_adipocyte_lean$tau2), 
+                                     weighty=1/(adipocyte_obese$SE^2+rm_adipocyte_obese$tau2),
+                                     alternative="less", samedata=FALSE)
 
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
-                            weight=1/(cbm_lean$SE^2+rm_cbm_lean$tau2), 
-                            weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
-                            alternative="two.tailed", samedata=FALSE)
+                               weight=1/(cbm_lean$SE^2+rm_cbm_lean$tau2), 
+                               weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
+                               alternative="two.tailed", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
 # Adipocyte
