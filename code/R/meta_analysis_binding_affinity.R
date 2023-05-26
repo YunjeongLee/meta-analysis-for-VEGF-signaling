@@ -29,7 +29,7 @@ pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", "
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
-filename = '../../data/parameters.xlsx'
+filename = '../../data/binding_affinity.xlsx'
 # VEGF:VEGFR1
 vegfr1 <- as.data.frame(read_excel(filename, sheet = "VEGFA165_VEGFR1"))
 # VEGF:VEGFR2
