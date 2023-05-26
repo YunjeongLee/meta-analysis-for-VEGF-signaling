@@ -100,7 +100,7 @@ summary(rm_nrp1_radio)
 
 # Forest plot -------------------------------------------------------------
 # VEGF:VEGFR1 (SPR)
-png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=500)
 forest(rm_vegfr1_spr, slab=vegfr1_spr$Reference, header=TRUE,
        xlab="", xlim = c(-40, 120), alim = c(20, 80), cex=2)
 mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
