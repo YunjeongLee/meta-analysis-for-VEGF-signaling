@@ -147,6 +147,7 @@ vegfr1_ttest = wtd.t.test(x=vegfr1_spr$Average, y=vegfr1_radio$Average,
                           weight=1/(vegfr1_spr$SE^2+rm_vegfr1_spr$tau2), 
                           weighty=1/(vegfr1_radio$SE^2+rm_vegfr1_radio$tau2),
                           alternative="two.tailed", samedata=FALSE)
+
 # VEGFR:VEGFR2 (SPR vs radioligand)
 vegfr2_ttest = wtd.t.test(x=vegfr2_spr$Average, y=vegfr2_radio$Average,
                           weight=1/(vegfr2_spr$SE^2+rm_vegfr2_spr$tau2), 
