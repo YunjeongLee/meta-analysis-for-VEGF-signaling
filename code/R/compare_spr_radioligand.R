@@ -70,7 +70,7 @@ nrp1_radio <- nrp1_radio[!is.na(nrp1_radio["Reference"]), ]
 # Give assumed SE for radioligand assays ----------------------------------
 vegfr1_radio["SE"] <- vegfr1_radio["Average"] * 0.1
 vegfr2_radio["SE"] <- vegfr2_radio["Average"] * 0.1
-nrp1_radio["SE"] <- nrp1_radio["Average"] * 0.1
+nrp1_radio[is.na(nrp1_radio["SE"]), "SE"] <- nrp1_radio[is.na(nrp1_radio["SE"]), "Average"] * 0.1
 
 # Meta-analysis -----------------------------------------------------------
 # Compute weighted average and SD -----------------------------------------
