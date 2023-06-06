@@ -122,6 +122,7 @@ p = ggplot() +
   annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=30) +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=30) +
