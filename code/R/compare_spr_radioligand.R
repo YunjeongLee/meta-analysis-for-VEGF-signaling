@@ -169,6 +169,7 @@ p = ggplot() +
   annotate("text", x = "VEGFR2", y=rm_vegfr2_radio$b, label="-", size=30, colour = "darkblue") +
   geom_point(data = nrp1_radio, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
   annotate("text", x = "NRP1", y=rm_nrp1_radio$b*1e3, label="-", size=30, colour = "darkblue") +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "VEGFR1", y=rm_vegfr1_spr$b, label="-", size=30, colour = "darkred") +
