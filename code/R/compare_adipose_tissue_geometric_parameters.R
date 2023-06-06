@@ -130,6 +130,7 @@ p = ggplot() +
   annotate("text", x = "Lean mice", y=rm_adipocyte_lean$b, label="-", size=30) +
   labs(color="Lean mice") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Obese mice", y=rm_adipocyte_obese$b, label="-", size=30) +
@@ -149,6 +150,7 @@ p = ggplot() +
   annotate("text", x = "Lean mice", y=rm_cbm_lean$b, label="-", size=30) +
   labs(color="Lean mice") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = cbm_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Obese mice", y=rm_cbm_obese$b, label="-", size=30) +
