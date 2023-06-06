@@ -209,6 +209,7 @@ p1 = ggplot() +
   annotate("text", x = "Obese adipose", y=rm_vessel_size_obese$b, label="-", size=30) +
   ylim(0, 200) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Tumor", y=rm_vessel_size_tumor$b, label="-", size=30) +
