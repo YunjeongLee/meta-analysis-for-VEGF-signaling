@@ -138,6 +138,7 @@ p = ggplot() +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 1, tip.length = c(0.4, 0.05), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
+  scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20))
 
 show(p)
