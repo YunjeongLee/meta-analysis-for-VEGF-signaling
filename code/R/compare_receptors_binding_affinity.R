@@ -54,7 +54,7 @@ vegfr2 <- vegfr2[!is.na(vegfr2$Reference), ]
 # Deal with missing standard error ----------------------------------------
 vegfr1[is.na(vegfr1$SE), "SE"] <- 0.1*(vegfr1[is.na(vegfr1$SE), "Average"])
 vegfr2[is.na(vegfr2$SE), "SE"] <- 0.1*(vegfr2[is.na(vegfr2$SE), "Average"])
-nrp1[is.na(nrp1$SE), "SE"] <- 0.1*(nrp1[is.na(nrp1$SE), "Average"])
+nrp1[is.na(nrp1["SE"]), "SE"] <- nrp1[is.na(nrp1["SE"]), "Average"] * 0.1
 
 # Change units of Kd for VEGFR1 and VEGFR2 --------------------------------
 vegfr1[c("Average", "SE")] = vegfr1[c("Average", "SE")]/1e3
