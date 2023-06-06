@@ -268,6 +268,7 @@ p3 = ggplot() +
   ylim(0, 150) + labs(color="Muscle") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
+  scale_x_discrete(limits=c("Retina", "Muscle")) +
   theme(text = element_text(size = 20))
 
 show(p3)
