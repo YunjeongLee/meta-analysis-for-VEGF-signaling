@@ -203,6 +203,7 @@ p1 = ggplot() +
   annotate("text", x = "Lean adipose", y=rm_vessel_size_lean$b, label="-", size=30) +
   ylim(0, 200) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Obese adipose", y=rm_vessel_size_obese$b, label="-", size=30) +
@@ -229,6 +230,7 @@ p2 = ggplot() +
   annotate("text", x = "Lean adipose", y=rm_vessel_density_lean$b, label="-", size=30) +
   ylim(0, 1000) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Obese adipose", y=rm_vessel_density_obese$b, label="-", size=30) +
@@ -258,6 +260,7 @@ p3 = ggplot() +
   annotate("text", x = "Retina", y=rm_cbm_retina$b, label="-", size=30) +
   ylim(0, 150) + labs(color="Retina")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "Muscle", y=rm_cbm_muscle$b, label="-", size=30) +
