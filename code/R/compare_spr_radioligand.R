@@ -68,7 +68,7 @@ nrp1_spr <- nrp1_spr[!is.na(nrp1_spr["Reference"]), ]
 nrp1_radio <- nrp1_radio[!is.na(nrp1_radio["Reference"]), ]
 
 # Give assumed SE for radioligand assays ----------------------------------
-vegfr1_radio["SE"] <- vegfr1_radio["Average"] * 0.1
+vegfr1_radio[is.na(vegfr1_radio["SE"]), "SE"] <- vegfr1_radio[is.na(vegfr1_radio["SE"]), "Average"] * 0.1
 vegfr2_radio[is.na(vegfr2_radio["SE"]), "SE"] <- vegfr2_radio[is.na(vegfr2_radio["SE"]), "Average"] * 0.1
 nrp1_radio[is.na(nrp1_radio["SE"]), "SE"] <- nrp1_radio[is.na(nrp1_radio["SE"]), "Average"] * 0.1
 
