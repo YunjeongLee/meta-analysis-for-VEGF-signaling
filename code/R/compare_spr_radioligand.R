@@ -163,21 +163,21 @@ nrp1_ttest = wtd.t.test(x=nrp1_spr$Average, y=nrp1_radio$Average,
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR1", y=rm_vegfr1_radio$b, label="-", size=30, colour = "darkblue") +
+  geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y=rm_vegfr1_radio$b), shape = 95, size=20, colour = "darkblue") +
   lightness(scale_color_colormap('Cell-based (Radioligand)', discrete = T,colormap = "velocity-blue", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR2", y=rm_vegfr2_radio$b, label="-", size=30, colour = "darkblue") +
+  geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y=rm_vegfr2_radio$b), shape = 95, size=20, colour = "darkblue") +
   geom_point(data = nrp1_radio, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
-  annotate("text", x = "NRP1", y=rm_nrp1_radio$b*1e3, label="-", size=30, colour = "darkblue") +
+  geom_point(data = nrp1_radio, aes(x = "NRP1", y=rm_nrp1_radio$b*1e3), shape = 95, size=20, colour = "darkblue") +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR1", y=rm_vegfr1_spr$b, label="-", size=30, colour = "darkred") +
+  geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y=rm_vegfr1_spr$b), shape = 95, size=20, colour = "darkred") +
   lightness(scale_color_colormap('Chip-based  (SPR)', discrete = T,colormap = "autumn", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR2", y=rm_vegfr2_spr$b, label="-", size=30, colour = "darkred") +
+  geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y=rm_vegfr2_spr$b), shape = 95, size=20, colour = "darkred") +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
-  annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, label="-", size=30, colour = "darkred") +
+  geom_point(data = nrp1_spr, aes(x = "NRP1", y=rm_nrp1_spr$b*1e3), shape = 95, size=20, colour = "darkred") +
   annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, 
            label=generate_plabel(nrp1_ttest$coefficients["p.value"]), hjust=-0.35,
            size=6, colour = "darkred") +
