@@ -6,6 +6,10 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim,
   ### total number of studies
   k <- nrow(data)
   
+  ### generate point sizes
+  psize <- weights(rm)
+  psize <- 1.2 + (psize - min(psize)) / (max(psize) - min(psize))
+  
   ### adjust the margins
   par(mar=c(10,2,1,2))
   
