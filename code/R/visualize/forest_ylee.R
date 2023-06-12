@@ -15,7 +15,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim,
   
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, 
-                header=c("Author(s) and Year","Measurements \n[95% CI]"), 
+                header=c("Author(s) and Year","Weight (%) and Measurements \n[95% CI]"), 
                 xlim=xlim, alim=alim, cex=cex, showweights = TRUE,
                 xlab=xlab, refline=NA, pch=18, ilab.pos="4",
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
