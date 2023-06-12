@@ -76,16 +76,16 @@ summary(rm_nrp1)
 
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=500)
-forest(rm_vegfr1, slab=vegfr1$Reference, header=TRUE,
-       xlab="", xlim = c(-0.04, 0.07), alim = c(0, 0.05), cex=2)
+forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
+       xlab="Binding affinity, Kd (nM)", xlim = c(-0.02, 0.035), alim = c(0, 0.02), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
-forest(rm_vegfr2, slab=vegfr2$Reference, header=TRUE, 
-       xlab="", xlim = c(-1, 1.5), alim = c(0, 1), cex=2)
+forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
+       xlab="Binding affinity, Kd (nM)", xlim = c(-1, 1.8 ), alim = c(0, 1), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
-forest(rm_nrp1, slab=nrp1$Reference, header=TRUE, 
-       xlab="", xlim = c(-170, 300), alim = c(0, 200), cex=2)
+forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
+       xlab="Binding affinity, Kd (nM)", xlim = c(-200, 350), alim = c(0, 200), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
