@@ -118,30 +118,33 @@ df = rbind(vegfr1[c("Source", "Average")],
 
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=30) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1$b*1e3), shape = 95, size=20, colour = "darkblue") +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=30) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2$b*1e3), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   new_scale_color() +
-  geom_point(data = nrp1, aes(x = "NRP1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "NRP1", y=rm_nrp1$b, label="-", size=30) +
+  geom_point(data = nrp1, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1$b*1e3), shape = 95, size=20, colour = "darkred") +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  xlab("") + ylab(TeX("Binding affinity, Kd (nM)")) +
-  scale_y_continuous(trans='log10', breaks=trans_breaks('log10', function(x) 10^x),
-                     labels=trans_format('log10', math_format(10^.x))) +
+  xlab("") + ylab(TeX("Binding affinity, Kd (pM)")) +
+  scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
+                     sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
+                                         breaks=trans_breaks('log10', function(x) 10^x),
+                                         labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 1, tip.length = c(0.4, 0.05), 
+               y.position = 4, tip.length = c(0.3, 0.05), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20))
 
 show(p)
-ggsave(sprintf("%s/binding_affinity.png", results_path), width=3500, height=2700, units="px")
+ggsave(sprintf("%s/binding_affinity.png", results_path), width=4000, height=2700, units="px")
 dev.off()
