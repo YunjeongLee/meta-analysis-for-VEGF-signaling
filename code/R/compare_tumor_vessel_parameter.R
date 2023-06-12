@@ -200,19 +200,19 @@ df_density = rbind(vessel_density_lean[c("Source", "Average")],
 # Vessel size
 p1 = ggplot() +
   geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Lean adipose", y=rm_vessel_size_lean$b, label="-", size=30) +
+  geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = rm_vessel_size_lean$b), shape = 95, size = 20, colour = "darkblue") +
   ylim(0, 200) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Obese adipose", y=rm_vessel_size_obese$b, label="-", size=30) +
+  geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = rm_vessel_size_obese$b), shape = 95, size = 20, colour = "darkgreen") +
   ylim(0, 200) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Tumor", y=rm_vessel_size_tumor$b, label="-", size=30) +
+  geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = rm_vessel_size_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 200) + labs(color="Tumor") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
@@ -228,19 +228,19 @@ dev.off()
 # Vessel density
 p2 = ggplot() +
   geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Lean adipose", y=rm_vessel_density_lean$b, label="-", size=30) +
+  geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = rm_vessel_density_lean$b), shape = 95, size = 20, colour = "darkblue") +
   ylim(0, 1000) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Obese adipose", y=rm_vessel_density_obese$b, label="-", size=30) +
+  geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = rm_vessel_density_obese$b), shape = 95, size = 20, colour = "darkgreen") +
   ylim(0, 1000) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Tumor", y=rm_vessel_density_tumor$b, label="-", size=30) +
+  geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 1000) + labs(color="Tumor") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(/mm^2)$")) +
@@ -259,13 +259,13 @@ dev.off()
 # CBM thickness
 p3 = ggplot() +
   geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Retina", y=rm_cbm_retina$b, label="-", size=30) +
+  geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_retina$b), shape = 95, size = 20, colour = "darkblue") +
   ylim(0, 150) + labs(color="Retina")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "Muscle", y=rm_cbm_muscle$b, label="-", size=30) +
+  geom_point(data = cbm_muscle, aes(x = "Muscle", y = rm_cbm_muscle$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 150) + labs(color="Muscle") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
