@@ -34,7 +34,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim,
   mtext(side=1, TeX(paste("Test for heterogeneity: ", "$\\tau^2$", "=",
                       formatC(rm$tau2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
                       formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
-                      ", ", generate_plabel(rm$pval), "; ", "$I^2$", "=",
+                      ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
                       formatC(rm$I2, digits=0, format="f"), "%")),
         padj=1, adj=0, cex=cex*0.9, line=5)
 }
