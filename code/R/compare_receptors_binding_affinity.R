@@ -133,7 +133,7 @@ p = ggplot() +
   annotate("text", x = "NRP1", y=rm_nrp1$b*1e3, label="-", size=30) +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  xlab("") + ylab(TeX("Binding affinity, Kd (nM)")) +
+  xlab("") + ylab(TeX("Binding affinity, Kd (pM)")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
