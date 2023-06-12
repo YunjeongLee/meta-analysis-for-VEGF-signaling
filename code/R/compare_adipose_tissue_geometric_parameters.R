@@ -10,7 +10,7 @@ rm(list = ls())
 setwd("/Users/yunjeong/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
-subfolders = c("etc")
+subfolders = c("etc", "visualize")
 for (i in 1:length(subfolders)) {
   a = list.files(path = subfolders[i], pattern = "[.]R$", full.names = TRUE)
   for (j in 1:length(a)) {
