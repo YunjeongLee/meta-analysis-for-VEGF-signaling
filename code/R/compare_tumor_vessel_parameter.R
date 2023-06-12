@@ -110,7 +110,6 @@ dev.off()
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
 forest(rm_vessel_density_lean, slab=vessel_density_lean$Reference, header=TRUE, 
        xlab="", xlim = c(-700, 1500), alim = c(0, 1000), cex = 2)
-mtext(side=1, TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), padj=2, cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest(rm_vessel_density_obese, slab=vessel_density_obese$Reference, header=TRUE, 
