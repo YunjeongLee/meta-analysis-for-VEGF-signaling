@@ -119,18 +119,18 @@ df = rbind(vegfr1[c("Source", "Average")],
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=30) +
+  annotate("text", x = "VEGFR1", y=rm_vegfr1$b*1e3, label="-", size=30) +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=30) +
+  annotate("text", x = "VEGFR2", y=rm_vegfr2$b*1e3, label="-", size=30) +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   new_scale_color() +
   geom_point(data = nrp1, aes(x = "NRP1", y = Average, colour = Reference), size = 7) +
-  annotate("text", x = "NRP1", y=rm_nrp1$b, label="-", size=30) +
+  annotate("text", x = "NRP1", y=rm_nrp1$b*1e3, label="-", size=30) +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Binding affinity, Kd (nM)")) +
