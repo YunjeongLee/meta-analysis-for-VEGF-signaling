@@ -52,9 +52,9 @@ nrp1 <- nrp1[, c("Reference", "Average", "SE")]
 vegfr2 <- vegfr2[!is.na(vegfr2$Reference), ]
 
 # Deal with missing standard error ----------------------------------------
-vegfr1[is.na(vegfr1$SE), "SE"] <- 0.1*(vegfr1[is.na(vegfr1$SE), "Average"])
-vegfr2[is.na(vegfr2$SE), "SE"] <- 0.1*(vegfr2[is.na(vegfr2$SE), "Average"])
-nrp1[is.na(nrp1$SE), "SE"] <- 0.1*(nrp1[is.na(nrp1$SE), "Average"])
+vegfr1[is.na(vegfr1["SE"]), "SE"] <- vegfr1[is.na(vegfr1["SE"]), "Average"] * 0.1
+vegfr2[is.na(vegfr2["SE"]), "SE"] <- vegfr2[is.na(vegfr2["SE"]), "Average"] * 0.1
+nrp1[is.na(nrp1["SE"]), "SE"] <- nrp1[is.na(nrp1["SE"]), "Average"] * 0.1
 
 # Change units of Kd for VEGFR1 and VEGFR2 --------------------------------
 vegfr1[c("Average", "SE")] = vegfr1[c("Average", "SE")]/1e3
@@ -122,6 +122,7 @@ p = ggplot() +
   annotate("text", x = "VEGFR1", y=rm_vegfr1$b, label="-", size=30) +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
   annotate("text", x = "VEGFR2", y=rm_vegfr2$b, label="-", size=30) +
@@ -138,8 +139,9 @@ p = ggplot() +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 1, tip.length = c(0.4, 0.05), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
+  scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20))
 
 show(p)
-ggsave(sprintf("%s/binding_affinity.png", results_path), width=3500, height=2500, units="px")
+ggsave(sprintf("%s/binding_affinity.png", results_path), width=3500, height=2700, units="px")
 dev.off()
