@@ -10,6 +10,9 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   psize <- weights(rm)
   psize <- 1.2 + (psize - min(psize)) / (max(psize) - min(psize))
   
+  ### get the weights and format them as will be used in the forest plot
+  weights <- formatC(weights(rm), format="f", digits=1)
+  
   ### adjust the margins
   par(mar=c(10,2,1,2))
   
