@@ -77,14 +77,17 @@ summary(rm_nrp1)
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
+            header=c("Author(s) and Year","Measurements (nM) \n[95% CI]"),
             xlab="Binding affinity, Kd (nM)", xlim = c(-0.02, 0.035), alim = c(0, 0.02), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
+            header=c("Author(s) and Year","Measurements (nM) \n[95% CI]"),
             xlab="Binding affinity, Kd (nM)", xlim = c(-1, 1.8 ), alim = c(0, 1), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
+            header=c("Author(s) and Year","Measurements (nM) \n[95% CI]"),
             xlab="Binding affinity, Kd (nM)", xlim = c(-200, 350), alim = c(0, 200), cex=2)
 dev.off()
 
