@@ -16,6 +16,8 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   ### adjust the margins
   par(mar=c(10,2,1,2), lty=0)
   
+  ### set ilab position
+  ilab_pos = 1.1*alim[2]
   
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, 
