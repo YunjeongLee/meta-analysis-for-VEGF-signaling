@@ -107,14 +107,14 @@ forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
-png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             header=c("Author(s) and Year","Measurements (pM) \n[95% CI]"),
             xlab="Binding affinity, Kd (pM)", xlim = c(-20, 35), alim = c(0, 20), cex=2)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
-png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
             header=c("Author(s) and Year","Measurements (pM) \n[95% CI]"),
             xlab="Binding affinity, Kd (pM)", xlim = c(-950, 1700), alim = c(0, 900), cex=2)
