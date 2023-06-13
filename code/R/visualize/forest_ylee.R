@@ -35,6 +35,9 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   par(xpd=NA)
   
   ### adjust cex as used in the forest plot and use a bold font
+  par(cex=sav$cex, font=2)
+
+  ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)
 
   ### add text with heterogeneity statistics
