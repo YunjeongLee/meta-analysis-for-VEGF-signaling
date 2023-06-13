@@ -23,7 +23,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   sav <- forest(rm, slab=slab, 
                 header=header, 
                 xlim=xlim, alim=alim, cex=cex,
-                ilab=weights, ilab.xpos=ilab_pos, ilab.pos=4,
+                ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
   
@@ -38,7 +38,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   par(cex=sav$cex, font=2)
 
   ### add ilabel
-  text(ilab_pos, k+2, pos=3, "Weight (%)")
+  text(ilab_pos, k+2, pos=2, "Weight (%)")
   
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)
