@@ -38,7 +38,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   par(cex=sav$cex, font=2)
 
   ### add ilabel
-  text(ilab_pos, k+2, pos=2, "Weight (%)")
+  text(ilab_pos, k+2, pos=2, "Weight \n(%)")
   
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)
