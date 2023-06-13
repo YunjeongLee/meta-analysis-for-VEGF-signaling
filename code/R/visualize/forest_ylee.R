@@ -23,7 +23,7 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   sav <- forest(rm, slab=slab, 
                 header=c("Author(s) and Year","Weight (%) and Measurements \n[95% CI]"), 
                 xlim=xlim, alim=alim, cex=cex, showweights = TRUE,
-                xlab=xlab, refline=NA, pch=18, psize=psize,
+                xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
   
   ### add vertical reference line at the pooled estimate
