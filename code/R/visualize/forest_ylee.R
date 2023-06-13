@@ -14,7 +14,8 @@ forest_ylee <- function (data=data, rm = rm, slab=slab, xlim=xlim, alim=alim, he
   weights <- formatC(weights(rm), format="f", digits=1)
   
   ### adjust the margins
-  par(mar=c(10,2,1,2))
+  par(mar=c(10,2,1,2), lty=0)
+  
   
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, 
