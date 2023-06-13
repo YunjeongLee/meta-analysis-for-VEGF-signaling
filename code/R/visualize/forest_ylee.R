@@ -35,19 +35,19 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2) {
   
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=2)
-
+  
   ### add headers
   text(ilab_pos, k+2, pos=2, "Weight \n(%)")
   text(xlim[2], k+2, pos=2, paste0("Measurements \n(", unit, ") [95% CI]"))
   
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)
-
+  
   ### add text with heterogeneity statistics
   mtext(side=1, TeX(paste("Test for heterogeneity: ", "$\\tau^2$", "=",
-                      formatC(rm$tau2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
-                      formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
-                      ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
-                      formatC(rm$I2, digits=0, format="f"), "%")),
+                          formatC(rm$tau2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
+                          formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
+                          ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
+                          formatC(rm$I2, digits=0, format="f"), "%")),
         padj=1, adj=0, cex=cex*0.9, line=5)
 }
