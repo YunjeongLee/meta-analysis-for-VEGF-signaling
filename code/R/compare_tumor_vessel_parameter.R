@@ -243,7 +243,7 @@ p2 = ggplot() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 1000) + labs(color="Tumor") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  xlab("") + ylab(TeX("Vessel density $(/mm^2)$")) +
+  xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 900, tip.length = c(0.1, 0.05), 
                label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
