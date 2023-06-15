@@ -10,7 +10,7 @@ rm(list = ls())
 setwd("/Users/yunjeong/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
-subfolders = c("etc")
+subfolders = c("etc", "visualize")
 for (i in 1:length(subfolders)) {
   a = list.files(path = subfolders[i], pattern = "[.]R$", full.names = TRUE)
   for (j in 1:length(a)) {
@@ -20,7 +20,7 @@ for (i in 1:length(subfolders)) {
 
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
-             "shades", "ggnewscale", "ggsignif")
+             "shades", "ggnewscale", "ggsignif", "stringi")
 instant_pkgs(pkg_list)
 
 # Check and generate a result folder --------------------------------------
@@ -94,48 +94,48 @@ summary(rm_cbm_muscle)
 # Forest plot -------------------------------------------------------------
 # Vessel size
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
-forest(rm_vessel_size_lean, slab=vessel_size_lean$Reference, header=TRUE,
-       xlab="", xlim = c(-150, 300), alim = c(0, 200), cex=2)
-mtext(side=1, TeX("Vessel size $(µm^2)$ in adipose tissue of lean mice"), padj=2, cex = 2)
+forest_ylee(data=vessel_size_lean, rm=rm_vessel_size_lean, slab=vessel_size_lean$Reference,
+            unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_obese.png", results_path), width=1300, height=700)
-forest(rm_vessel_size_obese, slab=vessel_size_obese$Reference, header=TRUE, 
-       xlab="", xlim = c(-150, 300), alim = c(0, 200), cex=2)
-mtext(side=1, TeX("Vessel size $(µm^2)$ in adipose tissue of obese mice"), padj=2, cex = 2)
+forest_ylee(data=vessel_size_obese, rm=rm_vessel_size_obese, slab=vessel_size_obese$Reference, 
+            unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
-forest(rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, header=TRUE, 
-       xlab="", xlim = c(-150, 300), alim = c(0, 200), cex=2)
-mtext(side=1, TeX("Vessel size $(µm^2)$ in mouse tumor"), padj=2, cex = 2)
+forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
+            unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 
 # Vessel density
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
-forest(rm_vessel_density_lean, slab=vessel_density_lean$Reference, header=TRUE, 
-       xlab="", xlim = c(-700, 1500), alim = c(0, 1000), cex = 2)
-mtext(side=1, TeX("Vessel density $(no./mm^2)$ in adipose tissue of lean mice"), padj=2, cex = 2)
+forest_ylee(data=vessel_density_lean, rm=rm_vessel_density_lean, slab=vessel_density_lean$Reference, 
+            unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
-forest(rm_vessel_density_obese, slab=vessel_density_obese$Reference, header=TRUE, 
-       xlab="", xlim = c(-700, 1500), alim = c(0, 1000), cex=2)
-mtext(side=1, TeX("Vessel density $(no./mm^2)$ in adipose tissue of obese mice"), padj=2, cex = 2)
+forest_ylee(data=vessel_density_obese, rm=rm_vessel_density_obese, slab=vessel_density_obese$Reference, 
+            unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300, height=700)
-forest(rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, header=TRUE, 
-       xlab="", xlim = c(-700, 1500), alim = c(0, 1000), cex=2)
-mtext(side=1, TeX("Vessel density $(no./mm^2)$ in mouse tumor"), padj=2, cex = 2)
+forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, 
+            unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-250, 500), alim = c(0, 250), cex=2)
 dev.off()
 
 # CBM thickness
 png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=500)
-forest(rm_cbm_retina, slab=cbm_retina$Reference, header=TRUE,
-       xlab="", xlim = c(-100, 200), alim=c(0, 120), cex=2)
-mtext(side=1, "Capillary basement membrane thickness (nm) in retina", line=1, padj=2, cex = 2)
+forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference,
+            unit = "nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
-forest(rm_cbm_muscle, slab=cbm_muscle$Reference, header=TRUE,
-       xlab="", xlim = c(-100, 200), alim=c(0, 120), cex=2)
-mtext(side=1, "Capillary basement membrane thickness (nm) in muscle", line=1, padj=2, cex = 2)
+forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference,
+            unit = "nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -243,7 +243,7 @@ p2 = ggplot() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 1000) + labs(color="Tumor") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  xlab("") + ylab(TeX("Vessel density $(/mm^2)$")) +
+  xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 900, tip.length = c(0.1, 0.05), 
                label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +

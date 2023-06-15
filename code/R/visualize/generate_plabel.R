@@ -8,5 +8,8 @@ generate_plabel <- function(pval) {
   else if (pval <= 0.001) {
     res <- "p < 0.001"
   }
+  else {
+    res <- "p > 0.05"
+  }
   return(res)
 }

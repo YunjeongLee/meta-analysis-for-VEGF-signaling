@@ -10,7 +10,7 @@ rm(list = ls())
 setwd("/Users/yunjeong/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
-subfolders = c("etc")
+subfolders = c("etc", "visualize")
 for (i in 1:length(subfolders)) {
   a = list.files(path = subfolders[i], pattern = "[.]R$", full.names = TRUE)
   for (j in 1:length(a)) {
@@ -101,44 +101,44 @@ summary(rm_nrp1_radio)
 # Forest plot -------------------------------------------------------------
 # VEGF:VEGFR1 (SPR)
 png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=500)
-forest(rm_vegfr1_spr, slab=vegfr1_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-15, 30), alim = c(0, 20), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
+forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
+            unit="pM",
+            xlab="Binding affinity, Kd (pM)", xlim = c(-20, 40), alim = c(0, 20), cex=2)
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
-png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=700)
-forest(rm_vegfr1_radio, slab=vegfr1_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-15, 30), alim = c(0, 20), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
+png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=500)
+forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
+            unit="pM",
+            xlab="Binding affinity, Kd (pM)", xlim = c(-20, 35), alim = c(0, 20), cex=2)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
-png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=500)
-forest(rm_vegfr2_spr, slab=vegfr2_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-900, 1500), alim = c(0, 900), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
+png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=700)
+forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
+            unit="pM",
+            xlab="Binding affinity, Kd (pM)", xlim = c(-950, 1700), alim = c(0, 900), cex=2)
 dev.off()
 
 # VEGF:VEGFR2 (Radioligand)
 png(file=sprintf("%s/forest_vegfr2_radio.png", results_path), width=1300, height=500)
-forest(rm_vegfr2_radio, slab=vegfr2_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-800, 1600), alim = c(200, 1000), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (pM)"), padj=2, cex = 2, line=1)
+forest_ylee(data=vegfr2_radio, rm=rm_vegfr2_radio, slab=vegfr2_radio$Reference,
+            unit="pM",
+            xlab="Binding affinity, Kd (pM)", xlim = c(-600, 1700), alim = c(200, 1000), cex=2)
 dev.off()
 
 # VEGF:NRP1 (SPR)
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=500)
-forest(rm_nrp1_spr, slab=nrp1_spr$Reference, header=TRUE,
-       xlab="", xlim = c(-120, 300), alim = c(0, 200), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
+forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
+            unit="nM",
+            xlab="Binding affinity, Kd (nM)", xlim = c(-120, 350), alim = c(0, 200), cex=2)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
 png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=500)
-forest(rm_nrp1_radio, slab=nrp1_radio$Reference, header=TRUE,
-       xlab="", xlim = c(-4, 7), alim = c(0, 5), cex=2)
-mtext(side=1, TeX("Binding affinity, Kd (nM)"), padj=2, cex = 2, line=1)
+forest_ylee(data=nrp1_radio, rm=rm_nrp1_radio, slab=nrp1_radio$Reference,
+            unit="nM",
+            xlab="Binding affinity, Kd (nM)", xlim = c(-5, 9), alim = c(0, 5), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
