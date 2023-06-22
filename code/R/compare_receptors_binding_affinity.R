@@ -127,7 +127,7 @@ p = ggplot() +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average*1e3, colour = Reference), size = 7) +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2$b*1e3), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
-  lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
+  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   new_scale_color() +
   geom_point(data = nrp1, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
   geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1$b*1e3), shape = 95, size=20, colour = "darkred") +
