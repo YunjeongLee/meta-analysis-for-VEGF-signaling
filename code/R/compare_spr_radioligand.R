@@ -134,14 +134,14 @@ dev.off()
 # VEGF:NRP1 (SPR)
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
-            unit="nM",
+            unit="nM", atransf=function(x)x/1e3,
             xlab="Binding affinity, Kd (nM)", xlim = c(-40000, 90000), alim = c(0, 50000), cex=2)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
 png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1_radio, rm=rm_nrp1_radio, slab=nrp1_radio$Reference,
-            unit="nM",
+            unit="nM", atransf=function(x)x/1e3,
             xlab="Binding affinity, Kd (nM)", xlim = c(-5000, 9000), alim = c(0, 5000), cex=2)
 dev.off()
 
