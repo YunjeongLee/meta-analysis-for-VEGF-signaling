@@ -7,7 +7,7 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=
   
   ### generate point sizes
   psize <- weights(rm)
-  psize <- 1.2 + (psize - min(psize)) / (max(psize) - min(psize))
+  psize <- 0.8 + (psize - min(psize)) / (max(psize) - min(psize))
   
   ### get the weights and format them as will be used in the forest plot
   weights <- formatC(weights(rm), format="f", digits=1)
