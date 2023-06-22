@@ -21,7 +21,7 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, 
                 header=c("Author(s) and Year", ""), 
-                xlim=xlim, alim=alim, cex=cex,
+                xlim=xlim, alim=alim, cex=cex, atransf=atransf,
                 ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
