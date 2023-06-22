@@ -141,7 +141,7 @@ p = ggplot() +
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
                y.position = 6, tip.length = c(0.4, 0.1), 
-               label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
+               label = generate_plabel(vegfr1_vs_nrp1$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20))
 
