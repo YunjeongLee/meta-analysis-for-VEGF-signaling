@@ -75,7 +75,7 @@ rm_nrp1 <- rma(yi = Average, sei = SE, data=nrp1)
 summary(rm_nrp1)
 
 # Forest plot -------------------------------------------------------------
-png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
             unit="nM",
             xlab="Binding affinity, Kd (nM)", xlim = c(-0.02, 0.035), alim = c(0, 0.02), cex=2)
