@@ -200,6 +200,23 @@ spr_r2_vs_n1 = wtd.t.test(x=vegfr2_spr$Average, y=nrp1_spr$Average,
                           weighty=1/(nrp1_spr$SE^2+rm_nrp1_spr$tau2),
                           alternative="less", samedata=FALSE)
 
+# Merge dataframes for plotting -------------------------------------------
+vegfr1_radio$Source <- "VEGFR1"
+vegfr2_radio$Source <- "VEGFR2"
+nrp1_radio$Source <- "NRP1"
+
+df_radio = rbind(vegfr1_radio[c("Source", "Average")],
+                 vegfr2_radio[c("Source", "Average")],
+                 nrp1_radio[c("Source", "Average")])
+
+vegfr1_spr$Source <- "VEGFR1"
+vegfr2_spr$Source <- "VEGFR2"
+nrp1_spr$Source <- "NRP1"
+
+df_spr = rbind(vegfr1_spr[c("Source", "Average")],
+               vegfr2_spr[c("Source", "Average")],
+               nrp1_spr[c("Source", "Average")])
+
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
