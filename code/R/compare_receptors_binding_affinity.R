@@ -139,7 +139,7 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+  geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
                y.position = 6, tip.length = c(0.4, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
