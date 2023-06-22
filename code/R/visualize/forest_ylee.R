@@ -1,4 +1,4 @@
-forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2) {
+forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL) {
   ### Specify colors
   linecolor = "#1e81b0"
   
@@ -7,7 +7,7 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2) {
   
   ### generate point sizes
   psize <- weights(rm)
-  psize <- 1.2 + (psize - min(psize)) / (max(psize) - min(psize))
+  psize <- 0.8 + (psize - min(psize)) / (max(psize) - min(psize))
   
   ### get the weights and format them as will be used in the forest plot
   weights <- formatC(weights(rm), format="f", digits=1)
@@ -21,7 +21,7 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2) {
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, 
                 header=c("Author(s) and Year", ""), 
-                xlim=xlim, alim=alim, cex=cex,
+                xlim=xlim, alim=alim, cex=cex, atransf=atransf,
                 ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
