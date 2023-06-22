@@ -218,6 +218,7 @@ df_spr = rbind(vegfr1_spr[c("Source", "Average")],
                nrp1_spr[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
+# Overall SPR vs. radioligand
 p = ggplot() +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y=rm_vegfr1_radio$b), shape = 95, size=20, colour = "darkblue") +
