@@ -164,6 +164,42 @@ nrp1_ttest = wtd.t.test(x=nrp1_spr$Average, y=nrp1_radio$Average,
                         weighty=1/(nrp1_radio$SE^2+rm_nrp1_radio$tau2),
                         alternative="two.tailed", samedata=FALSE)
 
+# Radioligand (VEGFR1 vs VEGFR2)
+radio_r1_vs_r2 = wtd.t.test(x=vegfr1_radio$Average, y=vegfr2_radio$Average,
+                            weight=1/(vegfr1_radio$SE^2+rm_vegfr1_radio$tau2),
+                            weighty=1/(vegfr2_radio$SE^2+rm_vegfr2_radio$tau2),
+                            alternative="less", samedata=FALSE)
+
+# Radioligand (VEGFR1 vs NRP1)
+radio_r1_vs_n1 = wtd.t.test(x=vegfr1_radio$Average, y=nrp1_radio$Average,
+                            weight=1/(vegfr1_radio$SE^2+rm_vegfr1_radio$tau2),
+                            weighty=1/(nrp1_radio$SE^2+rm_nrp1_radio$tau2),
+                            alternative="less", samedata=FALSE)
+
+# Radioligand (VEGFR2 vs NRP1)
+radio_r2_vs_n1 = wtd.t.test(x=vegfr2_radio$Average, y=nrp1_radio$Average,
+                            weight=1/(vegfr2_radio$SE^2+rm_vegfr2_radio$tau2),
+                            weighty=1/(nrp1_radio$SE^2+rm_nrp1_radio$tau2),
+                            alternative="less", samedata=FALSE)
+
+# SPR (VEGFR1 vs VEGFR2)
+spr_r1_vs_r2 = wtd.t.test(x=vegfr1_spr$Average, y=vegfr2_spr$Average,
+                          weight=1/(vegfr1_spr$SE^2+rm_vegfr1_spr$tau2),
+                          weighty=1/(vegfr2_spr$SE^2+rm_vegfr2_spr$tau2),
+                          alternative="less", samedata=FALSE)
+
+# SPR (VEGFR1 vs NRP1)
+spr_r1_vs_n1 = wtd.t.test(x=vegfr1_spr$Average, y=nrp1_spr$Average,
+                          weight=1/(vegfr1_spr$SE^2+rm_vegfr1_spr$tau2),
+                          weighty=1/(nrp1_spr$SE^2+rm_nrp1_spr$tau2),
+                          alternative="less", samedata=FALSE)
+
+# SPR (VEGFR2 vs NRP1)
+spr_r2_vs_n1 = wtd.t.test(x=vegfr2_spr$Average, y=nrp1_spr$Average,
+                          weight=1/(vegfr2_spr$SE^2+rm_vegfr2_spr$tau2),
+                          weighty=1/(nrp1_spr$SE^2+rm_nrp1_spr$tau2),
+                          alternative="less", samedata=FALSE)
+
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
