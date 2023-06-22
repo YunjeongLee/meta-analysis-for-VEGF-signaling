@@ -178,9 +178,9 @@ p = ggplot() +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y=rm_vegfr2_spr$b), shape = 95, size=20, colour = "darkred") +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y=rm_nrp1_spr$b*1e3), shape = 95, size=20, colour = "darkred") +
-  annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, 
-           label=generate_plabel(nrp1_ttest$coefficients["p.value"]), hjust=-0.35,
-           size=6, colour = "darkred") +
+  # annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, 
+  #          label=generate_plabel(nrp1_ttest$coefficients["p.value"]), hjust=-0.35,
+  #          size=6, colour = "darkred") +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
