@@ -1,4 +1,4 @@
-forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2) {
+forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL) {
   ### Specify colors
   linecolor = "#1e81b0"
   
