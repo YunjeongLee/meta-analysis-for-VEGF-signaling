@@ -171,7 +171,7 @@ p = ggplot() +
   lightness(scale_color_colormap('Cell-based (Radioligand)', discrete = T,colormap = "velocity-blue", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
   geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y=rm_vegfr2_radio$b), shape = 95, size=20, colour = "darkblue") +
-  geom_point(data = nrp1_radio, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = nrp1_radio, aes(x = "NRP1", y = Average, colour = Reference), size = 7) +
   geom_point(data = nrp1_radio, aes(x = "NRP1", y=rm_nrp1_radio$b), shape = 95, size=20, colour = "darkblue") +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
