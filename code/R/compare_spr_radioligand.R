@@ -180,7 +180,7 @@ p = ggplot() +
   lightness(scale_color_colormap('Chip-based  (SPR)', discrete = T,colormap = "autumn", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y=rm_vegfr2_spr$b), shape = 95, size=20, colour = "darkred") +
-  geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7, shape=17) +
+  geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y=rm_nrp1_spr$b), shape = 95, size=20, colour = "darkred") +
   # annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, 
   #          label=generate_plabel(nrp1_ttest$coefficients["p.value"]), hjust=-0.35,
