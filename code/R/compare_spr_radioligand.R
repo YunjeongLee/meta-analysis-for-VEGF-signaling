@@ -72,6 +72,10 @@ vegfr1_radio[is.na(vegfr1_radio["SE"]), "SE"] <- vegfr1_radio[is.na(vegfr1_radio
 vegfr2_radio[is.na(vegfr2_radio["SE"]), "SE"] <- vegfr2_radio[is.na(vegfr2_radio["SE"]), "Average"] * 0.1
 nrp1_radio[is.na(nrp1_radio["SE"]), "SE"] <- nrp1_radio[is.na(nrp1_radio["SE"]), "Average"] * 0.1
 
+# Change unit of Kd for NRP1 from nM to pM --------------------------------
+nrp1_spr[c("Average", "SE")] = nrp1_spr[c("Average", "SE")]*1e3
+nrp1_radio[c("Average", "SE")] = nrp1_radio[c("Average", "SE")]*1e3
+
 # Meta-analysis -----------------------------------------------------------
 # Compute weighted average and SD -----------------------------------------
 # VEGF:VEGFR1 (SPR)
