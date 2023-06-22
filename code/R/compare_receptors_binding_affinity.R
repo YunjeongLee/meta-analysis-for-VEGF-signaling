@@ -77,7 +77,7 @@ summary(rm_nrp1)
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
-            unit="nM",
+            unit="pM", atransf=function(x)1e3*x,
             xlab="Binding affinity, Kd (pM)", xlim = c(-0.2, 0.45), alim = c(0, 0.25), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
