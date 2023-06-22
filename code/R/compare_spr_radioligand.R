@@ -142,7 +142,7 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1_radio, rm=rm_nrp1_radio, slab=nrp1_radio$Reference,
             unit="nM",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-5, 9), alim = c(0, 5), cex=2)
+            xlab="Binding affinity, Kd (nM)", xlim = c(-5000, 9000), alim = c(0, 5000), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
