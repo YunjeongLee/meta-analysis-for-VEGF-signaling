@@ -19,7 +19,7 @@ for (i in 1:length(subfolders)) {
 }
 
 # Check and generate a result folder --------------------------------------
-results_path = "../../results/figures/R/without Teran (VEGFR2)"
+results_path = "../../results/figures/R/without Teran (VEGFR)"
 
 # Generate new results folder
 dir.create(results_path, recursive = TRUE)
