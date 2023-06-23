@@ -312,7 +312,7 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 6, tip.length = c(0.6, 0.2), 
+               y.position = 6.5, tip.length = c(0.8, 0.1), 
                label = generate_plabel(spr_r1_vs_n1$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
