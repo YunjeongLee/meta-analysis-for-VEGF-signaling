@@ -73,28 +73,28 @@ summary(rm_cbm_obese)
 # Adipocyte diameter of lean mice
 png(file=sprintf("%s/forest_adipocyte_diameter_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=adipocyte_lean, rm=rm_adipocyte_lean, slab=adipocyte_lean$Reference,
-            unit="µm",
+            unit="µm", title="Adipocyte diameter in adipose tissue of lean mice",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-30, 130), alim = c(20, 80), cex=2)
 dev.off()
 
 # Adipocyte diameter of obese mice
 png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=adipocyte_obese, rm=rm_adipocyte_obese, slab=adipocyte_obese$Reference,
-            unit="µm",
+            unit="µm", title="Adipocyte diameter in adipose tissue of obese mice",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
-            unit="nm",
+            unit="nm", title="Capillary basement membrane thickness of lean mice",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
 # CBM thickness of obese mice
 png(file=sprintf("%s/forest_cbm_obese.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference, 
-            unit="nm",
+            unit="nm", title="Capillary basement membrane thickness of obese mice",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
