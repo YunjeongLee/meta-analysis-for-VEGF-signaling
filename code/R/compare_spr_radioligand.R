@@ -104,7 +104,7 @@ summary(rm_nrp1_radio)
 
 # Forest plot -------------------------------------------------------------
 # VEGF:VEGFR1 (SPR)
-png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=500)
+png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=450)
 forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
             unit="pM",
             xlab="Binding affinity, Kd (pM)", xlim = c(-250, 500), alim = c(0, 250), cex=2)
@@ -132,7 +132,7 @@ forest_ylee(data=vegfr2_radio, rm=rm_vegfr2_radio, slab=vegfr2_radio$Reference,
 dev.off()
 
 # VEGF:NRP1 (SPR)
-png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=450)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
             unit="nM", atransf=function(x)x/1e3,
             xlab="Binding affinity, Kd (nM)", xlim = c(-40000, 90000), alim = c(0, 50000), cex=2)
