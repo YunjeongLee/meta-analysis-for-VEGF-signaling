@@ -96,16 +96,19 @@ summary(rm_cbm_muscle)
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=vessel_size_lean, rm=rm_vessel_size_lean, slab=vessel_size_lean$Reference,
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in adipose tissue of lean mice",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_obese, rm=rm_vessel_size_obese, slab=vessel_size_obese$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in adipose tissue of obese mice",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in mice tumor",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 
@@ -113,28 +116,31 @@ dev.off()
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=vessel_density_lean, rm=rm_vessel_density_lean, slab=vessel_density_lean$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel density in adipose tissue of lean mice",
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_density_obese, rm=rm_vessel_density_obese, slab=vessel_density_obese$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel density in adipose tissue of obese mice",
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel density in mice tumor",
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-300, 600), alim = c(0, 350), cex=2)
 dev.off()
 
 # CBM thickness
 png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference,
-            unit = "nm",
+            unit = "nm", title="Capillary basement membrane thickness in murine retina",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference,
-            unit = "nm",
+            unit = "nm", title="Capillary basement membrane thickness in murine muscle",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 
