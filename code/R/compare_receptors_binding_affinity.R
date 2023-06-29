@@ -77,17 +77,17 @@ summary(rm_nrp1)
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
-            unit="pM", atransf=function(x)1e3*x,
+            unit="pM", atransf=function(x)1e3*x, title="Binding affinity of VEGF-A165:VEGFR1",
             xlab="Binding affinity, Kd (pM)", xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
-            unit="nM",
+            unit="nM", title="Binding affinity of VEGF-A165:VEGFR2",
             xlab="Binding affinity, Kd (nM)", xlim = c(-1.2, 1.8), alim = c(0, 1), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
-            unit="nM",
+            unit="nM", title="Binding affinity of VEGF-A165:NRP1",
             xlab="Binding affinity, Kd (nM)", xlim = c(-25, 50), alim = c(0, 30), cex=2)
 dev.off()
 
