@@ -40,6 +40,9 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   text(ilab_pos, k+2, pos=2, "Weight \n(%)")
   text(xlim[2], k+2, pos=2, paste0("Measurements \n(", unit, ") [95% CI]"))
   
+  ### add title
+  text(mean(xlim), k+3, pos=3, title)
+  
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)
   
