@@ -148,7 +148,8 @@ p = ggplot() +
                y.position = 4, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
-  theme(text = element_text(size = 20))
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p)
 ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=3000, units="px")
