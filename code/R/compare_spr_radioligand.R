@@ -279,6 +279,9 @@ p = ggplot() +
   geom_bracket(data = df_radio, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
                y.position = 6, tip.length = c(0.3, 0.6), 
                label = generate_plabel(radio_r1_vs_n1$coefficients["p.value"])) +
+  geom_bracket(data = df_radio, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 4.5, tip.length = c(0.5, 0.3), 
+               label = generate_plabel(radio_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))
