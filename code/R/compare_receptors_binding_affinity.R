@@ -148,6 +148,7 @@ p = ggplot() +
                y.position = 4, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
+  ggtitle("Comparison of binding affinities of VEGF-A to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
