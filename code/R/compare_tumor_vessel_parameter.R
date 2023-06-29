@@ -225,7 +225,8 @@ p1 = ggplot() +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 180, tip.length = c(0.5, 0.1), 
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
-  theme(text = element_text(size = 20))
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p1)
 ggsave(sprintf("%s/vessel_size.png", results_path), width=3500, height=2500, units="px")
@@ -256,7 +257,8 @@ p2 = ggplot() +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 800, tip.length = c(0.1, 0.5), 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
-  theme(text = element_text(size = 20))
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p2)
 ggsave(sprintf("%s/vessel_density.png", results_path), width=3500, height=2500, units="px")
@@ -276,7 +278,8 @@ p3 = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   scale_x_discrete(limits=c("Retina", "Muscle")) +
-  theme(text = element_text(size = 20))
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p3)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
