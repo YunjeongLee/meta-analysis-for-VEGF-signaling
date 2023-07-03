@@ -193,6 +193,16 @@ cbm_retina_vs_muscle = wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
                                   weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
                                   alternative="two.tailed", samedata=FALSE)
 
+cbm_retina_vs_kidney = wtd.t.test(x=cbm_retina$Average, y=cbm_kidney$Average,
+                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
+
+cbm_muscle_vs_kidney = wtd.t.test(x=cbm_muscle$Average, y=cbm_kidney$Average,
+                                  weight=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2), 
+                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
+
 # Merge dataframes for plotting -------------------------------------------
 # Vessel size
 vessel_size_lean$Source <- "Lean adipose"
