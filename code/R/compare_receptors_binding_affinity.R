@@ -77,18 +77,18 @@ summary(rm_nrp1)
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
-            unit="pM", atransf=function(x)1e3*x,
-            xlab="Binding affinity, Kd (pM)", xlim = c(-0.2, 0.45), alim = c(0, 0.25), cex=2)
+            unit="pM", atransf=function(x)1e3*x, title="Binding affinity of VEGF-A165:VEGFR1",
+            xlab="Binding affinity, Kd (pM)", xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
-            unit="nM",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-12, 18), alim = c(0, 10), cex=2)
+            unit="nM", title="Binding affinity of VEGF-A165:VEGFR2",
+            xlab="Binding affinity, Kd (nM)", xlim = c(-1.2, 1.8), alim = c(0, 1), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
-            unit="nM",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-20, 50), alim = c(0, 30), cex=2)
+            unit="nM", title="Binding affinity of VEGF-A165:NRP1",
+            xlab="Binding affinity, Kd (nM)", xlim = c(-25, 50), alim = c(0, 30), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -142,10 +142,15 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 6, tip.length = c(0.4, 0.1), 
+               y.position = 6, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_nrp1$coefficients["p.value"])) +
+  geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 4, tip.length = c(0.2, 0.1), 
+               label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
-  theme(text = element_text(size = 20))
+  ggtitle("Comparison of binding affinities of VEGF-A to its receptors") +
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p)
 ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=3000, units="px")

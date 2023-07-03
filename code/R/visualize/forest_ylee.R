@@ -1,4 +1,4 @@
-forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL) {
+forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL) {
   ### Specify colors
   linecolor = "#1e81b0"
   
@@ -13,7 +13,7 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=
   weights <- formatC(weights(rm), format="f", digits=1)
   
   ### adjust the margins
-  par(mar=c(10,2,1,2), lty=0)
+  par(mar=c(10,2,3,2), lty=0)
   
   ### set ilab position
   ilab_pos = 1.2*alim[2]
@@ -39,6 +39,9 @@ forest_ylee <- function (data, rm, slab, xlim, alim, unit, xlab, cex=2, atransf=
   ### add headers
   text(ilab_pos, k+2, pos=2, "Weight \n(%)")
   text(xlim[2], k+2, pos=2, paste0("Measurements \n(", unit, ") [95% CI]"))
+  
+  ### add title
+  text(mean(xlim), k+3, pos=3, title)
   
   ### adjust cex as used in the forest plot and use a bold font
   par(cex=sav$cex, font=1)

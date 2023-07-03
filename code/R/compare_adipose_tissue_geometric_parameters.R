@@ -73,28 +73,28 @@ summary(rm_cbm_obese)
 # Adipocyte diameter of lean mice
 png(file=sprintf("%s/forest_adipocyte_diameter_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=adipocyte_lean, rm=rm_adipocyte_lean, slab=adipocyte_lean$Reference,
-            unit="µm",
+            unit="µm", title="Adipocyte diameter in adipose tissue of lean mice",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-30, 130), alim = c(20, 80), cex=2)
 dev.off()
 
 # Adipocyte diameter of obese mice
 png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=adipocyte_obese, rm=rm_adipocyte_obese, slab=adipocyte_obese$Reference,
-            unit="µm",
+            unit="µm", title="Adipocyte diameter in adipose tissue of obese mice",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
-            unit="nm",
+            unit="nm", title="Capillary basement membrane thickness of lean murines",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
 # CBM thickness of obese mice
 png(file=sprintf("%s/forest_cbm_obese.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference, 
-            unit="nm",
+            unit="nm", title="Capillary basement membrane thickness of obese murines",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
@@ -118,8 +118,8 @@ adipocyte = rbind(adipocyte_lean[c("Source", "Average")],
                   adipocyte_obese[c("Source", "Average")])
 
 # CBM thickness
-cbm_lean$Source <- "Lean mice"
-cbm_obese$Source <- "Obese mice"
+cbm_lean$Source <- "Lean murines"
+cbm_obese$Source <- "Obese murines"
 
 cbm = rbind(cbm_lean[c("Source", "Average")],
             cbm_obese[c("Source", "Average")])
@@ -146,15 +146,15 @@ ggsave(sprintf("%s/adipocyte_diameter_lean_vs_obese.png", results_path), width=3
 dev.off()
 
 p = ggplot() +
-  geom_point(data = cbm_lean, aes(x = "Lean mice", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_lean, aes(x = "Lean mice", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  labs(color="Lean mice") +
+  geom_point(data = cbm_lean, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_lean, aes(x = "Lean murines", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
+  labs(color="Lean murines") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = cbm_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_obese, aes(x = "Obese mice", y = rm_cbm_obese$b), shape = 95, size = 20, colour = "darkred") +
-  labs(color="Obese mice") +
+  geom_point(data = cbm_obese, aes(x = "Obese murines", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_obese, aes(x = "Obese murines", y = rm_cbm_obese$b), shape = 95, size = 20, colour = "darkred") +
+  labs(color="Obese murines") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   theme(text = element_text(size = 20)) + ylim(c(0, 150))
