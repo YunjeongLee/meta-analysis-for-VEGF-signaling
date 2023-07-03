@@ -315,7 +315,7 @@ p3 = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
-  scale_x_discrete(limits=c("Retina", "Muscle")) +
+  scale_x_discrete(limits=c("Retina", "Muscle", "Kidney")) +
   ggtitle("Comparison of capillary basement membrane thickness\n in murine tissues") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
