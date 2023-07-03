@@ -299,7 +299,7 @@ dev.off()
 p3 = ggplot() +
   geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_retina$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(0, 150) + labs(color="Retina")  +
+  ylim(c(0, 400)) + labs(color="Retina")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
