@@ -118,7 +118,7 @@ adipocyte = rbind(adipocyte_lean[c("Source", "Average")],
                   adipocyte_obese[c("Source", "Average")])
 
 # CBM thickness
-cbm_lean$Source <- "Lean mice"
+cbm_lean$Source <- "Lean murines"
 cbm_obese$Source <- "Obese murines"
 
 cbm = rbind(cbm_lean[c("Source", "Average")],
@@ -146,13 +146,13 @@ ggsave(sprintf("%s/adipocyte_diameter_lean_vs_obese.png", results_path), width=3
 dev.off()
 
 p = ggplot() +
-  geom_point(data = cbm_lean, aes(x = "Lean mice", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_lean, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_lean, aes(x = "Lean murines", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
   labs(color="Lean murines") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = cbm_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_obese, aes(x = "Obese murines", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_obese, aes(x = "Obese murines", y = rm_cbm_obese$b), shape = 95, size = 20, colour = "darkred") +
   labs(color="Obese murines") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
