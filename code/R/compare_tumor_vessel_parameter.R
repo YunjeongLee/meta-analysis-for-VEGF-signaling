@@ -316,6 +316,12 @@ p3 = ggplot() +
   guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   scale_x_discrete(limits=c("Retina", "Muscle", "Kidney")) +
+  geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
+               y.position = 380, tip.length = c(0.9, 0.1), 
+               label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
+  geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
+               y.position = 350, tip.length = c(0.8, 0.1), 
+               label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
   ggtitle("Comparison of capillary basement membrane thickness\n in murine tissues") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
