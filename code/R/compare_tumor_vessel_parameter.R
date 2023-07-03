@@ -327,5 +327,5 @@ p3 = ggplot() +
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p3)
-ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
+ggsave(sprintf("%s/cbm.png", results_path), width=4000, height=2500, units="px")
 dev.off()
