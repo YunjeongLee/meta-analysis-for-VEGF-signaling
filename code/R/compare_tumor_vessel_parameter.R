@@ -40,6 +40,7 @@ vessel_density_tumor <- as.data.frame(read_excel(filename, sheet = "Vessel densi
 # CBM thickness
 cbm_retina <- as.data.frame(read_excel(filename, sheet = "CBM (retina)"))
 cbm_muscle <- as.data.frame(read_excel(filename, sheet = "CBM (muscle)"))
+cbm_kidney <- as.data.frame(read_excel(filename, sheet = "CBM (kidney)"))
 
 # Divide obesity vessel data into separate dataframes ---------------------
 # Vessel size
