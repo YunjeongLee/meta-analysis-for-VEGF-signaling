@@ -87,14 +87,14 @@ dev.off()
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
-            unit="nm", title="Capillary basement membrane thickness of lean mice",
+            unit="nm", title="Capillary basement membrane thickness of lean murines",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
 # CBM thickness of obese mice
 png(file=sprintf("%s/forest_cbm_obese.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference, 
-            unit="nm", title="Capillary basement membrane thickness of obese mice",
+            unit="nm", title="Capillary basement membrane thickness of obese murines",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
 dev.off()
 
@@ -148,13 +148,13 @@ dev.off()
 p = ggplot() +
   geom_point(data = cbm_lean, aes(x = "Lean mice", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_lean, aes(x = "Lean mice", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  labs(color="Lean mice") +
+  labs(color="Lean murines") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = cbm_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_obese, aes(x = "Obese mice", y = rm_cbm_obese$b), shape = 95, size = 20, colour = "darkred") +
-  labs(color="Obese mice") +
+  labs(color="Obese murines") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   theme(text = element_text(size = 20)) + ylim(c(0, 150))
