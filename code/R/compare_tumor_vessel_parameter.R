@@ -309,8 +309,11 @@ p3 = ggplot() +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=2)) +
   new_scale_color() + 
+  geom_point(data = cbm_kidney, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "darkred") +
   labs(color="Kidney") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   scale_x_discrete(limits=c("Retina", "Muscle")) +
   ggtitle("Comparison of capillary basement membrane thickness\n in murine retina and muscle") +
