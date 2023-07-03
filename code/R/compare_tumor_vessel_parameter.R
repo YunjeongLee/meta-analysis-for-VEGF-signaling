@@ -222,6 +222,15 @@ df_density = rbind(vessel_density_lean[c("Source", "Average")],
                    vessel_density_obese[c("Source", "Average")],
                    vessel_density_tumor[c("Source", "Average")])
 
+# CBM thickness
+cbm_retina$Source <- "Retina"
+cbm_muscle$Source <- "Muscle"
+cbm_kidney$Source <- "Kidney"
+
+df_cbm = rbind(cbm_retina[c("Source", "Average")],
+               cbm_muscle[c("Source", "Average")],
+               cbm_kidney[c("Source", "Average")])
+
 # Scatter plot ------------------------------------------------------------
 # Vessel size
 p1 = ggplot() +
