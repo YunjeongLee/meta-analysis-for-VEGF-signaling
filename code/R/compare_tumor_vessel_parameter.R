@@ -308,6 +308,7 @@ p3 = ggplot() +
   labs(color="Muscle") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=2)) +
+  new_scale_color() + 
   labs(color="Kidney") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
