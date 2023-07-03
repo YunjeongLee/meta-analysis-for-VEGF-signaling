@@ -92,6 +92,10 @@ summary(rm_cbm_retina)
 rm_cbm_muscle <- rma(yi = Average, sei = SE, data = cbm_muscle)
 summary(rm_cbm_muscle)
 
+# CBM thickness in kidney
+rm_cbm_kidney <- rma(yi = Average, sei = SE, data = cbm_kidney)
+summary(rm_cbm_kidney)
+
 # Forest plot -------------------------------------------------------------
 # Vessel size
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
