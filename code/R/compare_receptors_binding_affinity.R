@@ -137,7 +137,7 @@ p = ggplot() +
   guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("Binding affinity, Kd (pM)")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
-                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e5),
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
