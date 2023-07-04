@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("/Users/yunjeong/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
+setwd("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
@@ -148,7 +148,7 @@ forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference,
             unit = "nm", title="Capillary basement membrane thickness in murine muscle",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
-png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference,
             unit = "nm", title="Capillary basement membrane thickness in murine kidney",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 550), alim=c(150, 350), cex=2)
