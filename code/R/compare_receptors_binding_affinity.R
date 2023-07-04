@@ -88,7 +88,7 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
             unit="nM", title="Binding affinity of VEGF-A165:NRP1",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-25, 50), alim = c(0, 30), cex=2)
+            xlab="Binding affinity, Kd (nM)", xlim = c(-10, 18), alim = c(0, 10), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
