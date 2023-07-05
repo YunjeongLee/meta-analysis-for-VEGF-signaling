@@ -259,7 +259,7 @@ p1 = ggplot() +
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p1)
-ggsave(sprintf("%s/vessel_size.png", results_path), width=3500, height=2500, units="px")
+ggsave(sprintf("%s/vessel_size.png", results_path), width=4000, height=2500, units="px")
 dev.off()
 
 # Vessel density
@@ -292,7 +292,7 @@ p2 = ggplot() +
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p2)
-ggsave(sprintf("%s/vessel_density.png", results_path), width=3500, height=2500, units="px")
+ggsave(sprintf("%s/vessel_density.png", results_path), width=4000, height=2500, units="px")
 dev.off()
 
 # CBM thickness
