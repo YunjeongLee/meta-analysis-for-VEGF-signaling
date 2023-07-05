@@ -77,17 +77,17 @@ summary(rm_nrp1)
 # Forest plot -------------------------------------------------------------
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
-            unit="pM", atransf=function(x)1e3*x, title="Binding affinity of VEGF-A165:VEGFR1",
+            unit="pM", atransf=function(x)1e3*x,
             xlab="Binding affinity, Kd (pM)", xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
-            unit="nM", title="Binding affinity of VEGF-A165:VEGFR2",
+            unit="nM",
             xlab="Binding affinity, Kd (nM)", xlim = c(-1.2, 1.8), alim = c(0, 1), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
-            unit="nM", title="Binding affinity of VEGF-A165:NRP1",
+            unit="nM",
             xlab="Binding affinity, Kd (nM)", xlim = c(-10, 18), alim = c(0, 10), cex=2)
 dev.off()
 
@@ -148,7 +148,6 @@ p = ggplot() +
                y.position = 4, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
-  ggtitle("Comparison of binding affinities of VEGF-A to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
