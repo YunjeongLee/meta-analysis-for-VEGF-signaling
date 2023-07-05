@@ -114,7 +114,7 @@ png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, h
 forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
             title="Vessel size in mice tumor",
-            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-300, 400), alim = c(0, 200), cex=2)
 dev.off()
 
 # Vessel density
@@ -134,7 +134,7 @@ png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300
 forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
             title="Vessel density in mice tumor",
-            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-300, 600), alim = c(0, 350), cex=2)
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 700), alim = c(0, 350), cex=2)
 dev.off()
 
 # CBM thickness
