@@ -96,16 +96,19 @@ summary(rm_cbm_muscle)
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=vessel_size_lean, rm=rm_vessel_size_lean, slab=vessel_size_lean$Reference,
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in adipose tissue of lean mice",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_obese, rm=rm_vessel_size_obese, slab=vessel_size_obese$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in adipose tissue of obese mice",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel size in mice tumor",
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
 dev.off()
 
@@ -113,28 +116,31 @@ dev.off()
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
 forest_ylee(data=vessel_density_lean, rm=rm_vessel_density_lean, slab=vessel_density_lean$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel density in adipose tissue of lean mice",
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_density_obese, rm=rm_vessel_density_obese, slab=vessel_density_obese$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
+            title="Vessel density in adipose tissue of obese mice",
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
-            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-250, 500), alim = c(0, 250), cex=2)
+            title="Vessel density in mice tumor",
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-300, 600), alim = c(0, 350), cex=2)
 dev.off()
 
 # CBM thickness
 png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference,
-            unit = "nm",
+            unit = "nm", title="Capillary basement membrane thickness in murine retina",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
 forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference,
-            unit = "nm",
+            unit = "nm", title="Capillary basement membrane thickness in murine muscle",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
 dev.off()
 
@@ -219,7 +225,9 @@ p1 = ggplot() +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 180, tip.length = c(0.5, 0.1), 
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
-  theme(text = element_text(size = 20))
+  ggtitle("Comparison of vessel size\n in mice adipose tissue and tumor") +
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p1)
 ggsave(sprintf("%s/vessel_size.png", results_path), width=3500, height=2500, units="px")
@@ -250,7 +258,9 @@ p2 = ggplot() +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 800, tip.length = c(0.1, 0.5), 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
-  theme(text = element_text(size = 20))
+  ggtitle("Comparison of vessel density\n in mice adipose tissue and tumor") +
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p2)
 ggsave(sprintf("%s/vessel_density.png", results_path), width=3500, height=2500, units="px")
@@ -270,7 +280,9 @@ p3 = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   scale_x_discrete(limits=c("Retina", "Muscle")) +
-  theme(text = element_text(size = 20))
+  ggtitle("Comparison of capillary basement membrane thickness\n in murine retina and muscle") +
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p3)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
