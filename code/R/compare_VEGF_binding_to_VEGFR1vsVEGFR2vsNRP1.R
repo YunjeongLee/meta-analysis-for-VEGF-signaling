@@ -100,7 +100,7 @@ rm_vegfr1 <- rma(yi = kon , sei = kon_SE, data=vegfr1)
 summary(rm_vegfr1)
 
 # VEGF-A165:VEGFR2 kon
-rm_vegfr2 <- rma(yi = kon, sei =  kon_SE, data=vegfr2)
+rm_vegfr2 <- rma(yi = kon, sei =  kon_SE, data=vegfr2,measure = "RR", method = "FE")
 summary(rm_vegfr2)
 
 # VEGF-A165:NRP1 kon
@@ -137,45 +137,61 @@ forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference,
 dev.off()
 
 # Student's t-test --------------------------------------------------------
-vegfr1_vs_vegfr2 = wtd.t.test(x=vegfr1$Average, y=vegfr2$Average,
+# kon Comparison
+vegfr1_vs_vegfr2 = wtd.t.test(x=vegfr1$kon, y=vegfr2$kon,
                               weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
                               weighty=1/(vegfr2$SE^2+rm_vegfr2$tau2),
                               alternative="less", samedata=FALSE)
 
-vegfr1_vs_nrp1 = wtd.t.test(x=vegfr1$Average, y=nrp1$Average,
+vegfr1_vs_nrp1 = wtd.t.test(x=vegfr1$kon, y=nrp1$kon,
                             weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
                             weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
                             alternative="less", samedata=FALSE)
 
-vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
+vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$kon, y=nrp1$kon,
+                            weight=1/(vegfr2$SE^2+rm_vegfr2$tau2), 
+                            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
+                            alternative="less", samedata=FALSE)
+# koff Comparison
+vegfr1_vs_vegfr2 = wtd.t.test(x=vegfr1$koff, y=vegfr2$koff,
+                              weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
+                              weighty=1/(vegfr2$SE^2+rm_vegfr2$tau2),
+                              alternative="less", samedata=FALSE)
+
+vegfr1_vs_nrp1 = wtd.t.test(x=vegfr1$koff, y=nrp1$koff,
+                            weight=1/(vegfr1$SE^2+rm_vegfr1$tau2), 
+                            weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
+                            alternative="less", samedata=FALSE)
+
+vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$koff, y=nrp1$koff,
                             weight=1/(vegfr2$SE^2+rm_vegfr2$tau2), 
                             weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
                             alternative="less", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
-vegfr1$Source <- "VEGFR1"
-vegfr2$Source <- "VEGFR2"
-nrp1$Source <- "NRP1"
+vegfr1$Reference <- "VEGFR1"
+vegfr2$Reference <- "VEGFR2"
+nrp1$Reference <- "NRP1"
 
-df = rbind(vegfr1[c("Source", "Average")],
-           vegfr2[c("Source", "Average")],
-           nrp1[c("Source", "Average")])
+df = rbind(vegfr1[c("Reference", "kon")],
+           vegfr2[c("Reference", "kon")],
+           nrp1[c("Reference", "kon")])
 
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = kon*1e3, colour = Reference), size = 7) +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1$b*1e3), shape = 95, size=20, colour = "darkblue") +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon*1e3, colour = Reference), size = 7) +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2$b*1e3), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
-  geom_point(data = nrp1, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
+  geom_point(data = nrp1, aes(x = "NRP1", y = kon*1e3, colour = Reference), size = 7) +
   geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1$b*1e3), shape = 95, size=20, colour = "darkred") +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
@@ -186,10 +202,10 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="kon koff, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
+  geom_bracket(data = df, aes(x = Source, y = kon), xmin = "VEGFR1", xmax = "NRP1",
                y.position = 6, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_nrp1$coefficients["p.value"])) +
-  geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+  geom_bracket(data = df, aes(x = Source, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 4, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
