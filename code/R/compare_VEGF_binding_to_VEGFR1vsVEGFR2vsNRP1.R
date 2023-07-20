@@ -124,28 +124,28 @@ summary(rm_nrp1_koff)
 png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit=expression(M^-1*s^-1), title="kon of VEGF-A165:VEGFR1",
-            xlab="kon", xlim = c(1e+4, 1e+8), alim = c(0, 1e+10), cex=2)
+            xlab="kon", xlim = c(-3e+7, 0.75e+8), alim = c(0, 3e+7), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit=expression(M^-1*s^-1), title="kon of VEGF-A165:VEGFR2",
-            xlab="kon", xlim = c(1e+5, 1e+7), alim = c(0, 1e+10), cex=2)
+            xlab="kon", xlim = c(-0.5e+7, 1.4e+7), alim = c(0, 0.5e+7), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
             unit=expression(M^-1*s^-1), title="kon of VEGF-A165:NRP1",
-            xlab="kon", xlim = c(1e+4, 1e+7), alim = c(0, 1e+10), cex=2)
+            xlab="kon", xlim = c(-0.3e+7, 1e+7), alim = c(0, 0.3e+7), cex=2)
 dev.off()
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             unit=expression(M^-1*s^-1), title="koff of VEGF-A165:VEGFR1",
-            xlab="koff", xlim = c(-1.e-4, 1e-4), alim = c(0, 1e-4), cex=2)
+            xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit=expression(M^-1*s^-1), title="koff of VEGF-A165:VEGFR2",
-            xlab="koff", xlim = c(-1e-4, 1e-3), alim = c(0, 1e-4), cex=2)
+            xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
@@ -156,82 +156,132 @@ dev.off()
 # Student's t-test --------------------------------------------------------
 # kon Comparison
 vegfr1_vs_vegfr2kon = wtd.t.test(x=vegfr1$kon, y=vegfr2$kon,
-                              weight=1/(vegfr1$SE^2+rm_vegfr1_kon$tau2), 
-                              weighty=1/(vegfr2$SE^2+rm_vegfr2_kon$tau2),
+                              weight=1/(vegfr1$kon_SE^2+rm_vegfr1_kon$tau2), 
+                              weighty=1/(vegfr2$kon_SE^2+rm_vegfr2_kon$tau2),
                               alternative="less", samedata=FALSE)
 
 vegfr1_vs_nrp1kon = wtd.t.test(x=vegfr1$kon, y=nrp1$kon,
-                            weight=1/(vegfr1$SE^2+rm_vegfr1_kon$tau2), 
-                            weighty=1/(nrp1$SE^2+rm_nrp1_kon$tau2),
+                            weight=1/(vegfr1$kon_SE^2+rm_vegfr1_kon$tau2), 
+                            weighty=1/(nrp1$kon_SE^2+rm_nrp1_kon$tau2),
                             alternative="less", samedata=FALSE)
 
 vegfr2_vs_nrp1kon = wtd.t.test(x=vegfr2$kon, y=nrp1$kon,
-                            weight=1/(vegfr2$SE^2+rm_vegfr2_kon$tau2), 
-                            weighty=1/(nrp1$SE^2+rm_nrp1_kon$tau2),
+                            weight=1/(vegfr2$kon_SE^2+rm_vegfr2_kon$tau2), 
+                            weighty=1/(nrp1$kon_SE^2+rm_nrp1_kon$tau2),
                             alternative="less", samedata=FALSE)
 # koff Comparison
 vegfr1_vs_vegfr2koff = wtd.t.test(x=vegfr1$koff, y=vegfr2$koff,
-                              weight=1/(vegfr1$SE^2+rm_vegfr1_koff$tau2), 
-                              weighty=1/(vegfr2$SE^2+rm_vegfr2_koff$tau2),
+                              weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
+                              weighty=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2),
                               alternative="less", samedata=FALSE)
 
 vegfr1_vs_nrp1koff = wtd.t.test(x=vegfr1$koff, y=nrp1$koff,
-                            weight=1/(vegfr1$SE^2+rm_vegfr1_koff$tau2), 
-                            weighty=1/(nrp1$SE^2+rm_nrp1_koff$tau2),
+                            weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
+                            weighty=1/(nrp1$koff_SE^2+rm_nrp1_koff$tau2),
                             alternative="less", samedata=FALSE)
 
 vegfr2_vs_nrp1koff = wtd.t.test(x=vegfr2$koff, y=nrp1$koff,
-                            weight=1/(vegfr2$SE^2+rm_vegfr2_koff$tau2), 
-                            weighty=1/(nrp1$SE^2+rm_nrp1_koff$tau2),
+                            weight=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2), 
+                            weighty=1/(nrp1$koff_SE^2+rm_nrp1_koff$tau2),
                             alternative="less", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
-vegfr1$Reference <- "VEGFR1"
-vegfr2$Reference <- "VEGFR2"
-nrp1$Reference <- "NRP1"
+vegfr1$Ligand <- "VEGFR1"
+vegfr2$Ligand <- "VEGFR2"
+nrp1$Ligand <- "NRP1"
 
-df = rbind(vegfr1[c("Reference", "kon")],
-           vegfr2[c("Reference", "kon")],
-           nrp1[c("Reference", "kon")])
+df = rbind(vegfr1[c("Ligand", "kon")],
+           vegfr2[c("Ligand", "kon")],
+           nrp1[c("Ligand", "kon")])
 
 # Scatter plot ------------------------------------------------------------
+# kon
 p = ggplot() +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y = kon*1e3, colour = Reference), size = 7) +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1_kon$b*1e3), shape = 95, size=20, colour = "darkblue") +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = kon, colour = Reference), size = 7) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1_kon$b), shape = 95, size=20, colour = "darkblue") +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon, colour = Reference), size = 7) +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b*1e3), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
-  geom_point(data = nrp1, aes(x = "NRP1", y = kon*1e3, colour = Reference), size = 7) +
-  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1_kon$b*1e3), shape = 95, size=20, colour = "darkred") +
+  geom_point(data = nrp1, aes(x = "NRP1", y = kon, colour = Reference), size = 7) +
+  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1_kon$b), shape = 95, size=20, colour = "darkred") +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   guides(color = guide_legend(order=3)) +
-  xlab("") + ylab(TeX("kon koff, Kd (pM)")) +
+  xlab("") + ylab(TeX("kon ")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
-                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
-                     sec.axis = sec_axis(trans=~./1e3, name="kon ",
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e5, 1e10),
+                     sec.axis = sec_axis(trans=~./1, name="kon ",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df, aes(x = Source, y = kon), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 6, tip.length = c(0.2, 0.1), 
+  geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "NRP1",
+               y.position = 9.5, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_nrp1kon$coefficients["p.value"])) +
-  geom_bracket(data = df, aes(x = Source, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 4, tip.length = c(0.2, 0.1), 
+  geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 8.5, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2kon$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
-  ggtitle("Comparison of kons and koffs of VEGF-A to its receptors") +
+  ggtitle("Comparison of VEGF-A kons to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p)
 ggsave(sprintf("%s/kon.png", results_path), width=4500, height=3000, units="px")
+dev.off()
+
+# Merge dataframes for plotting -------------------------------------------
+vegfr1$Ligand <- "VEGFR1"
+vegfr2$Ligand <- "VEGFR2"
+nrp1$Ligand <- "NRP1"
+
+df1 = rbind(vegfr1[c("Ligand", "koff")],
+           vegfr2[c("Ligand", "koff")],
+           nrp1[c("Ligand", "koff")])
+
+#koff
+p = ggplot() +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = koff*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1_koff$b*1e3), shape = 95, size=20, colour = "darkblue") +
+  labs(color="VEGFR1") +
+  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
+  new_scale_color() + 
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = koff*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b*1e3), shape = 95, size=20, colour = "darkgreen") +
+  labs(color="VEGFR2") +
+  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
+  guides(color = guide_legend(order=2)) +
+  new_scale_color() +
+  geom_point(data = nrp1, aes(x = "NRP1", y = koff*1e3, colour = Reference), size = 7) +
+  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1_koff$b*1e3), shape = 95, size=20, colour = "darkred") +
+  labs(color="NRP1") +
+  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  guides(color = guide_legend(order=3)) +
+  xlab("") + ylab(TeX("koff")) +
+  scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-3, 1e5),
+                     sec.axis = sec_axis(trans=~./1e3, name="koff ",
+                                         breaks=trans_breaks('log10', function(x) 10^x),
+                                         labels=trans_format('log10', math_format(10^.x)))) +
+  geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "NRP1",
+               y.position = 4, tip.length = c(0.2, 0.1), 
+               label = generate_plabel(vegfr1_vs_nrp1koff$coefficients["p.value"])) +
+  geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 2, tip.length = c(0.2, 0.1), 
+               label = generate_plabel(vegfr1_vs_vegfr2koff$coefficients["p.value"])) +
+  scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
+  ggtitle("Comparison of VEGF-A koffs to its receptors") +
+  theme(text = element_text(size = 20),
+        plot.title = element_text(hjust = 0.5, face="bold"))
+
+show(p)
+ggsave(sprintf("%s/koff.png", results_path), width=4500, height=3000, units="px")
 dev.off()
 
 
