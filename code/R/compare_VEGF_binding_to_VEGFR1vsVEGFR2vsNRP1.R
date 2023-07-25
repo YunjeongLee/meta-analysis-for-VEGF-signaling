@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
+setwd("C:/Users/Imoukhuede lab/OneDrive - UW/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
@@ -100,7 +100,7 @@ rm_vegfr1_kon <- rma(yi = kon , sei = kon_SE, data=vegfr1)
 summary(rm_vegfr1_kon)
 
 # VEGF-A165:VEGFR2 kon
-rm_vegfr2_kon <- rma(yi = kon, sei =  kon_SE, data=vegfr2,measure = "RR", method = "FE")
+rm_vegfr2_kon <- rma(yi = kon, sei =  kon_SE, data=vegfr2)
 summary(rm_vegfr2_kon)
 
 # VEGF-A165:NRP1 kon
@@ -204,7 +204,7 @@ p = ggplot() +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon, colour = Reference), size = 7) +
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b*1e3), shape = 95, size=20, colour = "darkgreen") +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
@@ -221,7 +221,7 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 9.5, tip.length = c(0.2, 0.1), 
+               y.position = 9.5, tip.length = c(0.2, 0.1), label.size = 7,
                label = generate_plabel(vegfr1_vs_nrp1kon$coefficients["p.value"])) +
   geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 8.5, tip.length = c(0.2, 0.1), 
