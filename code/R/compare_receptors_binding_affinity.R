@@ -80,7 +80,7 @@ forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
             unit="pM", atransf=function(x)1e3*x,
             xlab="Binding affinity, Kd (pM)", xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
-png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=800)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
             unit="nM",
             xlab="Binding affinity, Kd (nM)", xlim = c(-1.2, 1.8), alim = c(0, 1), cex=2)
