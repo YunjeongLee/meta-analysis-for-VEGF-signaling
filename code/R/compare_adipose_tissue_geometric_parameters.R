@@ -137,7 +137,7 @@ p = ggplot() +
   lightness(scale_color_colormap('Obese mice', discrete = T,colormap = "autumn", reverse = T), scalefac(0.8)) + 
   xlab("") + ylab(TeX("Adipocyte diameter (\\mu{m})")) +
   geom_bracket(data = adipocyte, aes(x = Source, y = Average), xmin = "Lean mice", xmax = "Obese mice",
-               y.position = 110, tip.length = c(0.5, 0.1), 
+               y.position = 110, tip.length = c(0.5, 0.1), label.size = 7, 
                label = generate_plabel(adipocyte_lean_vs_obese$coefficients["p.value"])) +
   theme(text = element_text(size = 20)) + ylim(c(0, 150))
 
