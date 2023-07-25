@@ -246,7 +246,7 @@ p1 = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 180, tip.length = c(0.5, 0.1), 
+               y.position = 180, tip.length = c(0.5, 0.1), label.size = 7, 
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
@@ -275,10 +275,10 @@ p2 = ggplot() +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 900, tip.length = c(0.1, 0.05), 
+               y.position = 900, tip.length = c(0.1, 0.05), label.size = 7, 
                label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
-               y.position = 800, tip.length = c(0.1, 0.5), 
+               y.position = 800, tip.length = c(0.1, 0.5), label.size = 7, 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
@@ -309,10 +309,10 @@ p3 = ggplot() +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   scale_x_discrete(limits=c("Retina", "Muscle", "Kidney")) +
   geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
-               y.position = 380, tip.length = c(0.9, 0.1), 
+               y.position = 380, tip.length = c(0.9, 0.1), label.size = 7, 
                label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
   geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
-               y.position = 350, tip.length = c(0.8, 0.1), 
+               y.position = 350, tip.length = c(0.8, 0.1), label.size = 7, 
                label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
