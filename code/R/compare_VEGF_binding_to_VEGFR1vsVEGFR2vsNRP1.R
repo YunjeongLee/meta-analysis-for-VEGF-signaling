@@ -248,25 +248,18 @@ p = ggplot() +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
-  new_scale_color() +
-  geom_point(data = nrp1, aes(x = "NRP1", y = koff*1e3, colour = Reference), size = 7) +
-  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1_koff$b*1e3), shape = 95, size=20, colour = "darkred") +
-  labs(color="NRP1") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  guides(color = guide_legend(order=3)) +
+
   xlab("") + ylab(TeX("koff")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-3, 1e5),
                      sec.axis = sec_axis(trans=~./1e3, name="koff ",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 4, tip.length = c(0.2, 0.1), 
-               label = generate_plabel(vegfr1_vs_nrp1koff$coefficients["p.value"])) +
+
   geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 0, tip.length = c(0.1, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2koff$coefficients["p.value"])) +
-  scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
+  scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A koffs to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
