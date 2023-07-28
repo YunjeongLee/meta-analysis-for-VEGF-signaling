@@ -264,7 +264,7 @@ p = ggplot() +
                y.position = 4, tip.length = c(0.2, 0.1), 
                label = generate_plabel(vegfr1_vs_nrp1koff$coefficients["p.value"])) +
   geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 2, tip.length = c(0.2, 0.1), 
+               y.position = 0, tip.length = c(0.1, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2koff$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   ggtitle("Comparison of VEGF-A koffs to its receptors") +
