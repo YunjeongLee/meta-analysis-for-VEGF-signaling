@@ -248,7 +248,7 @@ p = ggplot() +
   guides(color = guide_legend(order=2)) +
   xlab("") + ylab(TeX("koff")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
-                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-3, 1e5),
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-8, 1e1),
                      sec.axis = sec_axis(trans=~./1, name="koff ",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
