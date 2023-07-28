@@ -235,25 +235,25 @@ df1 = rbind(vegfr1[c("Ligand", "koff")],
 
 #koff
 p = ggplot() +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y = koff*1e3, colour = Reference), size = 7) +
-  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1_koff$b*1e3), shape = 95, size=20, colour = "darkblue") +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y = koff, colour = Reference), size = 7) +
+  geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1_koff$b), shape = 95, size=20, colour = "darkblue") +
   labs(color="VEGFR1") +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = koff*1e3, colour = Reference), size = 7) +
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b*1e3), shape = 95, size=20, colour = "darkgreen") +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b), shape = 95, size=20, colour = "darkgreen") +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   xlab("") + ylab(TeX("koff")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-3, 1e5),
-                     sec.axis = sec_axis(trans=~./1e3, name="koff ",
+                     sec.axis = sec_axis(trans=~./1, name="koff ",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 0, tip.length = c(0.1, 0.1), 
+               y.position = 1e-1, tip.length = c(0.1, 0.1), 
                label = generate_plabel(vegfr1_vs_vegfr2koff$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A koffs to its receptors") +
