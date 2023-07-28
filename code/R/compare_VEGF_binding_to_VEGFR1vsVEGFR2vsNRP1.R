@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("C:/Users/Imoukhuede lab/OneDrive - UW/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
+setwd("C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
@@ -188,11 +188,9 @@ vegfr2_vs_nrp1koff = wtd.t.test(x=vegfr2$koff, y=nrp1$koff,
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Ligand <- "VEGFR1"
 vegfr2$Ligand <- "VEGFR2"
-nrp1$Ligand <- "NRP1"
 
 df = rbind(vegfr1[c("Ligand", "kon")],
-           vegfr2[c("Ligand", "kon")],
-           nrp1[c("Ligand", "kon")])
+           vegfr2[c("Ligand", "kon")])
 
 # Scatter plot ------------------------------------------------------------
 # kon
@@ -209,24 +207,16 @@ p = ggplot() +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
-  geom_point(data = nrp1, aes(x = "NRP1", y = kon, colour = Reference), size = 7) +
-  geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1_kon$b), shape = 95, size=20, colour = "darkred") +
-  labs(color="NRP1") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("kon ")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e5, 1e10),
                      sec.axis = sec_axis(trans=~./1, name="kon ",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 9.5, tip.length = c(0.2, 0.1), label.size = 7,
-               label = generate_plabel(vegfr1_vs_nrp1kon$coefficients["p.value"])) +
   geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 8.5, tip.length = c(0.2, 0.1), 
+               y.position = 8.5, tip.length = c(0.2, 0.1), label.size = 10,
                label = generate_plabel(vegfr1_vs_vegfr2kon$coefficients["p.value"])) +
-  scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
+  scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A kons to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
@@ -234,6 +224,7 @@ p = ggplot() +
 show(p)
 ggsave(sprintf("%s/kon.png", results_path), width=4500, height=3000, units="px")
 dev.off()
+
 
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Ligand <- "VEGFR1"
