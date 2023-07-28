@@ -207,10 +207,10 @@ p = ggplot() +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
-  xlab("") + ylab(TeX("kon ")) +
+  xlab("") + ylab(expression(paste("kon   (", M^-1, s^-1, ")"))) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e5, 1e10),
-                     sec.axis = sec_axis(trans=~./1, name="kon ",
+                     sec.axis = sec_axis(trans=~./1, name=expression(paste("kon   (", M^-1, s^-1, ")")),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
