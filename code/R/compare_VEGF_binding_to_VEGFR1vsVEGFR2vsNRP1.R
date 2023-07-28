@@ -249,7 +249,7 @@ p = ggplot() +
   xlab("") + ylab(TeX("koff")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e3),
-                     sec.axis = sec_axis(trans=~./1, name="koff ",
+                     sec.axis = sec_axis(trans=~./1, name=expression(paste("koff (", s^-1, ")")),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
