@@ -246,10 +246,10 @@ p = ggplot() +
   labs(color="VEGFR2") +
   lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
-  xlab("") + ylab(TeX("koff")) +
+  xlab("") + ylab(expression(paste("koff  (", s^-1, ")"))) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e3),
-                     sec.axis = sec_axis(trans=~./1, name=expression(paste("koff (", s^-1, ")")),
+                     sec.axis = sec_axis(trans=~./1, name=expression(paste("koff  (", s^-1, ")")),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df1, aes(x = Ligand, y = koff), xmin = "VEGFR1", xmax = "VEGFR2",
