@@ -47,9 +47,9 @@ VEGF165NRP1 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:NRP1",]
 #VEGF165:VEGFR2 SE creation for 165 and 164 'kon', 'koff', and 'Kd'
 
 # Define a function to calculate and update standard errors
-update_se <- function(df, value_col, se_col, ligand) {
+update_se <- function(df, value_col, se_col, ligand, ligand1) {
   # Create a logical vector indicating which rows to update
-  rows_to_update <- is.na(df[[se_col]]) & df$Ligand == ligand
+  rows_to_update <- is.na(df[[se_col]]) & (df$Ligand == ligand | df$Ligand == ligand1) 
   
   # Extract the values from the specified column for the rows to update
   values <- df[rows_to_update, value_col]
@@ -61,12 +61,10 @@ update_se <- function(df, value_col, se_col, ligand) {
 }
 
 # Update standard errors for 'kon', 'koff', and 'Kd' columns
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "kon", "kon_SE", "VEGF165")
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "kon", "kon_SE", "VEGF164")
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF165")
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF164")
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF165")
-VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF164")
+VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "kon", "kon_SE", "VEGF165", "VEGF164")
+VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF165", "VEGF164")
+VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF165", "VEGF164")
+
 
 
 #VEGF165:NRP1 
