@@ -67,7 +67,8 @@ rm_vegfr1 <- rma(yi = Average, sei = SE, data=vegfr1)
 summary(rm_vegfr1)
 
 # VEGF-A165:VEGFR2
-rm_vegfr2 <- rma(yi = Average, sei = SE, data=vegfr2)
+rm_vegfr2_kon <- rma(yi = kon, sei = kon_SE, data = vegfr2, method = "ML")
+
 summary(rm_vegfr2)
 
 # VEGF-A165:NRP1
