@@ -66,7 +66,6 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF165", "VEGF164
 VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF165", "VEGF164")
 
 
-
 #VEGF165:NRP1 
 update_se1 <- function(df, value_col, se_col) {
   # Create a logical vector indicating which rows to update
@@ -121,17 +120,17 @@ summary(rm_nrp1_koff)
 # kon
 png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
-            unit=expression(M^-1*s^-1), title="kon of VEGF-A165:VEGFR1",
+            unit=expression(paste("kon   (", M^-1, s^-1, ")")), title="kon of VEGF-A165:VEGFR1",
             xlab="kon", xlim = c(-3e+7, 0.75e+8), alim = c(0, 3e+7), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
-            unit=expression(M^-1*s^-1), title="kon of VEGF-A165:VEGFR2",
+            unit=expression(paste("kon   (", M^-1, s^-1, ")")), title="kon of VEGF-A165:VEGFR2",
             xlab="kon", xlim = c(-0.5e+7, 1.4e+7), alim = c(0, 0.5e+7), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
-            unit=expression(M^-1*s^-1), title="kon of VEGF-A165:NRP1",
+            unit=expression(paste("kon   (", M^-1, s^-1, ")")), title="kon of VEGF-A165:NRP1",
             xlab="kon", xlim = c(-0.3e+7, 1e+7), alim = c(0, 0.3e+7), cex=2)
 dev.off()
 # koff
