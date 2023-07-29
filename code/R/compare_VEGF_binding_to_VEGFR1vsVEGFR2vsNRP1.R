@@ -122,38 +122,38 @@ png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, h
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
             title="kon of VEGF-A165:VEGFR1",
-            xlab="kon", xlim = c(-3e+7, 0.75e+8), alim = c(0, 3e+7), cex=2)
+            xlab=TeX("kon $M^{-1}s^{-1}$"), xlim = c(-3e+7, 0.75e+8), alim = c(0, 3e+7), cex=2, atransf=1e-9)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
             title="kon of VEGF-A165:VEGFR2",
-            xlab="kon", xlim = c(-0.5e+7, 1.4e+7), alim = c(0, 0.5e+7), cex=2)
+            xlab=TeX("kon $M^{-1}s^{-1}$"), xlim = c(-0.5e+7, 1.4e+7), alim = c(0, 0.5e+7), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
             title="kon of VEGF-A165:NRP1",
-            xlab="kon", xlim = c(-0.3e+7, 1e+7), alim = c(0, 0.3e+7), cex=2)
+            xlab=TeX("kon $M^{-1}s^{-1}$"), xlim = c(-0.3e+7, 1e+7), alim = c(0, 0.3e+7), cex=2)
 dev.off()
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="koff of VEGF-A165:VEGFR1",
-            xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
+            xlab=TeX("koff $s^{-1}$"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="koff of VEGF-A165:VEGFR2",
-            xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
+            xlab=TeX("koff $s^{-1}$"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="koff of VEGF-A165:NRP1",
-            xlab="koff", xlim = c(-0.5e-2, 1e-2), alim = c(0, 0.5e-2), cex=2)
+            xlab=TeX("koff $s^{-1}$"), xlim = c(-0.5e-2, 1e-2), alim = c(0, 0.5e-2), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
