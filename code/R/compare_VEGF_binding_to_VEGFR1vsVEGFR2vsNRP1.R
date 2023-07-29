@@ -136,17 +136,17 @@ dev.off()
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
-            unit=expression(M^-1*s^-1), title="koff of VEGF-A165:VEGFR1",
+            unit=expression(s^-1), title="koff of VEGF-A165:VEGFR1",
             xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
-            unit=expression(M^-1*s^-1), title="koff of VEGF-A165:VEGFR2",
+            unit=expression(s^-1), title="koff of VEGF-A165:VEGFR2",
             xlab="koff", xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
-            unit=expression(M^-1*s^-1), title="koff of VEGF-A165:NRP1",
+            unit=expression(s^-1), title="koff of VEGF-A165:NRP1",
             xlab="koff", xlim = c(-0.5e-2, 1e-2), alim = c(0, 0.5e-2), cex=2)
 dev.off()
 
