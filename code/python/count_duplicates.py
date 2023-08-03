@@ -19,7 +19,7 @@ df_cbm_rats_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", s
 df_vegfr12_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_VEGFR1_and_VEGFR2")
 df_nrp1_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_NRP1")
 
-# Merge two dataframes `df_cbm_mice_select` and `df_cbm_rats_select`
+# Merge dataframes
 # Search list
 df_tumor_v = pd.concat([df_tumor_vsize, df_tumor_vdensity])
 df_kd = pd.concat([df_vegfr12, df_nrp1])
@@ -43,7 +43,7 @@ df_select = pd.concat([df_adip_size_select, df_adip_v_select, df_tumor_v_select,
 print("The number of searched papers (including duplicates): ", len(df_search))
 print("The number of selected papers (including duplicates): ", len(df_select))
 
-# Check the number of searched papers is same as the sum of dataframes' length
+# Check the number of papers is same as the sum of dataframes' length
 print("Is the number of rows in `df_search` is same as the sum of rows of all dataframes?", (len(df_search) == (len(df_adip_size)+len(df_adip_v)+len(df_tumor_v)+len(df_cbm)+len(df_kd))))
 
 # Count the number of duplicates
