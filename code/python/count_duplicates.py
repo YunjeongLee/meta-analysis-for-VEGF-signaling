@@ -32,7 +32,7 @@ df_kd_select = pd.concat([df_vegfr12_select, df_nrp1_select])
 # Check if the used papers are in the Google Scholar list
 print(all(df_adip_size_select["Title"].isin(df_adip_size["Title"])))
 print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
-print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
+print(all(df_tumor_v_select["Title"].isin(df_tumor_v["Title"])))
 print(all(df_cbm_select["Title"].isin(df_cbm["Title"])))
 print(all(df_kd_select["Title"].isin(df_kd["Title"])))
 
