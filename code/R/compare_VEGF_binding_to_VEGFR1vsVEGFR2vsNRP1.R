@@ -216,9 +216,6 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1, name=expression(paste("kon   (", M^-1, s^-1, ")")),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df, aes(x = Ligand, y = kon), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 8.5, tip.length = c(0.2, 0.4), label.size = 10,
-               label = generate_plabel(vegfr1_vs_vegfr2kon$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A kons to its receptors") +
   theme(text = element_text(size = 20),
