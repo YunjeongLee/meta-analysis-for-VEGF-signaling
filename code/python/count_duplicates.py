@@ -45,6 +45,7 @@ print("The number of selected papers (including duplicates): ", len(df_select))
 
 # Check the number of papers is same as the sum of dataframes' length
 print("Is the number of rows in `df_search` is same as the sum of rows of all dataframes?", (len(df_search) == (len(df_adip_size)+len(df_adip_v)+len(df_tumor_v)+len(df_cbm)+len(df_kd))))
+print("Is the number of rows in `df_select` is same as the sum of rows of all dataframes?", (len(df_select) == (len(df_adip_size_select)+len(df_adip_v_select)+len(df_tumor_v_select)+len(df_cbm_select)+len(df_kd_select))))
 
 # Count the number of duplicates
 print("The number of duplicates in searched papers list: ", len(df_search) - len(df_search.drop_duplicates()))
