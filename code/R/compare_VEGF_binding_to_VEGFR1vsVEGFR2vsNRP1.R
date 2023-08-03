@@ -88,7 +88,6 @@ VEGF165NRP1 <- update_se1(VEGF165NRP1, "Kd", "Kd_SE")
 
 vegfr1 <- VEGF165VEGR1
 vegfr2 <- VEGF165VEGFR2
-nrp1 <- VEGF165NRP1
 
 # Meta-analysis -----------------------------------------------------------
 # Compute weighted average and SD -----------------------------------------
@@ -100,10 +99,6 @@ summary(rm_vegfr1_kon)
 rm_vegfr2_kon <- rma(yi = kon, sei = kon_SE, data = vegfr2, method = "ML")
 summary(rm_vegfr2_kon)
 
-# VEGF-A165:NRP1 kon
-rm_nrp1_kon <- rma(yi = kon, sei = kon_SE, data=nrp1)
-summary(rm_nrp1_kon)
-
 # VEGF-A165:VEGFR1 koff
 rm_vegfr1_koff <- rma(yi = koff, sei = koff_SE, data=vegfr1)
 summary(rm_vegfr1_koff)
@@ -111,10 +106,6 @@ summary(rm_vegfr1_koff)
 # VEGF-A165:VEGFR2 koff
 rm_vegfr2_koff <- rma(yi = koff, sei = koff_SE, data=vegfr2)
 summary(rm_vegfr2_koff)
-
-# VEGF-A165:NRP1 koff
-rm_nrp1_koff <- rma(yi = koff, sei = koff_SE, data=nrp1)
-summary(rm_nrp1_koff)
 
 # Forest plot -------------------------------------------------------------
 # kon
@@ -130,12 +121,7 @@ forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference,
             title="kon of VEGF-A165:VEGFR2",
             xlab=TeX("kon $M^{-1}s^{-1}$"), xlim = c(-0.5e+7, 1.4e+7), alim = c(0, 0.5e+7), cex=2)
 dev.off()
-png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=700)
-forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
-            unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
-            title="kon of VEGF-A165:NRP1",
-            xlab=TeX("kon $M^{-1}s^{-1}$"), xlim = c(-0.3e+7, 1e+7), alim = c(0, 0.3e+7), cex=2)
-dev.off()
+
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
@@ -148,12 +134,6 @@ forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference,
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="koff of VEGF-A165:VEGFR2",
             xlab=TeX("koff $s^{-1}$"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2)
-dev.off()
-png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=700)
-forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
-            unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
-            title="koff of VEGF-A165:NRP1",
-            xlab=TeX("koff $s^{-1}$"), xlim = c(-0.5e-2, 1e-2), alim = c(0, 0.5e-2), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
