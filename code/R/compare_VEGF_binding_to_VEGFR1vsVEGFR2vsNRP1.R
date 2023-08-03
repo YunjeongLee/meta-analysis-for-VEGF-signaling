@@ -91,13 +91,13 @@ summary(rm_vegfr2_koff)
 png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
-            title="kon of VEGF-A165:VEGFR1",
+            title="Association rates (kon) of VEGF-A165:VEGFR1",
             xlab=TeX("Association rate, kon ($x10^6 M^{-1}s^{-1}$)"), xlim = c(-3e+7, 0.75e+8), alim = c(0, 4.75e+7), cex=2, atransf=function(x) x/1e6)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
-            title="kon of VEGF-A165:VEGFR2",
+            title="Association rates (kon) of VEGF-A165:VEGFR2",
             xlab=TeX("Association rate, kon ($x10^6 M^{-1}s^{-1}$)"), xlim = c(-0.5e+7, 1.4e+7), alim = c(0, .9e+7), cex=2, atransf=function(x) x/1e6)
 dev.off()
 
@@ -105,13 +105,13 @@ dev.off()
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
-            title="koff of VEGF-A165:VEGFR1",
+            title="Dissociation rates (koff) of VEGF-A165:VEGFR1",
             xlab=TeX("Dissociation rate, koff ($x10^{-3} s^{-1}$)"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
-            title="koff of VEGF-A165:VEGFR2",
+            title="Dissociation rates (koff) of VEGF-A165:VEGFR2",
             xlab=TeX("Dissociation rate, koff ($x10^{-3} s^{-1}$)"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
 
@@ -159,7 +159,7 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
-  ggtitle("Comparison of VEGF-A kons to its receptors") +
+  ggtitle("Comparison of VEGF-A association rates (kon) to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
@@ -195,7 +195,7 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
-  ggtitle("Comparison of VEGF-A koffs to its receptors") +
+  ggtitle("Comparison of VEGF-A dissociation rates (koff) to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
