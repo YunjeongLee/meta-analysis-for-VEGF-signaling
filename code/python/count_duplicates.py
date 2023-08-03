@@ -34,7 +34,7 @@ print(all(df_adip_size_select["Title"].isin(df_adip_size["Title"])))
 print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
 print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
 print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
-print(all(df_adip_v_select["Title"].isin(df_adip_v["Title"])))
+print(all(df_kd_select["Title"].isin(df_kd["Title"])))
 
 # Count the total number of papers
 df_search = pd.concat([df_adip_size[["Authors", "Year", "Title"]], df_adip_v[["Authors", "Year", "Title"]], df_tumor_v[["Authors", "Year", "Title"]], df_cbm[["Authors", "Year", "Title"]], df_kd[["Authors", "Year", "Title"]]])
