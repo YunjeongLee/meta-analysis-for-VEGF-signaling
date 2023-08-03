@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 # Import list of papers found in Google Scholar
 df_adip_size = pd.read_csv("data/papers/adipocyte_diameter.csv")
