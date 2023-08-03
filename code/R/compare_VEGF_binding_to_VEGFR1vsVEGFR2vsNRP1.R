@@ -163,30 +163,13 @@ vegfr1_vs_vegfr2kon = wtd.t.test(x=vegfr1$kon, y=vegfr2$kon,
                               weighty=1/(vegfr2$kon_SE^2+rm_vegfr2_kon$tau2),
                               alternative="less", samedata=FALSE)
 
-vegfr1_vs_nrp1kon = wtd.t.test(x=vegfr1$kon, y=nrp1$kon,
-                            weight=1/(vegfr1$kon_SE^2+rm_vegfr1_kon$tau2), 
-                            weighty=1/(nrp1$kon_SE^2+rm_nrp1_kon$tau2),
-                            alternative="less", samedata=FALSE)
 
-vegfr2_vs_nrp1kon = wtd.t.test(x=vegfr2$kon, y=nrp1$kon,
-                            weight=1/(vegfr2$kon_SE^2+rm_vegfr2_kon$tau2), 
-                            weighty=1/(nrp1$kon_SE^2+rm_nrp1_kon$tau2),
-                            alternative="less", samedata=FALSE)
 # koff Comparison
 vegfr1_vs_vegfr2koff = wtd.t.test(x=vegfr1$koff, y=vegfr2$koff,
                               weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
                               weighty=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2),
                               alternative="less", samedata=FALSE)
 
-vegfr1_vs_nrp1koff = wtd.t.test(x=vegfr1$koff, y=nrp1$koff,
-                            weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
-                            weighty=1/(nrp1$koff_SE^2+rm_nrp1_koff$tau2),
-                            alternative="less", samedata=FALSE)
-
-vegfr2_vs_nrp1koff = wtd.t.test(x=vegfr2$koff, y=nrp1$koff,
-                            weight=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2), 
-                            weighty=1/(nrp1$koff_SE^2+rm_nrp1_koff$tau2),
-                            alternative="less", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Ligand <- "VEGFR1"
