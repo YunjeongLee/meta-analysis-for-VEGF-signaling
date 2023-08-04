@@ -161,7 +161,7 @@ p = ggplot() +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon, colour = Reference), size = 7) +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b), shape = 95, size=20, colour = "darkred") +
   labs(color="VEGFR2") +
-  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
+  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
   xlab("") + ylab(expression(paste("kon   (", M^-1, s^-1, ")"))) +
