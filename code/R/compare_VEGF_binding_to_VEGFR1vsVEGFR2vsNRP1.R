@@ -66,12 +66,14 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "kon", "kon_SE", "VEGF164")
 VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF164")
 VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF164")
 
+# combind the means
+
 # Change reference names to make them distinct
 
-VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF165" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF165)"
-VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF164" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF164)"
-VEGF165VEGFR2[VEGF165VEGFR2$kon == 3600000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (Fc*)"
-VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (cbu§)"
+VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF165" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF-A165)"
+VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF164" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF-A164)"
+VEGF165VEGFR2[VEGF165VEGFR2$kon == 3600000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (pre-dimerized)"
+VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (monomer)"
 
 # Rename variables
 
@@ -157,9 +159,9 @@ p = ggplot() +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = kon, colour = Reference), size = 7) +
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b), shape = 95, size=20, colour = "darkgreen") +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_kon$b), shape = 95, size=20, colour = "orange") +
   labs(color="VEGFR2") +
-  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
+  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "oranges", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
   xlab("") + ylab(expression(paste("kon   (", M^-1, s^-1, ")"))) +
@@ -194,9 +196,9 @@ p = ggplot() +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = koff*1e3, colour = Reference), size = 7) +
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b), shape = 95, size=20, colour = "darkgreen") +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b), shape = 95, size=20, colour = "orange") +
   labs(color="VEGFR2") +
-  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "greens", reverse = T), scalefac(0.8)) + 
+  lightness(scale_color_colormap('VEGFR2', discrete = T,colormap = "oranges", reverse = T), scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
   xlab("") + ylab(expression(paste("koff  (", s^-1, ")"))) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
