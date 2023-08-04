@@ -145,7 +145,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference,
             unit = "nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 550), alim=c(150, 350), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-180, 580), alim=c(50, 350), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
