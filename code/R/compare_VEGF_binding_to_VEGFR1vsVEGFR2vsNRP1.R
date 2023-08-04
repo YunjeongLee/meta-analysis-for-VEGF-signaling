@@ -78,7 +78,7 @@ rm_vegfr1_kon <- rma(yi = kon , sei = kon_SE, data=vegfr1)
 summary(rm_vegfr1_kon)
 
 # VEGF-A165:VEGFR2 kon
-rm_vegfr2_kon <- rma(yi = kon, sei = kon_SE, data = vegfr2, method = "ML")
+rm_vegfr2_kon <- rma(yi = kon, sei = kon_SE, data = vegfr2)
 summary(rm_vegfr2_kon)
 
 # VEGF-A165:VEGFR1 koff
