@@ -71,6 +71,7 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF164")
 VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF165" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF165)"
 VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF164" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF164)"
 VEGF165VEGFR2[VEGF165VEGFR2$kon == 3600000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (Fc*)"
+VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (cbu§)"
 
 # Rename variables
 
