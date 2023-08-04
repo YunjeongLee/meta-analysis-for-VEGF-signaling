@@ -69,6 +69,7 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF164")
 # Change reference names to make them distinct
 
 VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF165" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF165)"
+VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF164" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF164)"
 
 # Rename variables
 
