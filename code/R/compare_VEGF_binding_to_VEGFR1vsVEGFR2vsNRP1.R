@@ -35,7 +35,7 @@ vegfkonkoff <- as.data.frame(read_excel(filename))
 
 # Split Data by parameter -------------------------------------------------
 
-VEGF165VEGR1 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGR1", ]
+VEGF165VEGFR1 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGR1", ]
 
 VEGF165VEGFR2 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGFR2", ]
 
@@ -65,7 +65,7 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF165", "VEGF164")
 
 # Rename variables
 
-vegfr1 <- VEGF165VEGR1
+vegfr1 <- VEGF165VEGFR1
 vegfr2 <- VEGF165VEGFR2
 
 # Meta-analysis -----------------------------------------------------------
