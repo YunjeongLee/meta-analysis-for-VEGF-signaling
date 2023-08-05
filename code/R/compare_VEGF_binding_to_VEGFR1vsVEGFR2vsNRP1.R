@@ -66,14 +66,23 @@ VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "kon", "kon_SE", "VEGF164")
 VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "koff", "koff_SE", "VEGF164")
 VEGF165VEGFR2 <- update_se(VEGF165VEGFR2, "Kd", "Kd_SE", "VEGF164")
 
-# combind the means
-
 # Change reference names to make them distinct
 
 VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF165" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF-A165)"
 VEGF165VEGFR2[VEGF165VEGFR2$Ligand == "VEGF164" & VEGF165VEGFR2$Reference == "Huang et al., 1998", "Reference"] <- "Huang et al., 1998 (VEGF-A164)"
 VEGF165VEGFR2[VEGF165VEGFR2$kon == 3600000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (pre-dimerized)"
 VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunningham et al., 1999", "Reference"] <- "Cunningham et al., 1999 (monomer)"
+
+# combined the rows and display the means 
+
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"])
+
+VEGF165VEGFR2 <- unique(VEGF165VEGFR2)
 
 # Rename variables
 
