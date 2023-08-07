@@ -88,6 +88,11 @@ VEGF165VEGFR2 <- unique(VEGF165VEGFR2)
 vegfr1 <- VEGF165VEGFR1
 vegfr2 <- VEGF165VEGFR2
 
+# Vegfr1 kon mean and kon se divide all values by 1e6
+
+vegfr1[c("kon", "kon_SE")] <- vegfr1[c("kon", "kon_SE")]/1e6
+vegfr2[c("kon", "kon_SE")] <- vegfr2[c("kon", "kon_SE")]/1e6
+
 # Meta-analysis -----------------------------------------------------------
 # Compute weighted average and SD -----------------------------------------
 # VEGF-A165:VEGFR1 kon
