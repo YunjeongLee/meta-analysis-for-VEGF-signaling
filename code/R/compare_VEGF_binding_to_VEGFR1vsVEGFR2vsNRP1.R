@@ -127,7 +127,7 @@ forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference,
 dev.off()
 
 # koff
-png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="Dissociation rates of VEGF-A165:VEGFR1",
