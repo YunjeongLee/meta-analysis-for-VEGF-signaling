@@ -150,9 +150,9 @@ vegfr1_vs_vegfr2kon = wtd.t.test(x=vegfr1$kon, y=vegfr2$kon,
 
 # koff Comparison
 vegfr1_vs_vegfr2koff = wtd.t.test(x=vegfr1$koff, y=vegfr2$koff,
-                              weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
-                              weighty=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2),
-                              alternative="less", samedata=FALSE)
+                                  weight=1/(vegfr1$koff_SE^2+rm_vegfr1_koff$tau2), 
+                                  weighty=1/(vegfr2$koff_SE^2+rm_vegfr2_koff$tau2),
+                                  alternative="less", samedata=FALSE)
 
 
 # Merge dataframes for plotting -------------------------------------------
