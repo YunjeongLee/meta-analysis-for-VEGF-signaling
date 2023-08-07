@@ -179,8 +179,8 @@ p = ggplot() +
   new_scale_color() +
   xlab("") + ylab(TeX("$k_{on} \\, (\\mu M^{-1} s^{-1})$")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x,n = 4),
-                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e5, 1e10),
-                     sec.axis = sec_axis(trans=~./1, name=expression(paste("kon   (", M^-1, s^-1, ")")),
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e2),
+                     sec.axis = sec_axis(trans=~.*1e6, name=TeX("$k_{on} \\, (M^{-1} s^{-1})$"),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
