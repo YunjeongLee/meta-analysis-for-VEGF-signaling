@@ -198,7 +198,7 @@ vegfr1$Ligand <- "VEGFR1"
 vegfr2$Ligand <- "VEGFR2"
 
 df1 = rbind(vegfr1[c("Ligand", "koff")],
-           vegfr2[c("Ligand", "koff")])
+            vegfr2[c("Ligand", "koff")])
 
 #koff
 p = ggplot() +
