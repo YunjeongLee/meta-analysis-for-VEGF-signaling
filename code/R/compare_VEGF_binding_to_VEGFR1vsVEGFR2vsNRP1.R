@@ -215,10 +215,7 @@ p = ggplot() +
   guides(color = guide_legend(order=2)) +
   xlab("") + ylab(TeX("$k_{off}  \\, (s^{-1})$")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
-                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e3),
-                     sec.axis = sec_axis(trans=~./1, name=expression(paste("koff  (", s^-1, ")")),
-                                         breaks=trans_breaks('log10', function(x) 10^x),
-                                         labels=trans_format('log10', math_format(10^.x)))) +
+                     labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e-2)) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A dissociation rates to its receptors") +
   theme(text = element_text(size = 20),
