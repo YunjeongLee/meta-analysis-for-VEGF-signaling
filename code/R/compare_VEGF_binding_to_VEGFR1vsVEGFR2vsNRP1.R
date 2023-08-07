@@ -113,7 +113,7 @@ summary(rm_vegfr2_koff)
 
 # Forest plot -------------------------------------------------------------
 # kon
-png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, height=700)
+png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1500, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
             title="Association rates of VEGF-A165:VEGFR1",
