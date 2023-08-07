@@ -208,7 +208,7 @@ p = ggplot() +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = vegfr2, aes(x = "VEGFR2", y = koff*1e3, colour = Reference), size = 7) +
+  geom_point(data = vegfr2, aes(x = "VEGFR2", y = koff, colour = Reference), size = 7) +
   geom_point(data = vegfr2, aes(x = "VEGFR2", y=rm_vegfr2_koff$b), shape = 95, size=20, colour = "darkred") +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) + 
