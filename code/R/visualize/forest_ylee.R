@@ -13,7 +13,7 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   weights <- formatC(weights(rm), format="f", digits=1)
   
   ### adjust the margins
-  par(mar=c(10,2,3,2), lty=0)
+  par(mar=c(10,2,3,2), lty=0, mgp=c(4,1,0))
   
   ### set ilab position
   ilab_pos = 1.2*alim[2]
