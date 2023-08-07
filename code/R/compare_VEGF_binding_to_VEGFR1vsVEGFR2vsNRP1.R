@@ -145,7 +145,7 @@ dev.off()
 vegfr1_vs_vegfr2kon = wtd.t.test(x=vegfr1$kon, y=vegfr2$kon,
                               weight=1/(vegfr1$kon_SE^2+rm_vegfr1_kon$tau2), 
                               weighty=1/(vegfr2$kon_SE^2+rm_vegfr2_kon$tau2),
-                              alternative="less", samedata=FALSE)
+                                 alternative="greater", samedata=FALSE)
 
 
 # koff Comparison
