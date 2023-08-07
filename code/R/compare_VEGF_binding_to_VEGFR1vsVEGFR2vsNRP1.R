@@ -137,7 +137,7 @@ png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, 
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="Dissociation rates of VEGF-A165:VEGFR2",
-            xlab=TeX("Dissociation rate, koff ($x10^{-3} s^{-1}$)"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2, atransf=function(x) x*1e3)
+            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-1e-3, 1.9e-3), alim = c(0, 1e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
