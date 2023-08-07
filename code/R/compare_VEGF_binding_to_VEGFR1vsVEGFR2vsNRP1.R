@@ -119,7 +119,7 @@ forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             title="Association rates of VEGF-A165:VEGFR1",
             xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-3e+1, 0.75e+2), alim = c(0, 4.75e+1), cex=2)
 dev.off()
-png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit = paste0("M", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9> s<U+207B><U+00B9>"))),
             title="Association rates of VEGF-A165:VEGFR2",
