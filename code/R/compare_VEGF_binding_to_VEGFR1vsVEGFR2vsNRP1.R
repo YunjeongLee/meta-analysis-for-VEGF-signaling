@@ -181,7 +181,7 @@ p = ggplot() +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x,n = 4),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e2),
                      sec.axis = sec_axis(trans=~.*1e6, name=TeX("$k_{on} \\, (M^{-1} s^{-1})$"),
-                                         breaks=trans_breaks('log10', function(x) 10^x),
+                                         breaks=trans_breaks('log10', function(x) 10^x, n= 4),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2")) +
   ggtitle("Comparison of VEGF-A association rates to its receptors") +
