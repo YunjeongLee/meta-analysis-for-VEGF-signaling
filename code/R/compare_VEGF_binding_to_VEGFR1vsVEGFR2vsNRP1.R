@@ -213,7 +213,7 @@ p = ggplot() +
   labs(color="VEGFR2") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) + 
   guides(color = guide_legend(order=2)) +
-  xlab("") + ylab(expression(paste("koff  (", s^-1, ")"))) +
+  xlab("") + ylab(TeX("$k_{off}  \\, (s^{-1})$")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e3),
                      sec.axis = sec_axis(trans=~./1, name=expression(paste("koff  (", s^-1, ")")),
