@@ -178,7 +178,7 @@ p = ggplot() +
   guides(color = guide_legend(order=2)) +
   new_scale_color() +
   xlab("") + ylab(expression(paste("kon   (", M^-1, s^-1, ")"))) +
-  scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
+  scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x,n = 4),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e5, 1e10),
                      sec.axis = sec_axis(trans=~./1, name=expression(paste("kon   (", M^-1, s^-1, ")")),
                                          breaks=trans_breaks('log10', function(x) 10^x),
