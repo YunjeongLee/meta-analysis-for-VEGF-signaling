@@ -70,6 +70,54 @@ for dataset_name, cols in datasets.items():
     globals()[f'{dataset_name}_rise'] = rise
     globals()[f'{dataset_name}_decay'] = decay
 
+# Split the rise data futher so we can better fit the data as it rises
+
+# data_sets is a dictionary containing rise data sets
+data_sets = {
+    'vegfa165_vegfr2l05_rise': pd.DataFrame(),
+    'vegfa165_vegfr2l1_rise': pd.DataFrame(),
+    'vegfa165_vegfr2l2_rise': pd.DataFrame(),
+    'vegfa165_vegfr2l4_rise': pd.DataFrame(),
+    'vegfa165_vegfr2l8_rise': pd.DataFrame(),
+    'vegfa165_nrp1l05_rise': pd.DataFrame(),
+    'vegfa165_nrp1l1_rise': pd.DataFrame(),
+    'vegfa165_nrp1l2_rise': pd.DataFrame(),
+    'vegfa165_nrp1l4_rise': pd.DataFrame(),
+    'vegfa165_nrp1l8_rise': pd.DataFrame(),
+    'vegfa165_nrp1h23_rise': pd.DataFrame(),
+    'vegfa165_nrp1h46_rise': pd.DataFrame(),
+    'vegfa165_nrp1h92_rise': pd.DataFrame(),
+    'vegfa165_nrp1h19_rise': pd.DataFrame(),
+    'vegfa165_nrp1h39_rise': pd.DataFrame()
+}
+# Specify the number of rows to remove for each data set
+rows_to_remove = {
+    'vegfa165_vegfr2l05_rise': 2,
+    'vegfa165_vegfr2l1_rise': 2,
+    'vegfa165_vegfr2l2_rise': 2,
+    'vegfa165_vegfr2l4_rise': 2,
+    'vegfa165_vegfr2l8_rise': 2,
+    'vegfa165_nrp1l05_rise': 2,
+    'vegfa165_nrp1l1_rise': 2,
+    'vegfa165_nrp1l2_rise': 2,
+    'vegfa165_nrp1l4_rise': 2,
+    'vegfa165_nrp1l8_rise': 2,
+    'vegfa165_nrp1h23_rise': 2,
+    'vegfa165_nrp1h46_rise': 2,
+    'vegfa165_nrp1h92_rise': 2,
+    'vegfa165_nrp1h19_rise': 2,
+    'vegfa165_nrp1h39_rise': 2
+}
+
+# Remove the specified number of rows from each data set
+for key in data_sets.keys():
+    # Get the indices of the last n rows, where n is the number of rows to remove
+    n = rows_to_remove[key]
+    indices = data_sets[key].tail(n).index
+    # Drop the last n rows
+    data_sets[key] = data_sets[key].drop(indices)
+
+
 # Define the function to fit the data
 
 def rt_ka_function(rmax,conc,KD,ka,kd,t):
