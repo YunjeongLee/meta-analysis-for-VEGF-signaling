@@ -73,55 +73,60 @@ for dataset_name, cols in datasets.items():
 # Split the rise data futher so we can better fit the data as it rises
 
 # data_sets is a dictionary containing rise data sets
-data_sets = {
-    'vegfa165_vegfr2l05_rise': pd.DataFrame(),
-    'vegfa165_vegfr2l1_rise': pd.DataFrame(),
-    'vegfa165_vegfr2l2_rise': pd.DataFrame(),
-    'vegfa165_vegfr2l4_rise': pd.DataFrame(),
-    'vegfa165_vegfr2l8_rise': pd.DataFrame(),
-    'vegfa165_nrp1l05_rise': pd.DataFrame(),
-    'vegfa165_nrp1l1_rise': pd.DataFrame(),
-    'vegfa165_nrp1l2_rise': pd.DataFrame(),
-    'vegfa165_nrp1l4_rise': pd.DataFrame(),
-    'vegfa165_nrp1l8_rise': pd.DataFrame(),
-    'vegfa165_nrp1h23_rise': pd.DataFrame(),
-    'vegfa165_nrp1h46_rise': pd.DataFrame(),
-    'vegfa165_nrp1h92_rise': pd.DataFrame(),
-    'vegfa165_nrp1h19_rise': pd.DataFrame(),
-    'vegfa165_nrp1h39_rise': pd.DataFrame()
+print(vegfa165_vegfr2l05_rise)
+data_set_tail = {
+    'vegfa165_vegfr2l05_rise': vegfa165_vegfr2l05_rise,
+    'vegfa165_vegfr2l1_rise': vegfa165_vegfr2l1_rise,
+    'vegfa165_vegfr2l2_rise': vegfa165_vegfr2l2_rise,
+    'vegfa165_vegfr2l4_rise': vegfa165_vegfr2l4_rise,
+    'vegfa165_vegfr2l8_rise': vegfa165_vegfr2l8_rise,
+    'vegfa165_nrp1l05_rise': vegfa165_nrp1l05_rise,
+    'vegfa165_nrp1l1_rise': vegfa165_nrp1l1_rise,
+    'vegfa165_nrp1l2_rise': vegfa165_nrp1l2_rise,
+    'vegfa165_nrp1l4_rise': vegfa165_nrp1l4_rise,
+    'vegfa165_nrp1l8_rise': vegfa165_nrp1l8_rise,
+    'vegfa165_nrp1h23_rise': vegfa165_nrp1h23_rise,
+    'vegfa165_nrp1h46_rise': vegfa165_nrp1h46_rise,
+    'vegfa165_nrp1h92_rise': vegfa165_nrp1h92_rise,
+    'vegfa165_nrp1h19_rise': vegfa165_nrp1h19_rise,
+    'vegfa165_nrp1h39_rise': vegfa165_nrp1h39_rise
 }
 # Specify the number of rows to remove for each data set
 rows_to_remove = {
-    'vegfa165_vegfr2l05_rise': 2,
-    'vegfa165_vegfr2l1_rise': 2,
-    'vegfa165_vegfr2l2_rise': 2,
-    'vegfa165_vegfr2l4_rise': 2,
-    'vegfa165_vegfr2l8_rise': 2,
-    'vegfa165_nrp1l05_rise': 2,
-    'vegfa165_nrp1l1_rise': 2,
-    'vegfa165_nrp1l2_rise': 2,
-    'vegfa165_nrp1l4_rise': 2,
-    'vegfa165_nrp1l8_rise': 2,
-    'vegfa165_nrp1h23_rise': 2,
-    'vegfa165_nrp1h46_rise': 2,
-    'vegfa165_nrp1h92_rise': 2,
-    'vegfa165_nrp1h19_rise': 2,
-    'vegfa165_nrp1h39_rise': 2
+    'vegfa165_vegfr2l05_rise': 0,
+    'vegfa165_vegfr2l1_rise': 0,
+    'vegfa165_vegfr2l2_rise': 0,
+    'vegfa165_vegfr2l4_rise': 0,
+    'vegfa165_vegfr2l8_rise': 0,
+    'vegfa165_nrp1l05_rise': 0,
+    'vegfa165_nrp1l1_rise': 0,
+    'vegfa165_nrp1l2_rise': 0,
+    'vegfa165_nrp1l4_rise': 0,
+    'vegfa165_nrp1l8_rise': 0,
+    'vegfa165_nrp1h23_rise': 0,
+    'vegfa165_nrp1h46_rise': 0,
+    'vegfa165_nrp1h92_rise': 0,
+    'vegfa165_nrp1h19_rise': 0,
+    'vegfa165_nrp1h39_rise': 0
 }
 
 # Remove the specified number of rows from each data set
-for key in data_sets.keys():
+for key in data_set_tail.keys():
     # Get the indices of the last n rows, where n is the number of rows to remove
     n = rows_to_remove[key]
-    indices = data_sets[key].tail(n).index
+    indices = data_set_tail[key].tail(n).index
     # Drop the last n rows
-    data_sets[key] = data_sets[key].drop(indices)
+    data_set_tail[key] = data_set_tail[key].drop(indices)
 
+    # Update the corresponding global variable
+    globals()[key] = data_set_tail[key]
+
+print(vegfa165_vegfr2l05_rise)
 
 # Define the function to fit the data
 
 def rt_ka_function(rmax,conc,KD,ka,kd,t):
-    return ((rmax*conc) / (KD + conc) ) * ( 1 - 1/(np.exp(ka*conc + kd)*t))
+    return ((rmax*conc) / (KD + conc) ) * ( 1 - 1/((ka*conc + kd)*t))
 
 def rt_kd_function(r0,kd,t):
     return (r0*np.exp(-kd*t))
@@ -181,7 +186,34 @@ def plot_data(data_rise, time_col, ru_col, function, param_rise, label):
     plt.scatter(data_rise[time_col], data_rise[ru_col], label=f'{label} Data')
     plt.plot(data_rise[time_col], function(data_rise[time_col], *param_rise), 'r-', label=f'{label} Fit')
 
-# Define the datasets and parameters
+# Define the datasets and parameters for the decay data
+dataset_vrl_decay = {
+    'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_decay, "Time 0.5nM", "RU 0.5nM", rt_kd_function, param_vegfa165_vegfr2l05_decay, '0.5nM'],
+    'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_decay, "Time 1nM", "RU 1nM", rt_kd_function, param_vegfa165_vegfr2l1_decay, '1nM'],
+    'vegfa165_vegfr2l2': [vegfa165_vegfr2l2_decay, "Time 2nM", "RU 2nM", rt_kd_function, param_vegfa165_vegfr2l2_decay, '2nM'],
+    'vegfa165_vegfr2l4': [vegfa165_vegfr2l4_decay, "Time 4nM", "RU 4nM", rt_kd_function, param_vegfa165_vegfr2l4_decay, '4nM'],
+    'vegfa165_vegfr2l8': [vegfa165_vegfr2l8_decay, "Time 8nM", "RU 8nM", rt_kd_function, param_vegfa165_vegfr2l8_decay, '8nM'],
+}
+
+dataset_vnh_decay = {
+    'vegfa165_nrp1l05': [vegfa165_nrp1l05_decay, "Time 0.5nM", "RU 0.5nM", rt_kd_function, param_vegfa165_nrp1l05_decay, '0.5nM'],
+    'vegfa165_nrp1l1': [vegfa165_nrp1l1_decay, "Time 1nM", "RU 1nM", rt_kd_function, param_vegfa165_nrp1l1_decay, '1nM'],
+    'vegfa165_nrp1l2': [vegfa165_nrp1l2_decay, "Time 2nM", "RU 2nM", rt_kd_function, param_vegfa165_nrp1l2_decay, '2nM'],
+    'vegfa165_nrp1l4': [vegfa165_nrp1l4_decay, "Time 4nM", "RU 4nM", rt_kd_function, param_vegfa165_nrp1l4_decay, '4nM'],
+    'vegfa165_nrp1l8': [vegfa165_nrp1l8_decay, "Time 8nM", "RU 8nM", rt_kd_function, param_vegfa165_nrp1l8_decay, '8nM'],
+}
+
+dataset_vrh_decay = {
+    'vegfa165_nrp1h23': [vegfa165_nrp1h23_decay, "Time 2.3nM", "RU 2.3nM", rt_kd_function, param_vegfa165_nrp1h23_decay, '2.3nM'],
+    'vegfa165_nrp1h46': [vegfa165_nrp1h46_decay, "Time 4.6nM", "RU 4.6nM", rt_kd_function, param_vegfa165_nrp1h46_decay, '4.6nM'],
+    'vegfa165_nrp1h92': [vegfa165_nrp1h92_decay, "Time 9.2nM", "RU 9.2nM", rt_kd_function, param_vegfa165_nrp1h92_decay, '9.2nM'],
+    'vegfa165_nrp1h19': [vegfa165_nrp1h19_decay, "Time 19.5nM", "RU 19.5nM", rt_kd_function, param_vegfa165_nrp1h19_decay, '19.5nM'],
+    'vegfa165_nrp1h39': [vegfa165_nrp1h39_decay, "Time 39nM", "RU 39nM", rt_kd_function, param_vegfa165_nrp1h39_decay, '39nM']
+}
+
+
+
+# Define the datasets and parameters for the rise data
 dataset_vrl = {
     'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_rise, "Time 0.5nM", "RU 0.5nM", rt_ka_function, param_vegfa165_vegfr2l05_rise, '0.5nM'],
     'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_rise, "Time 1nM", "RU 1nM", rt_ka_function, param_vegfa165_vegfr2l1_rise, '1nM'],
@@ -206,31 +238,32 @@ dataset_vrh = {
     'vegfa165_nrp1h39': [vegfa165_nrp1h39_rise, "Time 39nM", "RU 39nM", rt_ka_function, param_vegfa165_nrp1h39_rise, '39nM']    
 }
 
-# Plot the data for each dataset
+# Plot the data for each dataset association
 
 plt.figure()
 for dataset_name, params in dataset_vrl.items():
     plot_data(*params)
     plt.legend()
-plt.title('VEGFA165:VEGFR2 Lu2023 Data')
+plt.title('VEGFA165:VEGFR2 Lu2023 association Data')
 plt.show()
 
 plt.figure()
 for dataset_name, params in dataset_vnh.items():
     plot_data(*params)
     plt.legend()
-plt.title('VEGFA165:NRP1 Lu2023 Data')
+plt.title('VEGFA165:NRP1 Lu2023 association Data')
 plt.show()
 
 plt.figure()
 for dataset_name, params in dataset_vrh.items():
     plot_data(*params)
     plt.legend()
-plt.title('VEGFA165:NRP1 Herve2008 Data')
+plt.title('VEGFA165:NRP1 Herve2008 association Data')
 plt.show()
 
 # Generate a dataframe with the parameters for each dataset
 
+# Rise parameters
 #VEGFA165:VEGFR2 Lu2023 Data
 vegfa_vegf2_lu2023_results = pd.DataFrame({
 '0.5nM': [param_vegfa165_vegfr2l05_rise[0], param_vegfa165_vegfr2l05_rise[1], param_vegfa165_vegfr2l05_rise[2], param_vegfa165_vegfr2l05_rise[3], param_vegfa165_vegfr2l05_rise[4]],
@@ -239,7 +272,7 @@ vegfa_vegf2_lu2023_results = pd.DataFrame({
 '4nM': [param_vegfa165_vegfr2l4_rise[0], param_vegfa165_vegfr2l4_rise[1], param_vegfa165_vegfr2l4_rise[2], param_vegfa165_vegfr2l4_rise[3], param_vegfa165_vegfr2l4_rise[4]],
 '8nM': [param_vegfa165_vegfr2l8_rise[0], param_vegfa165_vegfr2l8_rise[1], param_vegfa165_vegfr2l8_rise[2], param_vegfa165_vegfr2l8_rise[3], param_vegfa165_vegfr2l8_rise[4]]})
 vegfa_vegf2_lu2023_results.index=['rmax', 'conc', 'KD', 'ka', 'kd']
-print("VEGFA165:VEGFR2 Lu2023 Data")
+print("VEGFA165:VEGFR2 Lu2023 association Data")
 print(vegfa_vegf2_lu2023_results)
 
 #VEGFA165:NRP1 Lu2023 Data
@@ -250,7 +283,7 @@ vegfa_nrp1_lu2023_results = pd.DataFrame({
 '4nM': [param_vegfa165_nrp1l4_rise[0], param_vegfa165_nrp1l4_rise[1], param_vegfa165_nrp1l4_rise[2], param_vegfa165_nrp1l4_rise[3], param_vegfa165_nrp1l4_rise[4]],
 '8nM': [param_vegfa165_nrp1l8_rise[0], param_vegfa165_nrp1l8_rise[1], param_vegfa165_nrp1l8_rise[2], param_vegfa165_nrp1l8_rise[3], param_vegfa165_nrp1l8_rise[4]]})
 vegfa_nrp1_lu2023_results.index=['rmax', 'conc', 'KD', 'ka', 'kd']
-print("VEGFA165:NRP1 Lu2023 Data")
+print("VEGFA165:NRP1 Lu2023 association Data")
 print(vegfa_nrp1_lu2023_results)
 
 #VEGFA165:NRP1 Herve2008 Data
@@ -261,5 +294,5 @@ vegfa_nrp1_herve2008_results = pd.DataFrame({
 '19.5nM': [param_vegfa165_nrp1h19_rise[0], param_vegfa165_nrp1h19_rise[1], param_vegfa165_nrp1h19_rise[2], param_vegfa165_nrp1h19_rise[3], param_vegfa165_nrp1h19_rise[4]],
 '39nM': [param_vegfa165_nrp1h39_rise[0], param_vegfa165_nrp1h39_rise[1], param_vegfa165_nrp1h39_rise[2], param_vegfa165_nrp1h39_rise[3], param_vegfa165_nrp1h39_rise[4]]})
 vegfa_nrp1_herve2008_results.index=['rmax', 'conc', 'KD', 'ka', 'kd']
-print("VEGFA165:NRP1 Herve2008 Data")
+print("VEGFA165:NRP1 Herve2008 association Data")
 print(vegfa_nrp1_herve2008_results)
