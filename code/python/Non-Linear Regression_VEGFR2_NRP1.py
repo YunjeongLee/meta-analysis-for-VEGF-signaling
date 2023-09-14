@@ -7,7 +7,8 @@ import pandas as pd
 # Change the working directory 
 print(os.getcwd()) # Prints the current working directory
 # Provide the new path here
-os.chdir('C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/data') 
+os.chdir('C:/Users/Imoukhuede lab/OneDrive - UW/Desktop/GitHub/meta-analysis-for-VEGF-signaling/data') 
+#C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/data
 # Prints the new working directory
 print(os.getcwd())
 
@@ -42,7 +43,7 @@ def split_data(data, time_col, ru_col):
     max_index = data[ru_col].idxmax()
     mask = (data[time_col] >= 0) & (data.index <= max_index)
     rise = data.loc[mask]
-    decay = data.loc[max_index+1:]
+    decay = data.loc[max_index:]
     return rise, decay
 
 datasets = {
@@ -68,6 +69,7 @@ for dataset_name, cols in datasets.items():
     dataset = globals()[dataset_name]
     rise, decay = split_data(dataset, time_col, ru_col)
     globals()[f'{dataset_name}_rise'] = rise
+    decay.iloc[:, 0] = decay.iloc[:, 0] - decay.iloc[0, 0]
     globals()[f'{dataset_name}_decay'] = decay
 
 # Define the function 
@@ -80,15 +82,15 @@ def fit_funtions_decay(data, ru_col):
 
 def fit_funtions_rise(data, ru_col, kd):
     rmax = data[ru_col].max()
-    kd = kd
-    def rt_ka_function(t, conc, ka):
-        return ((rmax*conc) / (kd/ka + conc) ) * ( 1 - np.exp(-1*(ka*conc + kd))*t)
+    conc = float(ru_col[3:-2])*(10**(-9))
+    def rt_ka_function(t, ka):
+        return ((rmax*conc) / (kd/ka + conc) ) * ( 1 - np.exp((-1*(ka*conc + kd)) *t) )
     return rt_ka_function  # Return the function
 
 # fitting function
 
 def fit_data_rise(data, time_col, ru_col,function, kd):
-    param_k, pcov_k = curve_fit(function, data[time_col], data[ru_col]) 
+    param_k, pcov_k = curve_fit(function, data[time_col], data[ru_col], p0=1**(10**(5)), bounds=(1, np.inf))
     return param_k, pcov_k
 
 datasets_decay = {
@@ -162,6 +164,7 @@ datasets_rise = {
 for i, (dataset_name, cols) in enumerate(datasets_rise.items()):
     time_col, ru_col, function_generator  = cols
     dataset = globals()[dataset_name]
+
     function = function_generator(dataset,ru_col ,kd_values[i])  # Generate the function
     param, pcov = fit_data_rise(dataset, time_col, ru_col, function, kd_values[i])
     globals()[f'param_{dataset_name}'], globals()[f'pcov_{dataset_name}'] = param, pcov
@@ -299,7 +302,7 @@ vegfa_vegf2_lu2023_results = generate_dataframe([
     ('2nM', param_vegfa165_vegfr2l2_rise),
     ('4nM', param_vegfa165_vegfr2l4_rise),
     ('8nM', param_vegfa165_vegfr2l8_rise)
-], ['conc', 'ka'])
+], ['ka'])
 vegfa_vegf2_lu2023_results['mean'] = vegfa_vegf2_lu2023_results.mean(axis=1)
 vegfa_vegf2_lu2023_results['std'] = vegfa_vegf2_lu2023_results.apply(np.std, axis=1)
 print("VEGFA165:VEGFR2 Lu2023 association Data")
@@ -312,7 +315,7 @@ vegfa_nrp1_lu2023_results = generate_dataframe([
     ('2nM', param_vegfa165_nrp1l2_rise),
     ('4nM', param_vegfa165_nrp1l4_rise),
     ('8nM', param_vegfa165_nrp1l8_rise)
-], ['conc', 'ka'])
+], ['ka'])
 vegfa_nrp1_lu2023_results['mean'] = vegfa_nrp1_lu2023_results.mean(axis=1)
 vegfa_nrp1_lu2023_results['std'] = vegfa_nrp1_lu2023_results.apply(np.std, axis=1)
 print("VEGFA165:NRP1 Lu2023 association Data")
@@ -325,7 +328,7 @@ vegfa_nrp1_herve2008_results = generate_dataframe([
     ('9.2nM', param_vegfa165_nrp1h92_rise),
     ('19.5nM', param_vegfa165_nrp1h19_rise),
     ('39nM', param_vegfa165_nrp1h39_rise)
-], ['conc', 'ka'])
+], ['ka'])
 vegfa_nrp1_herve2008_results['mean'] = vegfa_nrp1_herve2008_results.mean(axis=1)
 vegfa_nrp1_herve2008_results['std'] = vegfa_nrp1_herve2008_results.apply(np.std, axis=1)
 print("VEGFA165:NRP1 Herve2008 association Data")
