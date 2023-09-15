@@ -75,13 +75,13 @@ for dataset_name, cols in datasets.items():
 
 # Define the function 
 
-def fit_funtions_decay(data, ru_col):
+def fit_functions_decay(data, ru_col):
     r0 = data[ru_col].max() 
     def rt_kd_function(t, kd):
         return (r0*np.exp(-kd*t))
     return rt_kd_function  # Return the function
 
-def fit_funtions_rise(data, ru_col, kd):
+def fit_functions_rise(data, ru_col, kd):
     rmax = data[ru_col].max()
     conc = float(ru_col[3:-2])*(10**(-9))
     def rt_ka_function(t, ka):
@@ -118,7 +118,7 @@ datasets_decay = {
 for dataset_name, cols in datasets_decay.items():
     time_col, ru_col = cols
     dataset = globals()[dataset_name]
-    function = fit_funtions_decay(dataset, ru_col)  # Generate the function
+    function = fit_functions_decay(dataset, ru_col)  # Generate the function
     param_d, pcov_d = curve_fit(function, dataset[time_col], dataset[ru_col],p0 = 1e-2, bounds=(0, np.inf))
     print(f'{dataset_name} kd: {param_d[0]}')
     globals()[f'param_{dataset_name}'], globals()[f'pcov_{dataset_name}'] = param_d, pcov_d
@@ -144,23 +144,23 @@ kd_values = [
 ]
 
 datasets_rise = {
-    'vegfa165_vegfr2l05_rise': ['Time 0.5nM', 'RU 0.5nM', fit_funtions_rise],
-    'vegfa165_vegfr2l1_rise': ['Time 1nM', 'RU 1nM', fit_funtions_rise],
-    'vegfa165_vegfr2l2_rise': ['Time 2nM', 'RU 2nM', fit_funtions_rise],
-    'vegfa165_vegfr2l4_rise': ['Time 4nM', 'RU 4nM', fit_funtions_rise],
-    'vegfa165_vegfr2l8_rise': ['Time 8nM', 'RU 8nM', fit_funtions_rise],
+    'vegfa165_vegfr2l05_rise': ['Time 0.5nM', 'RU 0.5nM', fit_functions_rise],
+    'vegfa165_vegfr2l1_rise': ['Time 1nM', 'RU 1nM', fit_functions_rise],
+    'vegfa165_vegfr2l2_rise': ['Time 2nM', 'RU 2nM', fit_functions_rise],
+    'vegfa165_vegfr2l4_rise': ['Time 4nM', 'RU 4nM', fit_functions_rise],
+    'vegfa165_vegfr2l8_rise': ['Time 8nM', 'RU 8nM', fit_functions_rise],
     
-    'vegfa165_nrp1l05_rise': ['Time 0.5nM', 'RU 0.5nM', fit_funtions_rise],
-    'vegfa165_nrp1l1_rise': ['Time 1nM', 'RU 1nM', fit_funtions_rise],
-    'vegfa165_nrp1l2_rise': ['Time 2nM', 'RU 2nM', fit_funtions_rise],
-    'vegfa165_nrp1l4_rise': ['Time 4nM', 'RU 4nM', fit_funtions_rise],
-    'vegfa165_nrp1l8_rise': ['Time 8nM', 'RU 8nM', fit_funtions_rise],
+    'vegfa165_nrp1l05_rise': ['Time 0.5nM', 'RU 0.5nM', fit_functions_rise],
+    'vegfa165_nrp1l1_rise': ['Time 1nM', 'RU 1nM', fit_functions_rise],
+    'vegfa165_nrp1l2_rise': ['Time 2nM', 'RU 2nM', fit_functions_rise],
+    'vegfa165_nrp1l4_rise': ['Time 4nM', 'RU 4nM', fit_functions_rise],
+    'vegfa165_nrp1l8_rise': ['Time 8nM', 'RU 8nM', fit_functions_rise],
 
-    'vegfa165_nrp1h23_rise': ['Time 2.3nM', 'RU 2.3nM', fit_funtions_rise],
-    'vegfa165_nrp1h46_rise': ['Time 4.6nM', 'RU 4.6nM', fit_funtions_rise],
-    'vegfa165_nrp1h92_rise': ['Time 9.2nM', 'RU 9.2nM', fit_funtions_rise],
-    'vegfa165_nrp1h19_rise': ['Time 19.5nM', 'RU 19.5nM', fit_funtions_rise],
-    'vegfa165_nrp1h39_rise': ['Time 39nM', 'RU 39nM', fit_funtions_rise]
+    'vegfa165_nrp1h23_rise': ['Time 2.3nM', 'RU 2.3nM', fit_functions_rise],
+    'vegfa165_nrp1h46_rise': ['Time 4.6nM', 'RU 4.6nM', fit_functions_rise],
+    'vegfa165_nrp1h92_rise': ['Time 9.2nM', 'RU 9.2nM', fit_functions_rise],
+    'vegfa165_nrp1h19_rise': ['Time 19.5nM', 'RU 19.5nM', fit_functions_rise],
+    'vegfa165_nrp1h39_rise': ['Time 39nM', 'RU 39nM', fit_functions_rise]
 }
 
 for i, (dataset_name, cols) in enumerate(datasets_rise.items()):
@@ -180,27 +180,27 @@ def plot_data(data_rise, time_col, ru_col, function, param_rise, label):
 
 # Define the datasets and parameters for the decay data
 dataset_vrl_decay = {
-    'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_decay, "Time 0.5nM", "RU 0.5nM", fit_funtions_decay, param_vegfa165_vegfr2l05_decay, '0.5nM'],
-    'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_decay, "Time 1nM", "RU 1nM", fit_funtions_decay, param_vegfa165_vegfr2l1_decay, '1nM'],
-    'vegfa165_vegfr2l2': [vegfa165_vegfr2l2_decay, "Time 2nM", "RU 2nM", fit_funtions_decay, param_vegfa165_vegfr2l2_decay, '2nM'],
-    'vegfa165_vegfr2l4': [vegfa165_vegfr2l4_decay, "Time 4nM", "RU 4nM", fit_funtions_decay, param_vegfa165_vegfr2l4_decay, '4nM'],
-    'vegfa165_vegfr2l8': [vegfa165_vegfr2l8_decay, "Time 8nM", "RU 8nM", fit_funtions_decay, param_vegfa165_vegfr2l8_decay, '8nM'],
+    'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_decay, "Time 0.5nM", "RU 0.5nM", fit_functions_decay, param_vegfa165_vegfr2l05_decay, '0.5nM'],
+    'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_decay, "Time 1nM", "RU 1nM", fit_functions_decay, param_vegfa165_vegfr2l1_decay, '1nM'],
+    'vegfa165_vegfr2l2': [vegfa165_vegfr2l2_decay, "Time 2nM", "RU 2nM", fit_functions_decay, param_vegfa165_vegfr2l2_decay, '2nM'],
+    'vegfa165_vegfr2l4': [vegfa165_vegfr2l4_decay, "Time 4nM", "RU 4nM", fit_functions_decay, param_vegfa165_vegfr2l4_decay, '4nM'],
+    'vegfa165_vegfr2l8': [vegfa165_vegfr2l8_decay, "Time 8nM", "RU 8nM", fit_functions_decay, param_vegfa165_vegfr2l8_decay, '8nM'],
 }
 
 dataset_vnh_decay = {
-    'vegfa165_nrp1l05': [vegfa165_nrp1l05_decay, "Time 0.5nM", "RU 0.5nM", fit_funtions_decay, param_vegfa165_nrp1l05_decay, '0.5nM'],
-    'vegfa165_nrp1l1': [vegfa165_nrp1l1_decay, "Time 1nM", "RU 1nM", fit_funtions_decay, param_vegfa165_nrp1l1_decay, '1nM'],
-    'vegfa165_nrp1l2': [vegfa165_nrp1l2_decay, "Time 2nM", "RU 2nM", fit_funtions_decay, param_vegfa165_nrp1l2_decay, '2nM'],
-    'vegfa165_nrp1l4': [vegfa165_nrp1l4_decay, "Time 4nM", "RU 4nM", fit_funtions_decay, param_vegfa165_nrp1l4_decay, '4nM'],
-    'vegfa165_nrp1l8': [vegfa165_nrp1l8_decay, "Time 8nM", "RU 8nM", fit_funtions_decay, param_vegfa165_nrp1l8_decay, '8nM'],
+    'vegfa165_nrp1l05': [vegfa165_nrp1l05_decay, "Time 0.5nM", "RU 0.5nM", fit_functions_decay, param_vegfa165_nrp1l05_decay, '0.5nM'],
+    'vegfa165_nrp1l1': [vegfa165_nrp1l1_decay, "Time 1nM", "RU 1nM", fit_functions_decay, param_vegfa165_nrp1l1_decay, '1nM'],
+    'vegfa165_nrp1l2': [vegfa165_nrp1l2_decay, "Time 2nM", "RU 2nM", fit_functions_decay, param_vegfa165_nrp1l2_decay, '2nM'],
+    'vegfa165_nrp1l4': [vegfa165_nrp1l4_decay, "Time 4nM", "RU 4nM", fit_functions_decay, param_vegfa165_nrp1l4_decay, '4nM'],
+    'vegfa165_nrp1l8': [vegfa165_nrp1l8_decay, "Time 8nM", "RU 8nM", fit_functions_decay, param_vegfa165_nrp1l8_decay, '8nM'],
 }
 
 dataset_vrh_decay = {
-    'vegfa165_nrp1h23': [vegfa165_nrp1h23_decay, "Time 2.3nM", "RU 2.3nM", fit_funtions_decay, param_vegfa165_nrp1h23_decay, '2.3nM'],
-    'vegfa165_nrp1h46': [vegfa165_nrp1h46_decay, "Time 4.6nM", "RU 4.6nM", fit_funtions_decay, param_vegfa165_nrp1h46_decay, '4.6nM'],
-    'vegfa165_nrp1h92': [vegfa165_nrp1h92_decay, "Time 9.2nM", "RU 9.2nM", fit_funtions_decay, param_vegfa165_nrp1h92_decay, '9.2nM'],
-    'vegfa165_nrp1h19': [vegfa165_nrp1h19_decay, "Time 19.5nM", "RU 19.5nM", fit_funtions_decay, param_vegfa165_nrp1h19_decay, '19.5nM'],
-    'vegfa165_nrp1h39': [vegfa165_nrp1h39_decay, "Time 39nM", "RU 39nM", fit_funtions_decay, param_vegfa165_nrp1h39_decay, '39nM']
+    'vegfa165_nrp1h23': [vegfa165_nrp1h23_decay, "Time 2.3nM", "RU 2.3nM", fit_functions_decay, param_vegfa165_nrp1h23_decay, '2.3nM'],
+    'vegfa165_nrp1h46': [vegfa165_nrp1h46_decay, "Time 4.6nM", "RU 4.6nM", fit_functions_decay, param_vegfa165_nrp1h46_decay, '4.6nM'],
+    'vegfa165_nrp1h92': [vegfa165_nrp1h92_decay, "Time 9.2nM", "RU 9.2nM", fit_functions_decay, param_vegfa165_nrp1h92_decay, '9.2nM'],
+    'vegfa165_nrp1h19': [vegfa165_nrp1h19_decay, "Time 19.5nM", "RU 19.5nM", fit_functions_decay, param_vegfa165_nrp1h19_decay, '19.5nM'],
+    'vegfa165_nrp1h39': [vegfa165_nrp1h39_decay, "Time 39nM", "RU 39nM", fit_functions_decay, param_vegfa165_nrp1h39_decay, '39nM']
 }
 
 # Plot the data for each dissociation dataset
@@ -229,27 +229,27 @@ plt.show()
 
 # Define the datasets and parameters for the rise data
 dataset_vrl = {
-    'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_rise, "Time 0.5nM", "RU 0.5nM", fit_funtions_rise, param_vegfa165_vegfr2l05_rise, '0.5nM'],
-    'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_rise, "Time 1nM", "RU 1nM", fit_funtions_rise, param_vegfa165_vegfr2l1_rise, '1nM'],
-    'vegfa165_vegfr2l2': [vegfa165_vegfr2l2_rise, "Time 2nM", "RU 2nM", fit_funtions_rise, param_vegfa165_vegfr2l2_rise, '2nM'],
-    'vegfa165_vegfr2l4': [vegfa165_vegfr2l4_rise, "Time 4nM", "RU 4nM", fit_funtions_rise, param_vegfa165_vegfr2l4_rise, '4nM'],
-    'vegfa165_vegfr2l8': [vegfa165_vegfr2l8_rise, "Time 8nM", "RU 8nM", fit_funtions_rise, param_vegfa165_vegfr2l8_rise, '8nM'],
+    'vegfa165_vegfr2l05': [vegfa165_vegfr2l05_rise, "Time 0.5nM", "RU 0.5nM", fit_functions_rise, param_vegfa165_vegfr2l05_rise, '0.5nM'],
+    'vegfa165_vegfr2l1': [vegfa165_vegfr2l1_rise, "Time 1nM", "RU 1nM", fit_functions_rise, param_vegfa165_vegfr2l1_rise, '1nM'],
+    'vegfa165_vegfr2l2': [vegfa165_vegfr2l2_rise, "Time 2nM", "RU 2nM", fit_functions_rise, param_vegfa165_vegfr2l2_rise, '2nM'],
+    'vegfa165_vegfr2l4': [vegfa165_vegfr2l4_rise, "Time 4nM", "RU 4nM", fit_functions_rise, param_vegfa165_vegfr2l4_rise, '4nM'],
+    'vegfa165_vegfr2l8': [vegfa165_vegfr2l8_rise, "Time 8nM", "RU 8nM", fit_functions_rise, param_vegfa165_vegfr2l8_rise, '8nM'],
 }
 
 dataset_vnh = {
-    'vegfa165_nrp1l05': [vegfa165_nrp1l05_rise, "Time 0.5nM", "RU 0.5nM", fit_funtions_rise, param_vegfa165_nrp1l05_rise, '0.5nM'],
-    'vegfa165_nrp1l1': [vegfa165_nrp1l1_rise, "Time 1nM", "RU 1nM", fit_funtions_rise, param_vegfa165_nrp1l1_rise, '1nM'],
-    'vegfa165_nrp1l2': [vegfa165_nrp1l2_rise, "Time 2nM", "RU 2nM", fit_funtions_rise, param_vegfa165_nrp1l2_rise, '2nM'],
-    'vegfa165_nrp1l4': [vegfa165_nrp1l4_rise, "Time 4nM", "RU 4nM", fit_funtions_rise, param_vegfa165_nrp1l4_rise, '4nM'],
-    'vegfa165_nrp1l8': [vegfa165_nrp1l8_rise, "Time 8nM", 'RU 8nM', fit_funtions_rise, param_vegfa165_nrp1l8_rise, '8nM'],
+    'vegfa165_nrp1l05': [vegfa165_nrp1l05_rise, "Time 0.5nM", "RU 0.5nM", fit_functions_rise, param_vegfa165_nrp1l05_rise, '0.5nM'],
+    'vegfa165_nrp1l1': [vegfa165_nrp1l1_rise, "Time 1nM", "RU 1nM", fit_functions_rise, param_vegfa165_nrp1l1_rise, '1nM'],
+    'vegfa165_nrp1l2': [vegfa165_nrp1l2_rise, "Time 2nM", "RU 2nM", fit_functions_rise, param_vegfa165_nrp1l2_rise, '2nM'],
+    'vegfa165_nrp1l4': [vegfa165_nrp1l4_rise, "Time 4nM", "RU 4nM", fit_functions_rise, param_vegfa165_nrp1l4_rise, '4nM'],
+    'vegfa165_nrp1l8': [vegfa165_nrp1l8_rise, "Time 8nM", 'RU 8nM', fit_functions_rise, param_vegfa165_nrp1l8_rise, '8nM'],
 }
 
 dataset_vrh = {
-    'vegfa165_nrp1h23': [vegfa165_nrp1h23_rise, "Time 2.3nM", "RU 2.3nM", fit_funtions_rise, param_vegfa165_nrp1h23_rise, '2.3nM'],
-    'vegfa165_nrp1h46': [vegfa165_nrp1h46_rise, "Time 4.6nM", "RU 4.6nM", fit_funtions_rise, param_vegfa165_nrp1h46_rise, '4.6nM'],
-    'vegfa165_nrp1h92': [vegfa165_nrp1h92_rise, "Time 9.2nM", "RU 9.2nM", fit_funtions_rise, param_vegfa165_nrp1h92_rise, '9.2nM'],
-    'vegfa165_nrp1h19': [vegfa165_nrp1h19_rise, "Time 19.5nM", "RU 19.5nM",fit_funtions_rise, param_vegfa165_nrp1h19_rise, '19.5nM'],
-    'vegfa165_nrp1h39': [vegfa165_nrp1h39_rise, "Time 39nM", "RU 39nM", fit_funtions_rise, param_vegfa165_nrp1h39_rise, '39nM']    
+    'vegfa165_nrp1h23': [vegfa165_nrp1h23_rise, "Time 2.3nM", "RU 2.3nM", fit_functions_rise, param_vegfa165_nrp1h23_rise, '2.3nM'],
+    'vegfa165_nrp1h46': [vegfa165_nrp1h46_rise, "Time 4.6nM", "RU 4.6nM", fit_functions_rise, param_vegfa165_nrp1h46_rise, '4.6nM'],
+    'vegfa165_nrp1h92': [vegfa165_nrp1h92_rise, "Time 9.2nM", "RU 9.2nM", fit_functions_rise, param_vegfa165_nrp1h92_rise, '9.2nM'],
+    'vegfa165_nrp1h19': [vegfa165_nrp1h19_rise, "Time 19.5nM", "RU 19.5nM",fit_functions_rise, param_vegfa165_nrp1h19_rise, '19.5nM'],
+    'vegfa165_nrp1h39': [vegfa165_nrp1h39_rise, "Time 39nM", "RU 39nM", fit_functions_rise, param_vegfa165_nrp1h39_rise, '39nM']    
 }
 
 # Plot the data for each association dataset
