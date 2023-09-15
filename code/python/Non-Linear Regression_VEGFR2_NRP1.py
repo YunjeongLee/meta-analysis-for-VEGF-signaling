@@ -91,7 +91,7 @@ def fit_funtions_rise(data, ru_col, kd):
 # fitting function
 
 def fit_data_rise(data, time_col, ru_col,function, kd):
-    param_k, pcov_k = curve_fit(function, data[time_col], data[ru_col], p0=1e7, bounds=(1, np.inf))
+    param_k, pcov_k = curve_fit(function, data[time_col], data[ru_col], p0=1e7, bounds=(0, np.inf))
     #x = minimize(function,x0=1e7, bounds=(1, np.inf))
     return param_k, pcov_k
 
@@ -119,7 +119,7 @@ for dataset_name, cols in datasets_decay.items():
     time_col, ru_col = cols
     dataset = globals()[dataset_name]
     function = fit_funtions_decay(dataset, ru_col)  # Generate the function
-    param_d, pcov_d = curve_fit(function, dataset[time_col], dataset[ru_col],p0 = 1e-2, bounds=(0, 1))
+    param_d, pcov_d = curve_fit(function, dataset[time_col], dataset[ru_col],p0 = 1e-2, bounds=(0, np.inf))
     print(f'{dataset_name} kd: {param_d[0]}')
     globals()[f'param_{dataset_name}'], globals()[f'pcov_{dataset_name}'] = param_d, pcov_d
 
