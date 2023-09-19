@@ -314,6 +314,9 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
+  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 5, tip.length = c(0.7, 0.2), 
+               label = generate_plabel(spr_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))
