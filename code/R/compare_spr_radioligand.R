@@ -135,7 +135,7 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=450)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
             unit="nM", atransf=function(x)x/1e3, title="Binding affinity of VEGF:NRP1 measured by SPR",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-40000, 90000), alim = c(0, 50000), cex=2)
+            xlab="Binding affinity, Kd (nM)", xlim = c(-7000, 17000), alim = c(0, 10000), cex=2)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
