@@ -135,7 +135,7 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=450)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
             unit="nM", atransf=function(x)x/1e3, title="Binding affinity of VEGF:NRP1 measured by SPR",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-40000, 90000), alim = c(0, 50000), cex=2)
+            xlab="Binding affinity, Kd (nM)", xlim = c(-7000, 17000), alim = c(0, 10000), cex=2)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
@@ -231,7 +231,7 @@ p = ggplot() +
   new_scale_color() + 
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y=rm_vegfr1_spr$b), shape = 95, size=20, colour = "darkred") +
-  lightness(scale_color_colormap('Chip-based  (SPR)', discrete = T,colormap = "autumn", reverse = T), scalefac(0.8)) +
+  lightness(scale_color_colormap('Chip-based  (SPR)', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y=rm_vegfr2_spr$b), shape = 95, size=20, colour = "darkred") +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average, colour = Reference), size = 7, shape=17) +
@@ -314,12 +314,9 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 6.5, tip.length = c(0.8, 0.1), 
-               label = generate_plabel(spr_r1_vs_n1$coefficients["p.value"])) +
-  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR2", xmax = "NRP1",
-               y.position = 5.5, tip.length = c(0.4, 0.1), 
-               label = generate_plabel(spr_r2_vs_n1$coefficients["p.value"])) +
+  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 5, tip.length = c(0.7, 0.2), 
+               label = generate_plabel(spr_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))
