@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
+setwd("C:/Users/Imoukhuede lab/OneDrive - UW/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
@@ -163,7 +163,7 @@ png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, hei
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
             title="Association rates of VEGF-A165:NRP1",
-            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-40, 110), alim = c(0, 65), cex=2)
+            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-7, 17), alim = c(0, 10), cex=2)
 dev.off()
 
 # koff
@@ -256,14 +256,13 @@ p = ggplot() +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) + 
   guides(color = guide_legend(order=3)) +
-  xlab("") + ylab(TeX("$k_{on} \\, (\\mu M^{-1} s^{-1})$")) +
+  xlab("") + ylab(TeX("Association rate, $k_{on} \\, (\\mu M^{-1} s^{-1})$")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x,n = 4),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e2),
                      sec.axis = sec_axis(trans=~.*1e6, name=TeX("$k_{on} \\, (M^{-1} s^{-1})$"),
                                          breaks=trans_breaks('log10', function(x) 10^x, n= 4),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +   # Add NRP1 to x-axis
-  ggtitle("Comparison of VEGF-A association rates to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
@@ -300,11 +299,10 @@ p_koff = ggplot() +
   labs(color="NRP1") +
   lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) + 
   guides(color = guide_legend(order=3)) +
-  xlab("") + ylab(TeX("$k_{off} \\, (s^{-1})$")) +
+  xlab("") + ylab(TeX("Dissociation rate, $k_{off} \\, (s^{-1})$")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-7, 1e-0)) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +   # Add NRP1 to x-axis
-  ggtitle("Comparison of VEGF-A dissociation rates to its receptors") +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
