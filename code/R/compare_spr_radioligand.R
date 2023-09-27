@@ -121,7 +121,7 @@ dev.off()
 png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
             unit="pM", title="Binding affinity of VEGF:VEGFR2 measured by SPR",
-            xlab="Binding affinity, Kd (pM)", xlim = c(-1100, 1800), alim = c(0, 900), cex=2)
+            xlab="Binding affinity, Kd (pM)", xlim = c(-1000, 2000), alim = c(0, 1100), cex=2)
 dev.off()
 
 # VEGF:VEGFR2 (Radioligand)
@@ -314,9 +314,6 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
-  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 5, tip.length = c(0.7, 0.2), 
-               label = generate_plabel(spr_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))
