@@ -87,12 +87,19 @@ VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunning
 
 # combined the rows and display the means 
 
+# Huang et al. data
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"])
+
+# In-house data, 2023
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "kon"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "koff"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "Kd"])
+
 VEGF165VEGFR2 <- unique(VEGF165VEGFR2)
 
 VEGF165NRP1[VEGF165NRP1$Reference == "In-house data, 2023", "kon"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "In-house data, 2023", "kon"])
@@ -152,7 +159,7 @@ forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-40, 75), alim = c(0, 45), cex=2)
 dev.off()
 
-png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
             title="Association rates of VEGF-A165:VEGFR2",
@@ -173,7 +180,7 @@ forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             title="Dissociation rates of VEGF-A165:VEGFR1",
             xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-0.5e-3, 0.9e-3), alim = c(0, 0.5e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
-png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
             title="Dissociation rates of VEGF-A165:VEGFR2",
