@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("C:/Users/Imoukhuede lab/OneDrive - UW/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
+setwd("C:/Users/lione/Desktop/GitHub/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
@@ -95,9 +95,9 @@ VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"]
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"])
 VEGF165VEGFR2 <- unique(VEGF165VEGFR2)
 
-VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "kon"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "kon"])
-VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "koff"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "koff"])
-VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "Kd"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "Inhouse Data 2023", "Kd"])
+VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "kon"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "kon"])
+VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "koff"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "koff"])
+VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "Kd"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "In-house data 2023", "Kd"])
 VEGF165NRP1 <- unique(VEGF165NRP1)
 
 # Add the new data 
