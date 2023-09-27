@@ -121,7 +121,7 @@ dev.off()
 png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
             unit="pM", title="Binding affinity of VEGF:VEGFR2 measured by SPR",
-            xlab="Binding affinity, Kd (pM)", xlim = c(-1100, 1800), alim = c(0, 900), cex=2)
+            xlab="Binding affinity, Kd (pM)", xlim = c(-1000, 1900), alim = c(0, 1100), cex=2)
 dev.off()
 
 # VEGF:VEGFR2 (Radioligand)
