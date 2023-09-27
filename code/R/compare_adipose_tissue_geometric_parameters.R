@@ -71,7 +71,7 @@ summary(rm_cbm_obese)
 
 # Forest plot -------------------------------------------------------------
 # Adipocyte diameter of lean mice
-png(file=sprintf("%s/forest_adipocyte_diameter_lean.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_adipocyte_diameter_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=adipocyte_lean, rm=rm_adipocyte_lean, slab=adipocyte_lean$Reference,
             unit="µm",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-30, 130), alim = c(20, 80), cex=2)
