@@ -87,12 +87,19 @@ VEGF165VEGFR2[VEGF165VEGFR2$kon == 5230000 & VEGF165VEGFR2$Reference == "Cunning
 
 # combined the rows and display the means 
 
+# Huang et al. data
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "kon"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "kon"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "koff"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "koff"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A165)", "Kd"])
 VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "Huang et al., 1998 (VEGF-A164)", "Kd"])
+
+# In-house data, 2023
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "kon"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "kon"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "koff"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "koff"])
+VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "Kd"] <- mean(VEGF165VEGFR2[VEGF165VEGFR2$Reference == "In-house data, 2023", "Kd"])
+
 VEGF165VEGFR2 <- unique(VEGF165VEGFR2)
 
 VEGF165NRP1[VEGF165NRP1$Reference == "In-house data, 2023", "kon"] <- mean(VEGF165NRP1[VEGF165NRP1$Reference == "In-house data, 2023", "kon"])
