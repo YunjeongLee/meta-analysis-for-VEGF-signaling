@@ -184,7 +184,6 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
             unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
-            title="Dissociation rates of VEGF-A165:NRP1",
             xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-7e-3, 23e-3), alim = c(0, 15e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
 
