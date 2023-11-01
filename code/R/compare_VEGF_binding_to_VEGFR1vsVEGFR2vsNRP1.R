@@ -167,7 +167,6 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
-            title="Association rates of VEGF-A165:NRP1",
             xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-7, 17), alim = c(0, 10), cex=2)
 dev.off()
 
