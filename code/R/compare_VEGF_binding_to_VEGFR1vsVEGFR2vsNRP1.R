@@ -155,7 +155,6 @@ summary(rm_nrp1_koff)
 png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
-            title="Association rates of VEGF-A165:VEGFR1",
             xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-40, 75), alim = c(0, 45), cex=2)
 dev.off()
 
