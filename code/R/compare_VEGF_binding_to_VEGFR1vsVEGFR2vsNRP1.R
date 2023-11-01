@@ -39,7 +39,7 @@ vegfkonkoff_fitted <- as.data.frame(read_excel(filename_fitted))
 
 # Split Data by parameter -------------------------------------------------
 
-VEGF165VEGFR1 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGR1", ]
+VEGF165VEGFR1 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGFR1", ]
 
 VEGF165VEGFR2 <- vegfkonkoff[vegfkonkoff$Parameter == "VEGF165:VEGFR2", ]
 
