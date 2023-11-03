@@ -173,7 +173,7 @@ dev.off()
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
-            unit = paste0("s", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+207B><U+00B9>"))),
+            unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00D7>10<U+207B><U+00B3> s<U+207B><U+00B9>")),
             xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-0.5e-3, 0.9e-3), alim = c(0, 0.5e-3), cex=2, atransf=function(x) x*1e3)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
