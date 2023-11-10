@@ -7,7 +7,7 @@ cat("\014")
 rm(list = ls())
 
 # Change working directory ------------------------------------------------
-setwd("/Users/yunjeong/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
+setwd("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
 subfolders = c("etc", "visualize")
