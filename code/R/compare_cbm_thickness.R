@@ -31,36 +31,16 @@ instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
 filename = '../../data/adipose_tissue_parameters.xlsx'
-# Adipocyte diameter
-adipocyte <- as.data.frame(read_excel(filename, sheet = "Adipocyte diameter"))
-# Capillary BM thickness
 cbm <- as.data.frame(read_excel(filename, sheet = "CBM thickness"))
 
-# Split adipocyte size and CBM thickness into two dataframes --------------
-# Split adipocyte size dataframe into lean and obese adipose tissue
-adipocyte_lean = adipocyte[!is.na(adipocyte["Lean SE...3"]), c("Reference", "Lean average...2", "Lean SE...3")]
-adipocyte_obese = adipocyte[!is.na(adipocyte["Obese SE...5"]), c("Reference", "Obese average...4", "Obese SE...5")]
-
-# Split CBM thickness dataframe into lean and obese adipose tissue
 cbm_lean = cbm[!is.na(cbm["Lean SE"]), c("Reference", "Lean average", "Lean SE")]
 cbm_obese = cbm[!is.na(cbm["Obese SE"]), c("Reference", "Obese average", "Obese SE")]
 
 # Change column names -----------------------------------------------------
-colnames(adipocyte_lean) <- c("Reference", "Average", "SE")
-colnames(adipocyte_obese) <- c("Reference", "Average", "SE")
 colnames(cbm_lean) <- c("Reference", "Average", "SE")
 colnames(cbm_obese) <- c("Reference", "Average", "SE")
 
 # Meta-analysis -----------------------------------------------------------
-# Compute weighted average and SD -----------------------------------------
-# Adipocyte diameter of lean mice
-rm_adipocyte_lean <- rma(yi = Average, sei = SE, data=adipocyte_lean)
-summary(rm_adipocyte_lean)
-
-# Adipocyte diameter of obese mice
-rm_adipocyte_obese <- rma(yi = Average, sei = SE, data=adipocyte_obese)
-summary(rm_adipocyte_obese)
-
 # Capillary BM thickness of lean mice
 rm_cbm_lean <- rma(yi = Average, sei = SE, data=cbm_lean)
 summary(rm_cbm_lean)
@@ -69,20 +49,6 @@ summary(rm_cbm_lean)
 rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
 summary(rm_cbm_obese)
 
-# Forest plot -------------------------------------------------------------
-# Adipocyte diameter of lean mice
-png(file=sprintf("%s/forest_adipocyte_diameter_lean.png", results_path), width=1300, height=700)
-forest_ylee(data=adipocyte_lean, rm=rm_adipocyte_lean, slab=adipocyte_lean$Reference,
-            unit="µm",
-            xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-30, 130), alim = c(20, 80), cex=2)
-dev.off()
-
-# Adipocyte diameter of obese mice
-png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=700)
-forest_ylee(data=adipocyte_obese, rm=rm_adipocyte_obese, slab=adipocyte_obese$Reference,
-            unit="µm",
-            xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2)
-dev.off()
 
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
@@ -99,25 +65,12 @@ forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference,
 dev.off()
 
 # Student's t-test --------------------------------------------------------
-adipocyte_lean_vs_obese = wtd.t.test(x=adipocyte_lean$Average, y=adipocyte_obese$Average,
-                                     weight=1/(adipocyte_lean$SE^2+rm_adipocyte_lean$tau2), 
-                                     weighty=1/(adipocyte_obese$SE^2+rm_adipocyte_obese$tau2),
-                                     alternative="less", samedata=FALSE)
-
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
                                weight=1/(cbm_lean$SE^2+rm_cbm_lean$tau2), 
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                alternative="two.tailed", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
-# Adipocyte
-adipocyte_lean$Source <- "Lean mice"
-adipocyte_obese$Source <- "Obese mice"
-
-adipocyte = rbind(adipocyte_lean[c("Source", "Average")],
-                  adipocyte_obese[c("Source", "Average")])
-
-# CBM thickness
 cbm_lean$Source <- "Lean murines"
 cbm_obese$Source <- "Obese murines"
 
@@ -125,26 +78,6 @@ cbm = rbind(cbm_lean[c("Source", "Average")],
             cbm_obese[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
-p = ggplot() +
-  geom_point(data = adipocyte_lean, aes(x = "Lean mice", y = Average, colour = Reference), size = 7) +
-  geom_point(data = adipocyte_lean, aes(x = "Lean mice", y = rm_adipocyte_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  labs(color="Lean mice") +
-  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
-  guides(color = guide_legend(order=1)) +
-  new_scale_color() + 
-  geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7) +
-  geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = rm_adipocyte_obese$b), shape = 95, size = 20, colour = "darkred") +
-  lightness(scale_color_colormap('Obese mice', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) + 
-  xlab("") + ylab(TeX("Adipocyte diameter (\\mu{m})")) +
-  geom_bracket(data = adipocyte, aes(x = Source, y = Average), xmin = "Lean mice", xmax = "Obese mice",
-               y.position = 110, tip.length = c(0.5, 0.1), label.size = 7, 
-               label = generate_plabel(adipocyte_lean_vs_obese$coefficients["p.value"])) +
-  theme(text = element_text(size = 20)) + ylim(c(0, 150))
-
-show(p)
-ggsave(sprintf("%s/adipocyte_diameter_lean_vs_obese.png", results_path), width=3500, height=2500, units="px")
-dev.off()
-
 p = ggplot() +
   geom_point(data = cbm_lean, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_lean, aes(x = "Lean murines", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
