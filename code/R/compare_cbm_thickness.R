@@ -240,3 +240,39 @@ show(p)
 ggsave(sprintf("%s/cbm_lean_vs_obese_wo_kidney.png", results_path), width=2000, height=2500, units="px")
 dev.off()
 
+p = ggplot() +
+  geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_lean_wo_kid$b), shape = 95, size = 20, colour = "darkblue") +
+  labs(color="Retina") +
+  lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.blues(rm_cbm_retina$k), reverse = T), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_muscle, aes(x = "Muscle", y = rm_cbm_muscle$b), shape = 95, size = 20, colour = "darkgreen") +
+  labs(color="Muscle") +
+  lightness(scale_color_brewer(palette="Greens"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_heart, aes(x = "Heart", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_heart, aes(x = "Heart", y = rm_cbm_heart$b), shape = 95, size = 20, colour = "darkred") +
+  labs(color="Heart") +
+  lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_kidney, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "black") +
+  labs(color="Kidney") +
+  lightness(scale_color_colormap('Kidney', discrete = T,colormap = brewer.purples(rm_cbm_kidney$k), reverse = T), scalefac(0.8)) +
+  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Kidney")) +
+  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
+               y.position = 480, tip.length = c(0.8, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
+               y.position = 420, tip.length = c(0.6, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
+               y.position = 360, tip.length = c(0.4, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_heart_vs_kidney$coefficients["p.value"])) +
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 500))
+  
+  show(p)
+ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
+dev.off()
