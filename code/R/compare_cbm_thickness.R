@@ -156,6 +156,42 @@ cbm_lean_vs_obese_wo_kidney = wtd.t.test(x=cbm_lean_wo_kid$Average, y=cbm_obese$
                                          weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                          alternative="two.tailed", samedata=FALSE)
 
+# Retina vs. Muscle
+cbm_retina_vs_muscle = wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
+                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+                                  weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
+
+# Retina vs. Heart
+cbm_retina_vs_heart = wtd.t.test(x=cbm_retina$Average, y=cbm_heart$Average,
+                                 weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+                                 weighty=1/(cbm_heart$SE^2+rm_cbm_heart$tau2),
+                                 alternative="two.tailed", samedata=FALSE)
+
+# Retina vs. Kidney
+cbm_retina_vs_kidney = wtd.t.test(x=cbm_retina$Average, y=cbm_kidney$Average,
+                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
+                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
+
+# Muscle vs. Heart
+cbm_muscle_vs_heart = wtd.t.test(x=cbm_muscle$Average, y=cbm_heart$Average,
+                                 weight=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2), 
+                                 weighty=1/(cbm_heart$SE^2+rm_cbm_heart$tau2),
+                                 alternative="two.tailed", samedata=FALSE)
+
+# Muscle vs. Kidney
+cbm_muscle_vs_kidney = wtd.t.test(x=cbm_muscle$Average, y=cbm_kidney$Average,
+                                  weight=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2), 
+                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
+                                  alternative="two.tailed", samedata=FALSE)
+
+# Heart vs. Kidney
+cbm_heart_vs_kidney = wtd.t.test(x=cbm_heart$Average, y=cbm_kidney$Average,
+                                 weight=1/(cbm_heart$SE^2+rm_cbm_heart$tau2), 
+                                 weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
+                                 alternative="two.tailed", samedata=FALSE)
+
 # Merge dataframes for plotting -------------------------------------------
 cbm_lean$Source <- "Lean murines"
 cbm_obese$Source <- "Obese murines"
