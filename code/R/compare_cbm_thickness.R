@@ -34,6 +34,7 @@ instant_pkgs(pkg_list)
 filename = '../../data/adipose_tissue_parameters.xlsx'
 cbm <- as.data.frame(read_excel(filename, sheet = "CBM thickness"))
 
+# Split dataframe into small dataframes -----------------------------------
 cbm_lean = cbm[!is.na(cbm["Lean SE"]), c("Reference", "Lean average", "Lean SE")]
 cbm_obese = cbm[!is.na(cbm["Obese SE"]), c("Reference", "Obese average", "Obese SE")]
 
