@@ -64,6 +64,9 @@ summary(rm_cbm_lean)
 rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
 summary(rm_cbm_obese)
 
+# 2. Exclude kidney data
+cbm_lean_wo_kid <- cbm_lean %>% 
+  filter(!str_detect(Reference, "Kidney"))
 
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
