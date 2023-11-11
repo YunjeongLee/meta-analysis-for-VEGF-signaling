@@ -68,6 +68,10 @@ summary(rm_cbm_obese)
 cbm_lean_wo_kid <- cbm_lean %>% 
   filter(!str_detect(Reference, "Kidney"))
 
+# Capillary BM thickness of lean mice without kidney data
+rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_wo_kid)
+summary(rm_cbm_lean_wo_kid)
+
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
