@@ -37,10 +37,6 @@ vessel_size_tumor <- as.data.frame(read_excel(filename, sheet = "Vessel size (tu
 # Vessel density
 vessel_density_obesity <- as.data.frame(read_excel(filename, sheet = "Vessel density (adipose)"))
 vessel_density_tumor <- as.data.frame(read_excel(filename, sheet = "Vessel density (tumor)"))
-# CBM thickness
-cbm_retina <- as.data.frame(read_excel(filename, sheet = "CBM (retina)"))
-cbm_muscle <- as.data.frame(read_excel(filename, sheet = "CBM (muscle)"))
-cbm_kidney <- as.data.frame(read_excel(filename, sheet = "CBM (kidney)"))
 
 # Divide obesity vessel data into separate dataframes ---------------------
 # Vessel size
@@ -84,18 +80,6 @@ summary(rm_vessel_density_obese)
 rm_vessel_density_tumor <- rma(yi = Average, sei = SE, data=vessel_density_tumor)
 summary(rm_vessel_density_tumor)
 
-# CBM thickness in retina
-rm_cbm_retina <- rma(yi = Average, sei = SE, data = cbm_retina)
-summary(rm_cbm_retina)
-
-# CBM thickness in muscle
-rm_cbm_muscle <- rma(yi = Average, sei = SE, data = cbm_muscle)
-summary(rm_cbm_muscle)
-
-# CBM thickness in kidney
-rm_cbm_kidney <- rma(yi = Average, sei = SE, data = cbm_kidney)
-summary(rm_cbm_kidney)
-
 # Forest plot -------------------------------------------------------------
 # Vessel size
 png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
@@ -131,23 +115,6 @@ forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 700), alim = c(0, 350), cex=2)
 dev.off()
 
-# CBM thickness
-png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=500)
-forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference,
-            unit = "nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
-dev.off()
-png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
-forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference,
-            unit = "nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-70, 200), alim=c(0, 120), cex=2)
-dev.off()
-png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=700)
-forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference,
-            unit = "nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-180, 580), alim=c(50, 350), cex=2)
-dev.off()
-
 # Student's t-test --------------------------------------------------------
 # Vessel size
 vessel_size_lean_vs_obese = wtd.t.test(x=vessel_size_lean$Average, y=vessel_size_obese$Average,
@@ -181,22 +148,6 @@ vessel_density_obese_vs_tumor = wtd.t.test(x=vessel_density_obese$Average, y=ves
                                            weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
                                            alternative="greater", samedata=FALSE)
 
-# CBM thickness
-cbm_retina_vs_muscle = wtd.t.test(x=cbm_retina$Average, y=cbm_muscle$Average,
-                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
-                                  weighty=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2),
-                                  alternative="two.tailed", samedata=FALSE)
-
-cbm_retina_vs_kidney = wtd.t.test(x=cbm_retina$Average, y=cbm_kidney$Average,
-                                  weight=1/(cbm_retina$SE^2+rm_cbm_retina$tau2), 
-                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
-                                  alternative="two.tailed", samedata=FALSE)
-
-cbm_muscle_vs_kidney = wtd.t.test(x=cbm_muscle$Average, y=cbm_kidney$Average,
-                                  weight=1/(cbm_muscle$SE^2+rm_cbm_muscle$tau2), 
-                                  weighty=1/(cbm_kidney$SE^2+rm_cbm_kidney$tau2),
-                                  alternative="two.tailed", samedata=FALSE)
-
 # Merge dataframes for plotting -------------------------------------------
 # Vessel size
 vessel_size_lean$Source <- "Lean adipose"
@@ -215,15 +166,6 @@ vessel_density_tumor$Source <- "Tumor"
 df_density = rbind(vessel_density_lean[c("Source", "Average")],
                    vessel_density_obese[c("Source", "Average")],
                    vessel_density_tumor[c("Source", "Average")])
-
-# CBM thickness
-cbm_retina$Source <- "Retina"
-cbm_muscle$Source <- "Muscle"
-cbm_kidney$Source <- "Kidney"
-
-df_cbm = rbind(cbm_retina[c("Source", "Average")],
-               cbm_muscle[c("Source", "Average")],
-               cbm_kidney[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
 # Vessel size
@@ -285,38 +227,4 @@ p2 = ggplot() +
 
 show(p2)
 ggsave(sprintf("%s/vessel_density.png", results_path), width=4000, height=2500, units="px")
-dev.off()
-
-# CBM thickness
-p3 = ggplot() +
-  geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_retina$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(c(0, 400)) + labs(color="Retina")  +
-  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
-  guides(color = guide_legend(order=1)) +
-  new_scale_color() + 
-  geom_point(data = cbm_muscle, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_muscle, aes(x = "Muscle", y = rm_cbm_muscle$b), shape = 95, size = 20, colour = "darkgreen") +
-  labs(color="Muscle") +
-  lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
-  guides(color = guide_legend(order=2)) +
-  new_scale_color() + 
-  geom_point(data = cbm_kidney, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "darkred") +
-  labs(color="Kidney") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
-  guides(color = guide_legend(order=3)) +
-  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
-  scale_x_discrete(limits=c("Retina", "Muscle", "Kidney")) +
-  geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
-               y.position = 380, tip.length = c(0.9, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
-  geom_bracket(data = df_cbm, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
-               y.position = 350, tip.length = c(0.8, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
-  theme(text = element_text(size = 20),
-        plot.title = element_text(hjust = 0.5, face="bold"))
-
-show(p3)
-ggsave(sprintf("%s/cbm.png", results_path), width=4000, height=2500, units="px")
 dev.off()
