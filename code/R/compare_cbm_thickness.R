@@ -55,6 +55,7 @@ cbm_heart$Reference <- str_remove(cbm_heart$Reference, " & Heart")
 cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 
 # Meta-analysis -----------------------------------------------------------
+# 1. Include all kidney data
 # Capillary BM thickness of lean mice
 rm_cbm_lean <- rma(yi = Average, sei = SE, data=cbm_lean)
 summary(rm_cbm_lean)
@@ -79,6 +80,7 @@ forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference,
 dev.off()
 
 # Student's t-test --------------------------------------------------------
+# Lean vs. Obese (with kidney data)
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
                                weight=1/(cbm_lean$SE^2+rm_cbm_lean$tau2), 
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
