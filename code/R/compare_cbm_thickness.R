@@ -193,7 +193,15 @@ cbm_heart_vs_kidney = wtd.t.test(x=cbm_heart$Average, y=cbm_kidney$Average,
                                  alternative="two.tailed", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
+cbm_retina$Source <- "Retina"
+cbm_muscle$Source <- "Muscle"
+cbm_heart$Source <- "Heart"
+cbm_kidney$Source <- "Kidney"
 
+cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
+                    cbm_muscle[c("Source", "Average")],
+                    cbm_heart[c("Source", "Average")],
+                    cbm_kidney[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
