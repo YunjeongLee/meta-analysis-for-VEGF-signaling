@@ -102,7 +102,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 400), alim = c(0, 200), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
