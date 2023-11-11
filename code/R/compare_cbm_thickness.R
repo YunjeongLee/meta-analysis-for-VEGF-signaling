@@ -212,7 +212,7 @@ p = ggplot() +
   labs(color="Obese murines") +
   lightness(scale_color_colormap('Obese murines', discrete = T,colormap = brewer.oranges(rm_cbm_obese$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
-  theme(text = element_text(size = 20)) + ylim(c(0, 150))
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 350))
 
 show(p)
 ggsave(sprintf("%s/cbm_lean_vs_obese.png", results_path), width=3500, height=2500, units="px")
