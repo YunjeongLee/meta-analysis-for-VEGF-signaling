@@ -193,11 +193,7 @@ cbm_heart_vs_kidney = wtd.t.test(x=cbm_heart$Average, y=cbm_kidney$Average,
                                  alternative="two.tailed", samedata=FALSE)
 
 # Merge dataframes for plotting -------------------------------------------
-cbm_lean$Source <- "Lean murines"
-cbm_obese$Source <- "Obese murines"
 
-cbm = rbind(cbm_lean[c("Source", "Average")],
-            cbm_obese[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
 p = ggplot() +
