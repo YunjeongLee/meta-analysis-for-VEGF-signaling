@@ -72,6 +72,23 @@ cbm_lean_wo_kid <- cbm_lean %>%
 rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_wo_kid)
 summary(rm_cbm_lean_wo_kid)
 
+# 3. Tissue variability
+# Retina
+rm_cbm_retina <- rma(yi = Average, sei = SE, data=cbm_retina)
+summary(rm_cbm_retina)
+
+# Muscle
+rm_cbm_muscle <- rma(yi = Average, sei = SE, data=cbm_muscle)
+summary(rm_cbm_muscle)
+
+# Heart
+rm_cbm_heart <- rma(yi = Average, sei = SE, data=cbm_heart)
+summary(rm_cbm_heart)
+
+# Kidney
+rm_cbm_kidney <- rma(yi = Average, sei = SE, data=cbm_kidney)
+summary(rm_cbm_kidney)
+
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
