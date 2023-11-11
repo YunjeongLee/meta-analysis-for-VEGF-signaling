@@ -42,6 +42,18 @@ cbm_obese = cbm[!is.na(cbm["Obese SE"]), c("Reference", "Obese average", "Obese 
 colnames(cbm_lean) <- c("Reference", "Average", "SE")
 colnames(cbm_obese) <- c("Reference", "Average", "SE")
 
+# Split CBM thickness data of lean murines into tissue-dependent --------
+cbm_retina = cbm_lean %>% filter(str_detect(Reference, "Retina"))
+cbm_muscle = cbm_lean %>% filter(str_detect(Reference, "Muscle"))
+cbm_heart = cbm_lean %>% filter(str_detect(Reference, "Heart"))
+cbm_kidney = cbm_lean %>% filter(str_detect(Reference, "Kidney"))
+
+# Remove substring from tissue dataframes
+cbm_retina$Reference <- str_remove(cbm_retina$Reference, " & Retina")
+cbm_muscle$Reference <- str_remove(cbm_muscle$Reference, " & Muscle")
+cbm_heart$Reference <- str_remove(cbm_heart$Reference, " & Heart")
+cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
+
 # Meta-analysis -----------------------------------------------------------
 # Capillary BM thickness of lean mice
 rm_cbm_lean <- rma(yi = Average, sei = SE, data=cbm_lean)
