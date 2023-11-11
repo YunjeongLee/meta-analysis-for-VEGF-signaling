@@ -95,7 +95,7 @@ summary(rm_cbm_kidney)
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=2000, height=2500)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-50, 200), alim = c(20, 120), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 550), alim = c(0, 350), cex=2)
 dev.off()
 
 # CBM thickness of obese mice
