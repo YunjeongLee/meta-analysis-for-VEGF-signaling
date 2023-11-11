@@ -113,6 +113,36 @@ forest_ylee(data=cbm_lean_wo_kid, rm=rm_cbm_lean_wo_kid, slab=cbm_lean_wo_kid$Re
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2)
 dev.off()
 
+# 3. Tissue variability
+# Retina
+png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2)
+dev.off()
+
+# Muscle
+png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
+forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2)
+dev.off()
+
+# Heart
+png(file=sprintf("%s/forest_cbm_heart.png", results_path), width=1300, height=700)
+forest_ylee(data=cbm_heart, rm=rm_cbm_heart, slab=cbm_heart$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2)
+dev.off()
+
+# Kidney
+png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
+dev.off()
+
+
 # Student's t-test --------------------------------------------------------
 # Lean vs. Obese (with kidney data)
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
