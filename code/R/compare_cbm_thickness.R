@@ -150,6 +150,12 @@ cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                alternative="two.tailed", samedata=FALSE)
 
+# Lean vs. Obese (without kidney data)
+cbm_lean_vs_obese_wo_kidney = wtd.t.test(x=cbm_lean_wo_kid$Average, y=cbm_obese$Average,
+                                         weight=1/(cbm_lean_wo_kid$SE^2+rm_cbm_lean_wo_kid$tau2), 
+                                         weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
+                                         alternative="two.tailed", samedata=FALSE)
+
 # Merge dataframes for plotting -------------------------------------------
 cbm_lean$Source <- "Lean murines"
 cbm_obese$Source <- "Obese murines"
