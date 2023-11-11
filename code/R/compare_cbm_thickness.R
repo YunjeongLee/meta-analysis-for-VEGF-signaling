@@ -242,7 +242,7 @@ dev.off()
 
 p = ggplot() +
   geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_lean_wo_kid$b), shape = 95, size = 20, colour = "darkblue") +
+  geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_retina$b), shape = 95, size = 20, colour = "darkblue") +
   labs(color="Retina") +
   lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.blues(rm_cbm_retina$k), reverse = T), scalefac(0.8)) +
   new_scale_color() + 
