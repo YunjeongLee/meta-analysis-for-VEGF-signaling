@@ -36,7 +36,7 @@ adipocyte <- as.data.frame(read_excel(filename, sheet = "Adipocyte diameter"))
 # Capillary BM thickness
 cbm <- as.data.frame(read_excel(filename, sheet = "CBM thickness"))
 
-# Split adipocyte size and CBM thickness into two dataframes --------------
+# Split adipocyte size into two dataframes --------------
 # Split adipocyte size dataframe into lean and obese adipose tissue
 adipocyte_lean = adipocyte[!is.na(adipocyte["Lean SE...3"]), c("Reference", "Lean average...2", "Lean SE...3")]
 adipocyte_obese = adipocyte[!is.na(adipocyte["Obese SE...5"]), c("Reference", "Obese average...4", "Obese SE...5")]
