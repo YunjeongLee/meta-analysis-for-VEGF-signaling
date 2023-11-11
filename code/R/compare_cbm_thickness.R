@@ -105,6 +105,14 @@ forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference,
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 400), alim = c(0, 200), cex=2)
 dev.off()
 
+# 2. Exclude kidney data
+# CBM thickness of lean mice
+png(file=sprintf("%s/forest_cbm_lean_wo_kidney.png", results_path), width=2000, height=2000)
+forest_ylee(data=cbm_lean_wo_kid, rm=rm_cbm_lean_wo_kid, slab=cbm_lean_wo_kid$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2)
+dev.off()
+
 # Student's t-test --------------------------------------------------------
 # Lean vs. Obese (with kidney data)
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
