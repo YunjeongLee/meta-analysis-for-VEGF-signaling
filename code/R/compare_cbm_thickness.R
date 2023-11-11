@@ -90,6 +90,7 @@ rm_cbm_kidney <- rma(yi = Average, sei = SE, data=cbm_kidney)
 summary(rm_cbm_kidney)
 
 # Forest plot -------------------------------------------------------------
+# 1. Include all kidney data
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
