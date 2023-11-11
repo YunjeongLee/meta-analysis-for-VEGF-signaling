@@ -221,3 +221,22 @@ p = ggplot() +
 show(p)
 ggsave(sprintf("%s/cbm_lean_vs_obese.png", results_path), width=2000, height=2500, units="px")
 dev.off()
+
+p = ggplot() +
+  geom_point(data = cbm_lean_wo_kid, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_lean_wo_kid, aes(x = "Lean murines", y = rm_cbm_lean_wo_kid$b), shape = 95, size = 20, colour = "darkblue") +
+  labs(color="Lean murines") +
+  lightness(scale_color_colormap('Lean murines', discrete = T, colormap = brewer.blues(rm_cbm_lean_wo_kid$k), reverse = T), scalefac(0.8)) +
+  guides(color = guide_legend(order=1)) +
+  new_scale_color() + 
+  geom_point(data = cbm_obese, aes(x = "Obese murines", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_obese, aes(x = "Obese murines", y = rm_cbm_obese$b), shape = 95, size = 20, colour = "darkred") +
+  labs(color="Obese murines") +
+  lightness(scale_color_colormap('Obese murines', discrete = T,colormap = brewer.oranges(rm_cbm_obese$k), reverse = T), scalefac(0.8)) +
+  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 350))
+
+show(p)
+ggsave(sprintf("%s/cbm_lean_vs_obese_wo_kidney.png", results_path), width=2000, height=2500, units="px")
+dev.off()
+
