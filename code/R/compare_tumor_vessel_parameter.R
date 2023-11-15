@@ -96,14 +96,14 @@ dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
-            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-300, 400), alim = c(0, 200), cex=2)
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-500, 600), alim = c(0, 300), cex=2)
 dev.off()
 
 # Vessel density
 png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1500, height=700)
 forest_ylee(data=vessel_density_lean, rm=rm_vessel_density_lean, slab=vessel_density_lean$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
-            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex = 2)
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-1000, 2500), alim = c(0, 1500), cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_density_obese, rm=rm_vessel_density_obese, slab=vessel_density_obese$Reference, 
