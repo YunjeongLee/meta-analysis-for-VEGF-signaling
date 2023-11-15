@@ -44,7 +44,7 @@ vessel_size_lean <- vessel_size_obesity[!is.na(vessel_size_obesity$Lean_Average)
                                         c('Reference', 'Lean_Average', 'Lean_SE')]
 vessel_size_obese <- vessel_size_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
 # Vessel density
-vessel_density_lean <- vessel_density_obesity[!is.na(vessel_size_obesity$Lean_Average), 
+vessel_density_lean <- vessel_density_obesity[!is.na(vessel_density_obesity$Lean_Average), 
                                               c('Reference', 'Lean_Average', 'Lean_SE')]
 vessel_density_obese <- vessel_density_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
 
