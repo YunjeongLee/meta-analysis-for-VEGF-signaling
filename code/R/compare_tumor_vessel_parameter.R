@@ -186,7 +186,7 @@ p1 = ggplot() +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = rm_vessel_size_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 200) + labs(color="Tumor") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_size_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 180, tip.length = c(0.5, 0.1), label.size = 7, 
@@ -215,7 +215,7 @@ p2 = ggplot() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
   ylim(0, 1000) + labs(color="Tumor") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_density_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 900, tip.length = c(0.1, 0.05), label.size = 7, 
