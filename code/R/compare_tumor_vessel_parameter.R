@@ -226,6 +226,9 @@ p2 = ggplot() +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 1100, tip.length = c(0.1, 0.5), label.size = 7, 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
+  geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Obese adipose",
+               y.position = 1400, tip.length = c(0.1, 0.2), label.size = 7, 
+               label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
