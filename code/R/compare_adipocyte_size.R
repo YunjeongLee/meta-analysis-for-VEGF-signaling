@@ -62,7 +62,7 @@ forest_ylee(data=adipocyte_lean, rm=rm_adipocyte_lean, slab=adipocyte_lean$Refer
 dev.off()
 
 # Adipocyte diameter of obese mice
-png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=900)
 forest_ylee(data=adipocyte_obese, rm=rm_adipocyte_obese, slab=adipocyte_obese$Reference,
             unit="µm",
             xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2)
