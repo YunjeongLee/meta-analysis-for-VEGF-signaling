@@ -189,7 +189,7 @@ p1 = ggplot() +
   lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_size_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 180, tip.length = c(0.5, 0.1), label.size = 7, 
+               y.position = 290, tip.length = c(0.7, 0.1), label.size = 7, 
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
@@ -218,10 +218,10 @@ p2 = ggplot() +
   lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_density_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 900, tip.length = c(0.1, 0.05), label.size = 7, 
+               y.position = 1600, tip.length = c(0.1, 0.3), label.size = 7, 
                label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
-               y.position = 800, tip.length = c(0.1, 0.5), label.size = 7, 
+               y.position = 1100, tip.length = c(0.1, 0.5), label.size = 7, 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
