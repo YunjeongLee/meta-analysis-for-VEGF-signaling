@@ -46,7 +46,8 @@ vessel_size_obese <- vessel_size_obesity[c('Reference', 'Obese_Average', 'Obese_
 # Vessel density
 vessel_density_lean <- vessel_density_obesity[!is.na(vessel_density_obesity$Lean_Average), 
                                               c('Reference', 'Lean_Average', 'Lean_SE')]
-vessel_density_obese <- vessel_density_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
+vessel_density_obese <- vessel_density_obesity[!is.na(vessel_density_obesity$Obese_Average), 
+                                               c('Reference', 'Obese_Average', 'Obese_SE')]
 
 # Change column names -----------------------------------------------------
 colnames(vessel_size_lean) <- c("Reference", "Average", "SE")
