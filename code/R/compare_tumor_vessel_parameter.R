@@ -173,19 +173,19 @@ df_density = rbind(vessel_density_lean[c("Source", "Average")],
 p1 = ggplot() +
   geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = rm_vessel_size_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(0, 200) + labs(color="Lean adipose")  +
+  ylim(0, 300) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = rm_vessel_size_obese$b), shape = 95, size = 20, colour = "darkgreen") +
-  ylim(0, 200) + labs(color="Obese adipose") +
+  ylim(0, 300) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = rm_vessel_size_tumor$b), shape = 95, size = 20, colour = "darkred") +
-  ylim(0, 200) + labs(color="Tumor") +
+  ylim(0, 300) + labs(color="Tumor") +
   lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_size_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
@@ -202,19 +202,19 @@ dev.off()
 p2 = ggplot() +
   geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = rm_vessel_density_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(0, 1000) + labs(color="Lean adipose")  +
+  ylim(0, 1700) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = rm_vessel_density_obese$b), shape = 95, size = 20, colour = "darkgreen") +
-  ylim(0, 1000) + labs(color="Obese adipose") +
+  ylim(0, 1700) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
-  ylim(0, 1000) + labs(color="Tumor") +
+  ylim(0, 1700) + labs(color="Tumor") +
   lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.oranges(rm_vessel_density_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
