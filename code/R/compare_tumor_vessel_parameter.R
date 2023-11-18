@@ -193,7 +193,7 @@ p1 = ggplot() +
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 260, tip.length = c(0.3, 0.1), label.size = 7, 
-               label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_size_obese_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
