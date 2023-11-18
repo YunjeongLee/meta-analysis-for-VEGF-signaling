@@ -117,7 +117,7 @@ forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
-png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=550)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             unit="pM", title="",
             xlab="Binding affinity, Kd (pM)", xlim = c(-150, 280), alim = c(0, 150), cex=2)
