@@ -26,7 +26,7 @@ dir.create(results_path, recursive = TRUE)
 
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
-             "shades", "ggnewscale", "scales", "ggsignif", "colormap")
+             "shades", "ggnewscale", "scales", "ggsignif", "colormap", "dplyr", "stringr")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
@@ -66,6 +66,12 @@ vegfr2_spr <- vegfr2_spr[!is.na(vegfr2_spr["Reference"]), ]
 vegfr2_radio <- vegfr2_radio[!is.na(vegfr2_radio["Reference"]), ]
 nrp1_spr <- nrp1_spr[!is.na(nrp1_spr["Reference"]), ]
 nrp1_radio <- nrp1_radio[!is.na(nrp1_radio["Reference"]), ]
+
+# Delete `Radioligand` and `SPR` from von Tiedemann -----------------------
+vegfr1_spr$Reference <- str_remove(vegfr1_spr$Reference, "(SPR)")
+vegfr1_radio$Reference <- str_remove(vegfr1_radio$Reference, "(Radioligand)")
+vegfr1_spr$Reference <- str_replace(vegfr1_spr$Reference, "\\([^()]{0,}\\)", "")
+vegfr1_radio$Reference <- str_replace(vegfr1_radio$Reference, "\\([^()]{0,}\\)", "")
 
 # Give assumed SE for radioligand assays ----------------------------------
 vegfr1_radio[is.na(vegfr1_radio["SE"]), "SE"] <- vegfr1_radio[is.na(vegfr1_radio["SE"]), "Average"] * 0.1
@@ -111,7 +117,7 @@ forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
-png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=550)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             unit="pM", title="",
             xlab="Binding affinity, Kd (pM)", xlim = c(-150, 280), alim = c(0, 150), cex=2)
@@ -158,7 +164,7 @@ vegfr2_ttest = wtd.t.test(x=vegfr2_spr$Average, y=vegfr2_radio$Average,
                           weighty=1/(vegfr2_radio$SE^2+rm_vegfr2_radio$tau2),
                           alternative="two.tailed", samedata=FALSE)
 
-# VEGFR:VEGFR2 (SPR vs radioligand)
+# VEGFR:NRP1 (SPR vs radioligand)
 nrp1_ttest = wtd.t.test(x=nrp1_spr$Average, y=nrp1_radio$Average,
                         weight=1/(nrp1_spr$SE^2+rm_nrp1_spr$tau2), 
                         weighty=1/(nrp1_radio$SE^2+rm_nrp1_radio$tau2),
@@ -222,7 +228,7 @@ df_spr = rbind(vegfr1_spr[c("Source", "Average")],
 p = ggplot() +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7) +
   geom_point(data = vegfr1_radio, aes(x = "VEGFR1", y=rm_vegfr1_radio$b), shape = 95, size=20, colour = "darkblue") +
-  lightness(scale_color_colormap('Cell-based (Radioligand)', discrete = T,colormap = "velocity-blue", reverse = T), scalefac(0.8)) +
+  lightness(scale_color_colormap('Radioligand', discrete = T,colormap = "velocity-blue", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7) +
   geom_point(data = vegfr2_radio, aes(x = "VEGFR2", y=rm_vegfr2_radio$b), shape = 95, size=20, colour = "darkblue") +
   geom_point(data = nrp1_radio, aes(x = "NRP1", y = Average, colour = Reference), size = 7) +
@@ -231,14 +237,15 @@ p = ggplot() +
   new_scale_color() + 
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = vegfr1_spr, aes(x = "VEGFR1", y=rm_vegfr1_spr$b), shape = 95, size=20, colour = "darkred") +
-  lightness(scale_color_colormap('Chip-based  (SPR)', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) +
+  lightness(scale_color_colormap('SPR', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = vegfr2_spr, aes(x = "VEGFR2", y=rm_vegfr2_spr$b), shape = 95, size=20, colour = "darkred") +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y = Average, colour = Reference), size = 7, shape=17) +
   geom_point(data = nrp1_spr, aes(x = "NRP1", y=rm_nrp1_spr$b), shape = 95, size=20, colour = "darkred") +
-  # annotate("text", x = "NRP1", y=rm_nrp1_spr$b*1e3, 
-  #          label=generate_plabel(nrp1_ttest$coefficients["p.value"]), hjust=-0.35,
-  #          size=6, colour = "darkred") +
+  annotate("text", x = "VEGFR1", y=max(vegfr1_radio$Average)*2,
+           label=generate_plabel(vegfr1_ttest$coefficients["p.value"]), hjust=-0.15,
+           size=6, colour = "darkblue") +
+  annotate("text", x = "VEGFR1", y=max(vegfr1_radio$Average)*2, label= "*", size=6, colour = "darkblue") +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
@@ -249,7 +256,7 @@ p = ggplot() +
   theme(text = element_text(size = 20))
 
 show(p)
-ggsave(sprintf("%s/spr_vs_radioligand.png", results_path), width=4000, height=2500, units="px")
+ggsave(sprintf("%s/spr_vs_radioligand.png", results_path), width=4000, height=3000, units="px")
 dev.off()
 
 # Radioligand for all receptors
@@ -277,11 +284,8 @@ p = ggplot() +
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   geom_bracket(data = df_radio, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
-               y.position = 6, tip.length = c(0.3, 0.6), 
+               y.position = 6, tip.length = c(0.6, 0.3), 
                label = generate_plabel(radio_r1_vs_n1$coefficients["p.value"])) +
-  geom_bracket(data = df_radio, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
-               y.position = 4.5, tip.length = c(0.5, 0.3), 
-               label = generate_plabel(radio_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))
@@ -314,6 +318,9 @@ p = ggplot() +
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
+  geom_bracket(data = df_spr, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
+               y.position = 6, tip.length = c(0.6, 0.3), 
+               label = generate_plabel(spr_r1_vs_r2$coefficients["p.value"])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   xlab("") + ylab("Binding affinity, Kd (pM)") +
   theme(text = element_text(size = 20))

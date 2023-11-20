@@ -26,7 +26,7 @@ dir.create(results_path, recursive = TRUE)
 
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
-             "shades", "ggnewscale", "scales", "ggsignif", "colormap")
+             "shades", "ggnewscale", "scales", "ggsignif", "colormap", "pals")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
@@ -121,7 +121,7 @@ p = ggplot() +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y = Average*1e3, colour = Reference), size = 7) +
   geom_point(data = vegfr1, aes(x = "VEGFR1", y=rm_vegfr1$b*1e3), shape = 95, size=20, colour = "darkblue") +
   labs(color="VEGFR1") +
-  lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
+  lightness(scale_color_colormap('VEGFR1', discrete = T, colormap = brewer.blues(rm_vegfr1$k), reverse = T), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vegfr2, aes(x = "VEGFR2", y = Average*1e3, colour = Reference), size = 7) +
@@ -133,7 +133,7 @@ p = ggplot() +
   geom_point(data = nrp1, aes(x = "NRP1", y = Average*1e3, colour = Reference), size = 7) +
   geom_point(data = nrp1, aes(x = "NRP1", y=rm_nrp1$b*1e3), shape = 95, size=20, colour = "darkred") +
   labs(color="NRP1") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  lightness(scale_color_colormap('NRP1', discrete = T, colormap = brewer.oranges(rm_nrp1$k), reverse = T), scalefac(0.8)) +
   guides(color = guide_legend(order=3)) +
   xlab("") + ylab(TeX("Binding affinity, Kd (pM)")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),

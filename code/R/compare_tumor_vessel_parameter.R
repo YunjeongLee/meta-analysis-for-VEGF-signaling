@@ -20,7 +20,7 @@ for (i in 1:length(subfolders)) {
 
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
-             "shades", "ggnewscale", "ggsignif", "stringi")
+             "shades", "ggnewscale", "ggsignif", "stringi", "pals")
 instant_pkgs(pkg_list)
 
 # Check and generate a result folder --------------------------------------
@@ -44,9 +44,10 @@ vessel_size_lean <- vessel_size_obesity[!is.na(vessel_size_obesity$Lean_Average)
                                         c('Reference', 'Lean_Average', 'Lean_SE')]
 vessel_size_obese <- vessel_size_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
 # Vessel density
-vessel_density_lean <- vessel_density_obesity[!is.na(vessel_size_obesity$Lean_Average), 
+vessel_density_lean <- vessel_density_obesity[!is.na(vessel_density_obesity$Lean_Average), 
                                               c('Reference', 'Lean_Average', 'Lean_SE')]
-vessel_density_obese <- vessel_density_obesity[c('Reference', 'Obese_Average', 'Obese_SE')]
+vessel_density_obese <- vessel_density_obesity[!is.na(vessel_density_obesity$Obese_Average), 
+                                               c('Reference', 'Obese_Average', 'Obese_SE')]
 
 # Change column names -----------------------------------------------------
 colnames(vessel_size_lean) <- c("Reference", "Average", "SE")
@@ -82,7 +83,7 @@ summary(rm_vessel_density_tumor)
 
 # Forest plot -------------------------------------------------------------
 # Vessel size
-png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vessel_size_lean.png", results_path), width=1300, height=600)
 forest_ylee(data=vessel_size_lean, rm=rm_vessel_size_lean, slab=vessel_size_lean$Reference,
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
             xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-150, 350), alim = c(0, 200), cex=2)
@@ -95,21 +96,21 @@ dev.off()
 png(file=sprintf("%s/forest_vessel_size_tumor.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_size_tumor, rm=rm_vessel_size_tumor, slab=vessel_size_tumor$Reference, 
             unit = paste0("µm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
-            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-300, 400), alim = c(0, 200), cex=2)
+            xlab=TeX("Vessel size $(µm^2)$"), xlim = c(-500, 600), alim = c(0, 300), cex=2)
 dev.off()
 
 # Vessel density
-png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_vessel_density_lean.png", results_path), width=1500, height=700)
 forest_ylee(data=vessel_density_lean, rm=rm_vessel_density_lean, slab=vessel_density_lean$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
-            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex = 2)
+            xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-1000, 2500), alim = c(0, 1500), cex = 2)
 dev.off()
 png(file=sprintf("%s/forest_vessel_density_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=vessel_density_obese, rm=rm_vessel_density_obese, slab=vessel_density_obese$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 1700), alim = c(0, 1000), cex=2)
 dev.off()
-png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vessel_density_tumor.png", results_path), width=1500, height=900)
 forest_ylee(data= vessel_density_tumor, rm=rm_vessel_density_tumor, slab=vessel_density_tumor$Reference, 
             unit = paste0("no./mm", stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B2>"))),
             xlab=TeX("Vessel density $(no./mm^2)$"), xlim = c(-600, 700), alim = c(0, 350), cex=2)
@@ -172,59 +173,65 @@ df_density = rbind(vessel_density_lean[c("Source", "Average")],
 p1 = ggplot() +
   geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_lean, aes(x = "Lean adipose", y = rm_vessel_size_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(0, 200) + labs(color="Lean adipose")  +
+  ylim(0, 300) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_obese, aes(x = "Obese adipose", y = rm_vessel_size_obese$b), shape = 95, size = 20, colour = "darkgreen") +
-  ylim(0, 200) + labs(color="Obese adipose") +
+  ylim(0, 300) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_size_tumor, aes(x = "Tumor", y = rm_vessel_size_tumor$b), shape = 95, size = 20, colour = "darkred") +
-  ylim(0, 200) + labs(color="Tumor") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  ylim(0, 300) + labs(color="Tumor") +
+  lightness(scale_color_colormap('Tumor', discrete = T, colormap = brewer.oranges(rm_vessel_size_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 180, tip.length = c(0.5, 0.1), label.size = 7, 
+               y.position = 290, tip.length = c(0.7, 0.1), label.size = 7, 
                label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
+  geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
+               y.position = 260, tip.length = c(0.3, 0.1), label.size = 7, 
+               label = generate_plabel(vessel_size_obese_vs_tumor$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p1)
-ggsave(sprintf("%s/vessel_size.png", results_path), width=4000, height=2500, units="px")
+ggsave(sprintf("%s/vessel_size.png", results_path), width=4500, height=3000, units="px")
 dev.off()
 
 # Vessel density
 p2 = ggplot() +
   geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_lean, aes(x = "Lean adipose", y = rm_vessel_density_lean$b), shape = 95, size = 20, colour = "darkblue") +
-  ylim(0, 1000) + labs(color="Lean adipose")  +
+  ylim(0, 1700) + labs(color="Lean adipose")  +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_obese, aes(x = "Obese adipose", y = rm_vessel_density_obese$b), shape = 95, size = 20, colour = "darkgreen") +
-  ylim(0, 1000) + labs(color="Obese adipose") +
+  ylim(0, 1700) + labs(color="Obese adipose") +
   lightness(scale_color_brewer(palette="Greens"),scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = Average, colour = Reference), size = 7) +
   geom_point(data = vessel_density_tumor, aes(x = "Tumor", y = rm_vessel_density_tumor$b), shape = 95, size = 20, colour = "darkred") +
-  ylim(0, 1000) + labs(color="Tumor") +
-  lightness(scale_color_brewer(palette="Oranges"),scalefac(0.8)) +
+  ylim(0, 1700) + labs(color="Tumor") +
+  lightness(scale_color_colormap('Tumor', discrete = T, colormap = brewer.oranges(rm_vessel_density_tumor$k), reverse = T), scalefac(0.8)) +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
-               y.position = 900, tip.length = c(0.1, 0.05), label.size = 7, 
+               y.position = 1600, tip.length = c(0.1, 0.3), label.size = 7, 
                label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
-               y.position = 800, tip.length = c(0.1, 0.5), label.size = 7, 
+               y.position = 1100, tip.length = c(0.1, 0.5), label.size = 7, 
                label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
+  geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Obese adipose",
+               y.position = 1400, tip.length = c(0.1, 0.2), label.size = 7, 
+               label = generate_plabel(vessel_density_lean_vs_obese$coefficients["p.value"])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p2)
-ggsave(sprintf("%s/vessel_density.png", results_path), width=4000, height=2500, units="px")
+ggsave(sprintf("%s/vessel_density.png", results_path), width=4500, height=3000, units="px")
 dev.off()
