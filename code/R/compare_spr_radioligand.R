@@ -26,7 +26,7 @@ dir.create(results_path, recursive = TRUE)
 
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
-             "shades", "ggnewscale", "scales", "ggsignif", "colormap", "dplyr")
+             "shades", "ggnewscale", "scales", "ggsignif", "colormap", "dplyr", "stringr")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
