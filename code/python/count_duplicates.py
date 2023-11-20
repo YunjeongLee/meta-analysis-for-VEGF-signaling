@@ -53,3 +53,7 @@ print("The number of duplicates in selected papers list: ", len(df_select) - len
 
 print("The number of searched papers (excluding duplicates): ", len(df_search.drop_duplicates()))
 print("The number of selected papers (excluding duplicates): ", len(df_select.drop_duplicates()))
+
+# Count the number of papers included in meta-analysis
+df_select_no_dup = df_select.drop_duplicates()
+print("The number of papers included in the meta-analysis: ", len(df_select_no_dup.loc[df_select_no_dup["Selected"]=="Yes"]))
