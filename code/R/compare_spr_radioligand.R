@@ -256,7 +256,7 @@ p = ggplot() +
   theme(text = element_text(size = 20))
 
 show(p)
-ggsave(sprintf("%s/spr_vs_radioligand.png", results_path), width=4000, height=2500, units="px")
+ggsave(sprintf("%s/spr_vs_radioligand.png", results_path), width=4000, height=3000, units="px")
 dev.off()
 
 # Radioligand for all receptors
