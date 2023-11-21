@@ -47,10 +47,18 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   par(cex=sav$cex, font=1)
   
   ### add text with heterogeneity statistics
-  mtext(side=1, TeX(paste("Test for heterogeneity: ", "$\\tau^2$", "=",
-                          formatC(rm$tau2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
-                          formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
-                          ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
-                          formatC(rm$I2, digits=0, format="f"), "%")),
-        padj=1, adj=0, cex=cex*0.9, line=5)
+  if (is.null(atransf))
+    mtext(side=1, TeX(paste("Test for heterogeneity: ", "$\\tau^2$", "=",
+                            formatC(rm$tau2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
+                            formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
+                            ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
+                            formatC(rm$I2, digits=0, format="f"), "%")),
+          padj=1, adj=0, cex=cex*0.9, line=5)
+  else
+    mtext(side=1, TeX(paste("Test for heterogeneity: ", "$\\tau^2$", "=",
+                            formatC(atransf(sqrt(rm$tau2))^2, digits=2, format="f"), "; ", "$\\chi^2$", "=",
+                            formatC(rm$QE, digits=2, format="f"), ", df=", rm$k - rm$p,
+                            ", ", generate_plabel(rm$QEp), "; ", "$I^2$", "=",
+                            formatC(rm$I2, digits=0, format="f"), "%")),
+          padj=1, adj=0, cex=cex*0.9, line=5)
 }
