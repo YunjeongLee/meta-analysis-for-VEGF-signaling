@@ -246,6 +246,10 @@ p = ggplot() +
            label=generate_plabel(vegfr1_ttest$coefficients["p.value"]), hjust=-0.15,
            size=6, colour = "darkblue") +
   annotate("text", x = "VEGFR1", y=max(vegfr1_radio$Average)*2, label= "*", size=6, colour = "darkblue") +
+  annotate("text", x = "VEGFR2", y=max(vegfr2_radio$Average)*2,
+           label=generate_plabel(vegfr2_ttest$coefficients["p.value"]), hjust=-0.15,
+           size=6, colour = "darkblue") +
+  annotate("text", x = "VEGFR2", y=max(vegfr2_radio$Average)*2, label= "*", size=6, colour = "darkblue") +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e7),
                      sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
