@@ -124,7 +124,7 @@ forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
-png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1300, height=700)
+png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1500, height=700)
 forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
             unit="pM", title="",
             xlab="Binding affinity, Kd (pM)", xlim = c(-1000, 2000), alim = c(0, 1100), cex=2)
