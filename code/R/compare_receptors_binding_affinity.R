@@ -78,17 +78,17 @@ summary(rm_nrp1)
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
             unit="pM", atransf=function(x)1e3*x,
-            xlab="Binding affinity, Kd (pM)", xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=900)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
             unit="nM",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-1.5, 2), alim = c(0, 1.2), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-1.5, 2), alim = c(0, 1.2), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_nrp1.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1, rm=rm_nrp1, slab=nrp1$Reference, 
             unit="nM",
-            xlab="Binding affinity, Kd (nM)", xlim = c(-10, 18), alim = c(0, 10), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-10, 18), alim = c(0, 10), cex=2)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -135,10 +135,10 @@ p = ggplot() +
   labs(color="NRP1") +
   lightness(scale_color_colormap('NRP1', discrete = T, colormap = brewer.oranges(rm_nrp1$k), reverse = T), scalefac(0.8)) +
   guides(color = guide_legend(order=3)) +
-  xlab("") + ylab(TeX("Binding affinity, Kd (pM)")) +
+  xlab("") + ylab(TeX("Binding affinity, $K_d$ (pM)")) +
   scale_y_continuous(trans= 'log10', breaks=trans_breaks('log10', function(x) 10^x),
                      labels=trans_format('log10', math_format(10^.x)), limits = c(1e-1, 1e5),
-                     sec.axis = sec_axis(trans=~./1e3, name="Binding affinity, Kd (nM)",
+                     sec.axis = sec_axis(trans=~./1e3, name=TeX("Binding affinity, $K_d$ (nM)"),
                                          breaks=trans_breaks('log10', function(x) 10^x),
                                          labels=trans_format('log10', math_format(10^.x)))) +
   # geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "NRP1",
