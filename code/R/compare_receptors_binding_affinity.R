@@ -78,7 +78,7 @@ summary(rm_nrp1)
 png(file=sprintf("%s/forest_vegfr1.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr1, rm=rm_vegfr1, slab=vegfr1$Reference,
             unit="pM", atransf=function(x)1e3*x,
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-0.15, 0.27), alim = c(0, 0.15), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-0.2, 0.27), alim = c(0, 0.15), cex=2)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2.png", results_path), width=1300, height=900)
 forest_ylee(data=vegfr2, rm=rm_vegfr2, slab=vegfr2$Reference, 
