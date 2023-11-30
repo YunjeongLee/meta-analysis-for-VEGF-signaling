@@ -276,3 +276,17 @@ p = ggplot() +
   show(p)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
 dev.off()
+
+# Perform meta-regression -------------------------------------------------
+filename = '../../data/meta_regression_cbm.csv'
+cbm <- as.data.frame(read_csv(filename))
+
+m_reg = rma(yi = Average, sei = SE, mods = ~Species+Age+Obese+Diabetic+Tissue, data=cbm)
+summary(m_reg)
+
+regplot(m_reg, mod="Age", 
+        xlab="Age (months)", ylab="Capillary Basement membrane thickness (nm)", 
+        legend=TRUE)
+regplot(m_reg, mod="Diabetic", 
+        xlab="Diabetic", ylab="Capillary Basement membrane thickness (nm)", 
+        legend=TRUE)
