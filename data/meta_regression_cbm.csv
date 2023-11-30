@@ -1,0 +1,56 @@
+﻿Reference,Species,Age,Obese,Diabetic,Tissue,Average,SE
+"Cuthbertson & Mandel, 1986 (1.5 mo. CBA mice & Retina, Mid-zone)",mice,1.5,FALSE,FALSE,Retina,50,4.5
+"Cuthbertson & Mandel, 1986 (4 mo. CBA mice & Retina, Mid-zone)",mice,4,FALSE,FALSE,Retina,59,6.5
+"Cuthbertson & Mandel, 1986 (8 mo. CBA mice & Retina, Mid-zone)",mice,8,FALSE,FALSE,Retina,75,5
+"Cuthbertson & Mandel, 1986 (12 mo. CBA mice & Retina, Mid-zone)",mice,12,FALSE,FALSE,Retina,108,8.5
+"Cuthbertson & Mandel, 1986 (20 mo. CBA mice & Retina, Mid-zone)",mice,20,FALSE,FALSE,Retina,154,13.5
+"Cuthbertson & Mandel, 1986 (1.5 mo. Balb/c mice & Retina, Mid-zone)",mice,1.5,FALSE,FALSE,Retina,55,6.363961031
+"Cuthbertson & Mandel, 1986 (8 mo. Balb/c mice & Retina, Mid-zone)",mice,8,FALSE,FALSE,Retina,77,6.363961031
+"Cuthbertson & Mandel, 1986 (20 mo. Balb/c mice & Retina, Mid-zone)",mice,20,FALSE,FALSE,Retina,158,24.74873734
+"Cuthbertson & Mandel, 1986 (1.5 mo. Balb/c mice & Retina, Center zone)",mice,1.5,FALSE,FALSE,Retina,41,2.828427125
+"Cuthbertson & Mandel, 1986 (1.5 mo. Balb/c mice & Retina, Periphery zone)",mice,1.5,FALSE,FALSE,Retina,64,4.242640687
+"Rodrigues et al., 1983 (7 mo. SJL/J mice & Kidney)",mice,7,FALSE,FALSE,Kidney,91,0.866025404
+"Ceafalan et al., 2019 (6 mo. C57Bl/6J mice & Brain)",mice,6,FALSE,FALSE,Brain,56.78,1.25
+"Ceafalan et al., 2019 (24 mo. C57Bl/6J mice & Brain)",mice,24,FALSE,FALSE,Brain,107.53,2.376
+"Creutzfeldt et al., 1970 (7 mo. Spiny mice & Muscle)",mice,7,FALSE,FALSE,Muscle,73,5.656854249
+"Carlson et al., 2003 (11 mo. FVB mice & Retina)",mice,11,FALSE,FALSE,Retina,92.87,6.682159082
+"Carlson et al., 2003 (11 mo. FVB mice & Muscle, Extensor digitorum)",mice,11,FALSE,FALSE,Muscle,76.75,4.480947444
+"Carlson et al., 2003 (11 mo. FVB mice & Kidney)",mice,11,FALSE,FALSE,Kidney,178.16,8.169494283
+"Carlson et al., 2003 (11 mo. FVB mice & Pulmonary alveolus)",mice,11,FALSE,FALSE,Pulmonary alveolus,67.99,2.457196065
+"Carlson et al., 2003 (11 mo. FVB mice & Muscle, Diaphragm)",mice,11,FALSE,FALSE,Muscle,54.75,1.767766953
+"Carlson et al., 2003 (11 mo. FVB mice & Pancreas)",mice,11,FALSE,FALSE,Pancreas,103.54,5.773526868
+"Carlson et al., 2003 (11 mo. FVB mice & Choroid)",mice,11,FALSE,FALSE,Choroid,78.58,4.0760929
+"Carlson et al., 2003 (11 mo. FVB mice & Heart, IVS)",mice,11,FALSE,FALSE,Heart,63.13,1.706070045
+"Carlson et al., 2003 (11 mo. FVB mice & Heart, LV)",mice,11,FALSE,FALSE,Heart,56.92,1.160474041
+"Carlson et al., 2003 (11 mo. FVB mice & Peripheral nerve)",mice,11,FALSE,FALSE,Peripheral nerve,58.75,2.545841053
+"Williams et al., 2020 (5.5 mo. lean C57Bl/6 mice & Muscle)",mice,5.5,FALSE,FALSE,Muscle,107.62,5.482
+"Williams et al., 2020 (5.5 mo. obese C57Bl/6 mice & Muscle)",mice,5.5,TRUE,FALSE,Muscle,102.7,31
+"Chang et al., 2012 (7.5 mo. FVB/NJ mice & Kidney)",mice,7.5,FALSE,FALSE,Kidney,224.2,27.7
+"Velic et al., 2013 (12 mo. FVB mice & Heart)",mice,12,FALSE,FALSE,Heart,48.5,2.762920298
+"Lash et al., 1989 (2.8 mo. lean Zucker rat & Muscle)",rat,2.8,FALSE,FALSE,Muscle,61.87,1.33
+"Lash et al., 1989 (4.5 mo. lean Zucker rat & Muscle)",rat,4.5,FALSE,FALSE,Muscle,55.67,1.04
+"Lash et al., 1989 (2.8 mo. obese Zucker rat & Muscle)",rat,2.8,TRUE,FALSE,Muscle,68.13,1.66
+"Lash et al., 1989 (4.5 mo. obese Zucker rat & Muscle)",rat,4.5,TRUE,FALSE,Muscle,57.82,1.24
+"Dosso et al., 1990 (17 mo. lean Zucker rat & Retina)",rat,17,FALSE,FALSE,Retina,93.6,2.736947204
+"Dosso et al., 1990 (17 mo. obese Zucker rat & Retina)",rat,17,TRUE,FALSE,Retina,104.6,2.29
+"Fraselle-Jacobs et al., 1987 (6 mo. Wistar rat & Adipose)",rat,6,FALSE,FALSE,Adipose,108.78,11.2
+"Danis & Yang, 1993 (6.5 mo. lean Zucker rat & Retina)",rat,6.5,FALSE,FALSE,Retina,89,1.958
+"Danis & Yang, 1993 (6.5 mo. obese Zucker rat & Retina)",rat,6.5,TRUE,TRUE,Retina,113.4,1.78
+"Cherian et al., 2009 (6 mo. Sprague-Dawley rat & Retina)",rat,6,FALSE,FALSE,Retina,50.8,2.082066281
+"Cherian et al., 2009 (6 mo. Sprague-Dawley rat & Kidney)",rat,6,FALSE,FALSE,Kidney,81,4.041658076
+"Gambaro et al., 1992 (9.5 mo. Sprague-Dawley rat & Kidney)",rat,9.5,FALSE,FALSE,Kidney,235.57,1.05
+"Yagihashi, 1978 (1 mo. Wistar rat & Kidney)",rat,1,FALSE,FALSE,Kidney,119,3.4
+"Yagihashi, 1978 (2 mo. Wistar rat & Kidney)",rat,2,FALSE,FALSE,Kidney,129.1,2.3
+"Yagihashi, 1978 (3 mo. Wistar rat & Kidney)",rat,3,FALSE,FALSE,Kidney,135.4,1.75
+"Yagihashi, 1978 (4 mo. Wistar rat & Kidney)",rat,4,FALSE,FALSE,Kidney,147.3,0.65
+"Yagihashi, 1978 (5 mo. Wistar rat & Kidney)",rat,5,FALSE,FALSE,Kidney,154.1,1.75
+"Yagihashi, 1978 (6 mo. Wistar rat & Kidney)",rat,6,FALSE,FALSE,Kidney,160.5,1.9
+"Yagihashi, 1978 (7 mo. Wistar rat & Kidney)",rat,7,FALSE,FALSE,Kidney,184.6,3.25
+"Yagihashi, 1978 (8 mo. Wistar rat & Kidney)",rat,8,FALSE,FALSE,Kidney,205.3,3.6
+"Yagihashi, 1978 (9 mo. Wistar rat & Kidney)",rat,9,FALSE,FALSE,Kidney,238.3,5.7
+"Fox et al., 1977 (17 mo. Wistar rat & Kidney)",rat,17,FALSE,FALSE,Kidney,305,10
+"Saito et al., 2003 (5.5 mo. LEFT rat & Heart)",rat,5.5,FALSE,FALSE,Heart,90,1.697056275
+"Saito et al., 2003 (15.5 mo. LEFT rat & Heart)",rat,15.5,FALSE,FALSE,Heart,87,1.697056275
+"Saito et al., 2003 (5.5 mo. OLEFT rat & Heart)",rat,5.5,TRUE,TRUE,Heart,106,2.828427125
+"Saito et al., 2003 (15.5 mo. OLEFT rat & Heart)",rat,15.5,TRUE,TRUE,Heart,177,9.333809512
+"Begieneman et al., 2009 (Rat & Heart)",rat,,FALSE,FALSE,Heart,68.736,4.22
