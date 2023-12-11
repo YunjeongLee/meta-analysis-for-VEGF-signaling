@@ -345,3 +345,40 @@ forest_ylee(data=cbm_kidney_w_ob, rm=rm_cbm_kidney_w_ob, slab=cbm_kidney_w_ob$Re
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
 dev.off()
 
+# Student's t-test --------------------------------------------------------
+# Retina vs. Muscle
+cbm_retina_vs_muscle_w_ob = wtd.t.test(x=cbm_retina_w_ob$Average, y=cbm_muscle_w_ob$Average,
+                                       weight=1/(cbm_retina_w_ob$SE^2+rm_cbm_retina_w_ob$tau2), 
+                                       weighty=1/(cbm_muscle_w_ob$SE^2+rm_cbm_muscle_w_ob$tau2),
+                                       alternative="two.tailed", samedata=FALSE)
+
+# Retina vs. Heart
+cbm_retina_vs_heart_w_ob = wtd.t.test(x=cbm_retina_w_ob$Average, y=cbm_heart_w_ob$Average,
+                                      weight=1/(cbm_retina_w_ob$SE^2+rm_cbm_retina_w_ob$tau2), 
+                                      weighty=1/(cbm_heart_w_ob$SE^2+rm_cbm_heart_w_ob$tau2),
+                                      alternative="two.tailed", samedata=FALSE)
+
+# Retina vs. Kidney
+cbm_retina_vs_kidney_w_ob = wtd.t.test(x=cbm_retina_w_ob$Average, y=cbm_kidney_w_ob$Average,
+                                       weight=1/(cbm_retina_w_ob$SE^2+rm_cbm_retina_w_ob$tau2), 
+                                       weighty=1/(cbm_kidney_w_ob$SE^2+rm_cbm_kidney_w_ob$tau2),
+                                       alternative="two.tailed", samedata=FALSE)
+
+# Muscle vs. Heart
+cbm_muscle_vs_heart_w_ob = wtd.t.test(x=cbm_muscle_w_ob$Average, y=cbm_heart_w_ob$Average,
+                                      weight=1/(cbm_muscle_w_ob$SE^2+rm_cbm_muscle_w_ob$tau2), 
+                                      weighty=1/(cbm_heart_w_ob$SE^2+rm_cbm_heart_w_ob$tau2),
+                                      alternative="two.tailed", samedata=FALSE)
+
+# Muscle vs. Kidney
+cbm_muscle_vs_kidney_w_ob = wtd.t.test(x=cbm_muscle_w_ob$Average, y=cbm_kidney_w_ob$Average,
+                                       weight=1/(cbm_muscle_w_ob$SE^2+rm_cbm_muscle_w_ob$tau2), 
+                                       weighty=1/(cbm_kidney_w_ob$SE^2+rm_cbm_kidney_w_ob$tau2),
+                                       alternative="two.tailed", samedata=FALSE)
+
+# Heart vs. Kidney
+cbm_heart_vs_kidney_w_ob = wtd.t.test(x=cbm_heart_w_ob$Average, y=cbm_kidney_w_ob$Average,
+                                      weight=1/(cbm_heart_w_ob$SE^2+rm_cbm_heart_w_ob$tau2), 
+                                      weighty=1/(cbm_kidney_w_ob$SE^2+rm_cbm_kidney_w_ob$tau2),
+                                      alternative="two.tailed", samedata=FALSE)
+
