@@ -142,7 +142,6 @@ forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference,
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
 dev.off()
 
-
 # Student's t-test --------------------------------------------------------
 # Lean vs. Obese (with kidney data)
 cbm_lean_vs_obese = wtd.t.test(x=cbm_lean$Average, y=cbm_obese$Average,
