@@ -293,7 +293,7 @@ cbm_heart_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Heart"))
 cbm_kidney_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Kidney"))
 
 # Remove substring from tissue dataframes
-cbm_retina$Reference <- str_remove(cbm_retina_w_ob$Reference, " & Retina")
+cbm_retina_w_ob$Reference <- str_remove(cbm_retina_w_ob$Reference, " & Retina")
 cbm_muscle_w_ob$Reference <- str_remove(cbm_muscle_w_ob$Reference, " & Muscle")
 cbm_heart_w_ob$Reference <- str_remove(cbm_heart_w_ob$Reference, " & Heart")
 cbm_kidney_w_ob$Reference <- str_remove(cbm_kidney_w_ob$Reference, " & Kidney")
