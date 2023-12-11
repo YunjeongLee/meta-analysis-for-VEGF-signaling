@@ -325,7 +325,7 @@ forest_ylee(data=cbm_retina_w_ob, rm=rm_cbm_retina_w_ob, slab=cbm_retina_w_ob$Re
 dev.off()
 
 # Muscle
-png(file=sprintf("%s/forest_cbm_muscle_w_ob.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_cbm_muscle_w_ob.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_muscle_w_ob, rm=rm_cbm_muscle_w_ob, slab=cbm_muscle_w_ob$Reference, 
             unit="nm",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2)
