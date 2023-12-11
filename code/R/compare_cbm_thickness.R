@@ -382,3 +382,53 @@ cbm_heart_vs_kidney_w_ob = wtd.t.test(x=cbm_heart_w_ob$Average, y=cbm_kidney_w_o
                                       weighty=1/(cbm_kidney_w_ob$SE^2+rm_cbm_kidney_w_ob$tau2),
                                       alternative="two.tailed", samedata=FALSE)
 
+# Merge dataframes for plotting -------------------------------------------
+cbm_retina_w_ob$Source <- "Retina"
+cbm_muscle_w_ob$Source <- "Muscle"
+cbm_heart_w_ob$Source <- "Heart"
+cbm_kidney_w_ob$Source <- "Kidney"
+
+cbm_tissue_w_ob <- rbind(cbm_retina_w_ob[c("Source", "Average")],
+                         cbm_muscle_w_ob[c("Source", "Average")],
+                         cbm_heart_w_ob[c("Source", "Average")],
+                         cbm_kidney_w_ob[c("Source", "Average")])
+
+
+# Scatter plot ------------------------------------------------------------
+# Compare by tissue (with obese group)
+p = ggplot() +
+  geom_point(data = cbm_retina_w_ob, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_retina_w_ob, aes(x = "Retina", y = rm_cbm_retina_w_ob$b), shape = 95, size = 20, colour = "darkblue") +
+  labs(color="Retina") +
+  lightness(scale_color_colormap('Retina', discrete = T, colormap = brewer.blues(rm_cbm_retina_w_ob$k), reverse = T), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = rm_cbm_muscle_w_ob$b), shape = 95, size = 20, colour = "darkgreen") +
+  labs(color="Muscle") +
+  lightness(scale_color_brewer(palette="Greens"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = rm_cbm_heart_w_ob$b), shape = 95, size = 20, colour = "darkred") +
+  labs(color="Heart") +
+  lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
+  new_scale_color() + 
+  geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = rm_cbm_kidney_w_ob$b), shape = 95, size = 20, colour = "black") +
+  labs(color="Kidney") +
+  lightness(scale_color_colormap('Kidney', discrete = T,colormap = brewer.purples(rm_cbm_kidney_w_ob$k), reverse = T), scalefac(0.8)) +
+  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Kidney")) +
+  xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
+  geom_bracket(data = cbm_tissue_w_ob, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
+               y.position = 480, tip.length = c(0.8, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_retina_vs_kidney_w_ob$coefficients["p.value"])) +
+  geom_bracket(data = cbm_tissue_w_ob, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
+               y.position = 420, tip.length = c(0.6, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_muscle_vs_kidney_w_ob$coefficients["p.value"])) +
+  geom_bracket(data = cbm_tissue_w_ob, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
+               y.position = 360, tip.length = c(0.4, 0.1), label.size = 7, 
+               label = generate_plabel(cbm_heart_vs_kidney_w_ob$coefficients["p.value"])) +
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 500))
+
+show(p)
+ggsave(sprintf("%s/cbm_w_ob.png", results_path), width=3500, height=2500, units="px")
+dev.off()
