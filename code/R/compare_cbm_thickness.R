@@ -203,6 +203,7 @@ cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
                     cbm_kidney[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
+# Compare lean vs. obese (with kidney)
 p = ggplot() +
   geom_point(data = cbm_lean, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_lean, aes(x = "Lean murines", y = rm_cbm_lean$b), shape = 95, size = 20, colour = "darkblue") +
@@ -221,6 +222,7 @@ show(p)
 ggsave(sprintf("%s/cbm_lean_vs_obese.png", results_path), width=2000, height=2500, units="px")
 dev.off()
 
+# Compare lean vs. obese (without kidney)
 p = ggplot() +
   geom_point(data = cbm_lean_wo_kid, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_lean_wo_kid, aes(x = "Lean murines", y = rm_cbm_lean_wo_kid$b), shape = 95, size = 20, colour = "darkblue") +
@@ -239,6 +241,7 @@ show(p)
 ggsave(sprintf("%s/cbm_lean_vs_obese_wo_kidney.png", results_path), width=2000, height=2500, units="px")
 dev.off()
 
+# Compare by tissue (without obese group)
 p = ggplot() +
   geom_point(data = cbm_retina, aes(x = "Retina", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_retina, aes(x = "Retina", y = rm_cbm_retina$b), shape = 95, size = 20, colour = "darkblue") +
