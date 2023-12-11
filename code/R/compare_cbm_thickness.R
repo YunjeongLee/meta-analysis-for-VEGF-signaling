@@ -286,3 +286,9 @@ inside <- str_extract(cbm_obese$Reference, pattern="(?<=\\().*(?=\\))")
 cbm_obese$Reference = paste0(first, "(Obese ", inside, ")")
 cbm_w_ob = rbind(cbm_lean, cbm_obese)
 
+# Split the data by tissue
+cbm_retina_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Retina"))
+cbm_muscle_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Muscle"))
+cbm_heart_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Heart"))
+cbm_kidney_w_ob = cbm_w_ob %>% filter(str_detect(Reference, "Kidney"))
+
