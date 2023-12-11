@@ -279,7 +279,7 @@ p = ggplot() +
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
 dev.off()
 
-# Split CBM thickness data of obese murines into tissue-dependent -------
+# Merge obese and lean data to compare tissue-specific CBM ----------------
 # Add string to obese data to show that it is from obese dataset
 first <- word(cbm_obese$Reference, 1, sep="\\(")
 inside <- str_extract(cbm_obese$Reference, pattern="(?<=\\().*(?=\\))")
