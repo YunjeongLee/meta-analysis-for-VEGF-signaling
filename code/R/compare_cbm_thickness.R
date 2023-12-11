@@ -73,19 +73,19 @@ rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_wo_kid)
 summary(rm_cbm_lean_wo_kid)
 
 # 3. Tissue variability
-# Retina
+# Retina (without obese data)
 rm_cbm_retina <- rma(yi = Average, sei = SE, data=cbm_retina)
 summary(rm_cbm_retina)
 
-# Muscle
+# Muscle (without obese data)
 rm_cbm_muscle <- rma(yi = Average, sei = SE, data=cbm_muscle)
 summary(rm_cbm_muscle)
 
-# Heart
+# Heart (without obese data)
 rm_cbm_heart <- rma(yi = Average, sei = SE, data=cbm_heart)
 summary(rm_cbm_heart)
 
-# Kidney
+# Kidney (without obese data)
 rm_cbm_kidney <- rma(yi = Average, sei = SE, data=cbm_kidney)
 summary(rm_cbm_kidney)
 
