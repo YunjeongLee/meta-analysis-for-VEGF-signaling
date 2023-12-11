@@ -298,3 +298,21 @@ cbm_muscle$Reference <- str_remove(cbm_muscle_w_ob$Reference, " & Muscle")
 cbm_heart$Reference <- str_remove(cbm_heart_w_ob$Reference, " & Heart")
 cbm_kidney$Reference <- str_remove(cbm_kidney_w_ob$Reference, " & Kidney")
 
+# Meta-analysis -----------------------------------------------------------
+# Tissue variability -- including obese data
+# Retina (with obese data)
+rm_cbm_retina_w_ob <- rma(yi = Average, sei = SE, data=cbm_retina_w_ob)
+summary(rm_cbm_retina_w_ob)
+
+# Muscle (with obese data)
+rm_cbm_muscle_w_ob <- rma(yi = Average, sei = SE, data=cbm_muscle_w_ob)
+summary(rm_cbm_muscle_w_ob)
+
+# Heart (with obese data)
+rm_cbm_heart_w_ob <- rma(yi = Average, sei = SE, data=cbm_heart_w_ob)
+summary(rm_cbm_heart_w_ob)
+
+# Kidney (with obese data)
+rm_cbm_kidney_w_ob <- rma(yi = Average, sei = SE, data=cbm_kidney_w_ob)
+summary(rm_cbm_kidney_w_ob)
+
