@@ -316,3 +316,32 @@ summary(rm_cbm_heart_w_ob)
 rm_cbm_kidney_w_ob <- rma(yi = Average, sei = SE, data=cbm_kidney_w_ob)
 summary(rm_cbm_kidney_w_ob)
 
+# Forest plot -------------------------------------------------------------
+# Retina
+png(file=sprintf("%s/forest_cbm_retina_w_ob.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_retina_w_ob, rm=rm_cbm_retina_w_ob, slab=cbm_retina_w_ob$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2)
+dev.off()
+
+# Muscle
+png(file=sprintf("%s/forest_cbm_muscle_w_ob.png", results_path), width=1300, height=500)
+forest_ylee(data=cbm_muscle_w_ob, rm=rm_cbm_muscle_w_ob, slab=cbm_muscle_w_ob$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2)
+dev.off()
+
+# Heart
+png(file=sprintf("%s/forest_cbm_heart_w_ob.png", results_path), width=1300, height=700)
+forest_ylee(data=cbm_heart_w_ob, rm=rm_cbm_heart_w_ob, slab=cbm_heart_w_ob$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2)
+dev.off()
+
+# Kidney
+png(file=sprintf("%s/forest_cbm_kidney_w_ob.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_kidney_w_ob, rm=rm_cbm_kidney_w_ob, slab=cbm_kidney_w_ob$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
+dev.off()
+
