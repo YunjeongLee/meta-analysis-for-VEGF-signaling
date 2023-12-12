@@ -37,6 +37,7 @@ cbm <- as.data.frame(read_excel(filename, sheet = "CBM thickness"))
 # Split dataframe into small dataframes -----------------------------------
 cbm_lean = cbm[!is.na(cbm["Lean SE"]), c("Reference", "Lean average", "Lean SE")]
 cbm_obese = cbm[!is.na(cbm["Obese SE"]), c("Reference", "Obese average", "Obese SE")]
+cbm_obese$Reference <- str_replace(cbm_obese$Reference, "LETO", "OLETF")
 
 # Change column names -----------------------------------------------------
 colnames(cbm_lean) <- c("Reference", "Average", "SE")
