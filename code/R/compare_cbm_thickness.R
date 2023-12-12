@@ -284,7 +284,7 @@ dev.off()
 # Add string to obese data to show that it is from obese dataset
 first <- word(cbm_obese$Reference, 1, sep="\\(")
 inside <- str_extract(cbm_obese$Reference, pattern="(?<=\\().*(?=\\))")
-cbm_obese$Reference = paste0(first, "(Obese ", inside, ")")
+cbm_obese$Reference[!str_detect(cbm_obese$Reference, pattern = "OLETF")] = paste0(first, "(Obese ", inside, ")")
 cbm_w_ob = rbind(cbm_lean, cbm_obese)
 
 # Split the data by tissue
