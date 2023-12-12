@@ -336,7 +336,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_heart_w_ob.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_heart_w_ob, rm=rm_cbm_heart_w_ob, slab=cbm_heart_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 370), alim = c(0, 200), cex=2)
 dev.off()
 
 # Kidney
