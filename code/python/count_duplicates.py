@@ -9,6 +9,15 @@ df_cbm = pd.read_csv("data/papers/CBM_thickness.csv")
 df_vegfr12 = pd.read_csv("data/papers/Kd_for_VEGFR1_and_VEGFR2.csv")
 df_nrp1 = pd.read_csv("data/papers/Kd_for_NRP1.csv")
 
+# Delete list of papers that weren't read
+df_adip_size.dropna(subset=['Note'], inplace=True)
+df_adip_v.dropna(subset=['Note'], inplace=True)
+df_tumor_vsize.dropna(subset=['Note'], inplace=True)
+df_tumor_vdensity.dropna(subset=['Note'], inplace=True)
+df_cbm.dropna(subset=['Note'], inplace=True)
+df_vegfr12.dropna(subset=['Note'], inplace=True)
+df_nrp1.dropna(subset=['Note'], inplace=True)
+
 # Import list of papers selected for full-text assessment
 df_adip_size_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipocyte_diameter")
 df_adip_v_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipose_vessel_size")
