@@ -65,7 +65,7 @@ dev.off()
 png(file=sprintf("%s/forest_adipocyte_diameter_obese.png", results_path), width=1300, height=900)
 forest_ylee(data=adipocyte_obese, rm=rm_adipocyte_obese, slab=adipocyte_obese$Reference,
             unit="µm",
-            xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2)
+            xlab=TeX("Adipocyte diameter (\\mu{m})"), xlim = c(-50, 200), alim = c(20, 120), cex=2, numDigits=0L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
