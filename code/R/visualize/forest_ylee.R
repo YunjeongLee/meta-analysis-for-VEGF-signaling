@@ -18,6 +18,9 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   ### set ilab position
   ilab_pos = 1.2*alim[2]
   
+  ### Get prediction interval
+  pred <- predict(rm)
+  
   ### forest plot with extra annotations
   sav <- forest(rm, slab=slab, digits=numDigits,
                 header=c("Author(s) and Year", ""), 
