@@ -30,6 +30,9 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
   
+  addpoly(pred$pred, ci.lb = pred$pi.lb, ci.ub = pred$pi.ub, rows = -2, col=linecolor,
+          mlab = "Prediction Interval (95%)")
+  
   ### add vertical reference line at the pooled estimate
   segments(coef(rm), -1, coef(rm), k, col='black', lty="dashed", lwd=2)
   
