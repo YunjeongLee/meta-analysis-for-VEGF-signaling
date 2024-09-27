@@ -34,7 +34,7 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
           mlab = "Prediction Interval (95%)")
   
   ### add vertical reference line at the pooled estimate
-  segments(coef(rm), -1, coef(rm), k, col='black', lty="dashed", lwd=2)
+  segments(coef(rm), -2, coef(rm), k, col='black', lty="dashed", lwd=2)
   
   ### now we add a bunch of text; since some of the text falls outside of the
   ### plot region, we set xpd=NA so nothing gets clipped
