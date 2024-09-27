@@ -25,6 +25,7 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   sav <- forest(rm, slab=slab, digits=numDigits,
                 header=c("Author(s) and Year", ""), 
                 xlim=xlim, alim=alim, cex=cex, atransf=atransf,
+                ylim=c(-2, length(rm$yi) + 3),
                 ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
                 colout=linecolor, col=linecolor, border=linecolor, lwd=4)
