@@ -19,7 +19,7 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   ilab_pos = 1.2*alim[2]
   
   ### forest plot with extra annotations
-  sav <- forest(rm, slab=slab, 
+  sav <- forest(rm, slab=slab, digits=numDigits,
                 header=c("Author(s) and Year", ""), 
                 xlim=xlim, alim=alim, cex=cex, atransf=atransf,
                 ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
