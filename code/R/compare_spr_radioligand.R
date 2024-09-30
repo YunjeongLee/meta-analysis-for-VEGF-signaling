@@ -113,42 +113,42 @@ summary(rm_nrp1_radio)
 png(file=sprintf("%s/forest_vegfr1_spr.png", results_path), width=1100, height=450)
 forest_ylee(data=vegfr1_spr, rm=rm_vegfr1_spr, slab=vegfr1_spr$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-20, 35), alim = c(0, 20), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-20, 35), alim = c(0, 20), cex=2, numDigits=1L)
 dev.off()
 
 # VEGF:VEGFR1 (Radioligand)
 png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=550)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2, numDigits=1L)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
 png(file=sprintf("%s/forest_vegfr2_spr.png", results_path), width=1500, height=700)
 forest_ylee(data=vegfr2_spr, rm=rm_vegfr2_spr, slab=vegfr2_spr$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-1200, 2000), alim = c(0, 1100), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-1200, 2000), alim = c(0, 1100), cex=2, numDigits=0L)
 dev.off()
 
 # VEGF:VEGFR2 (Radioligand)
 png(file=sprintf("%s/forest_vegfr2_radio.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2_radio, rm=rm_vegfr2_radio, slab=vegfr2_radio$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM))"), xlim = c(-800, 1800), alim = c(0, 1000), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (pM))"), xlim = c(-800, 1800), alim = c(0, 1000), cex=2, numDigits=0L)
 dev.off()
 
 # VEGF:NRP1 (SPR)
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=450)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
             unit="nM", atransf=function(x)x/1e3, title="",
-            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-7000, 17000), alim = c(0, 10000), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-7000, 17000), alim = c(0, 10000), cex=2, numDigits=2L)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
 png(file=sprintf("%s/forest_nrp1_radio.png", results_path), width=1300, height=700)
 forest_ylee(data=nrp1_radio, rm=rm_nrp1_radio, slab=nrp1_radio$Reference,
             unit="nM", atransf=function(x)x/1e3, title="",
-            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-5000, 9000), alim = c(0, 5000), cex=2)
+            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-5000, 9000), alim = c(0, 5000), cex=2, numDigits=2L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
