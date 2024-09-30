@@ -406,12 +406,12 @@ p = ggplot() +
   geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = rm_cbm_muscle_w_ob$b), shape = 95, size = 20, colour = "darkgreen") +
   labs(color="Muscle") +
-  lightness(scale_color_brewer(palette="Greens"), scalefac(0.8)) +
+  lightness(scale_color_colormap('Muscle', discrete = T, colormap = brewer.greens(rm_cbm_muscle_w_ob$k), reverse = T), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = rm_cbm_heart_w_ob$b), shape = 95, size = 20, colour = "darkred") +
   labs(color="Heart") +
-  lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
+  lightness(scale_color_colormap('Heart', discrete = T, colormap = brewer.oranges(rm_cbm_heart_w_ob$k), reverse = T), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = rm_cbm_kidney_w_ob$b), shape = 95, size = 20, colour = "black") +
