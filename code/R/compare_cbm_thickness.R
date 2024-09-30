@@ -93,54 +93,54 @@ summary(rm_cbm_kidney)
 # Forest plot -------------------------------------------------------------
 # 1. Include all kidney data
 # CBM thickness of lean mice
-png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=2000, height=2500)
+png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=2000, height=5000)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 550), alim = c(0, 350), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 600), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # CBM thickness of obese mice
 png(file=sprintf("%s/forest_cbm_obese.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_obese, rm=rm_cbm_obese, slab=cbm_obese$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 400), alim = c(0, 200), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 400), alim = c(0, 200), cex=2, numDigits=0L)
 dev.off()
 
 # 2. Exclude kidney data
 # CBM thickness of lean mice
-png(file=sprintf("%s/forest_cbm_lean_wo_kidney.png", results_path), width=2000, height=2000)
+png(file=sprintf("%s/forest_cbm_lean_wo_kidney.png", results_path), width=2000, height=3000)
 forest_ylee(data=cbm_lean_wo_kid, rm=rm_cbm_lean_wo_kid, slab=cbm_lean_wo_kid$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2, numDigits=0L)
 dev.off()
 
 # 3. Tissue variability
 # Retina
-png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=1000)
+png(file=sprintf("%s/forest_cbm_retina.png", results_path), width=1300, height=1700)
 forest_ylee(data=cbm_retina, rm=rm_cbm_retina, slab=cbm_retina$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2, numDigits=0L)
 dev.off()
 
 # Muscle
-png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=500)
+png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=600)
 forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 300), alim = c(0, 150), cex=2, numDigits=0L)
 dev.off()
 
 # Heart
 png(file=sprintf("%s/forest_cbm_heart.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_heart, rm=rm_cbm_heart, slab=cbm_heart$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2, numDigits=0L)
 dev.off()
 
 # Kidney
 png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-500, 700), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -319,31 +319,31 @@ summary(rm_cbm_kidney_w_ob)
 
 # Forest plot -------------------------------------------------------------
 # Retina
-png(file=sprintf("%s/forest_cbm_retina_w_ob.png", results_path), width=1300, height=1000)
+png(file=sprintf("%s/forest_cbm_retina_w_ob.png", results_path), width=1300, height=2000)
 forest_ylee(data=cbm_retina_w_ob, rm=rm_cbm_retina_w_ob, slab=cbm_retina_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-750, 650), alim = c(0, 300), cex=2, numDigits=0L)
 dev.off()
 
 # Muscle
 png(file=sprintf("%s/forest_cbm_muscle_w_ob.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_muscle_w_ob, rm=rm_cbm_muscle_w_ob, slab=cbm_muscle_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 350), alim = c(0, 200), cex=2, numDigits=0L)
 dev.off()
 
 # Heart
 png(file=sprintf("%s/forest_cbm_heart_w_ob.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_heart_w_ob, rm=rm_cbm_heart_w_ob, slab=cbm_heart_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 370), alim = c(0, 200), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 370), alim = c(0, 200), cex=2, numDigits=0L)
 dev.off()
 
 # Kidney
 png(file=sprintf("%s/forest_cbm_kidney_w_ob.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney_w_ob, rm=rm_cbm_kidney_w_ob, slab=cbm_kidney_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-500, 700), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -406,12 +406,12 @@ p = ggplot() +
   geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_muscle_w_ob, aes(x = "Muscle", y = rm_cbm_muscle_w_ob$b), shape = 95, size = 20, colour = "darkgreen") +
   labs(color="Muscle") +
-  lightness(scale_color_brewer(palette="Greens"), scalefac(0.8)) +
+  lightness(scale_color_colormap('Muscle', discrete = T, colormap = brewer.greens(rm_cbm_muscle_w_ob$k), reverse = T), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_heart_w_ob, aes(x = "Heart", y = rm_cbm_heart_w_ob$b), shape = 95, size = 20, colour = "darkred") +
   labs(color="Heart") +
-  lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
+  lightness(scale_color_colormap('Heart', discrete = T, colormap = brewer.oranges(rm_cbm_heart_w_ob$k), reverse = T), scalefac(0.8)) +
   new_scale_color() + 
   geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_kidney_w_ob, aes(x = "Kidney", y = rm_cbm_kidney_w_ob$b), shape = 95, size = 20, colour = "black") +

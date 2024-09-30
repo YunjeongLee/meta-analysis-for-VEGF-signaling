@@ -1,4 +1,4 @@
-forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL) {
+forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex=2, atransf=NULL, numDigits) {
   ### Specify colors
   linecolor = "#1e81b0"
   
@@ -18,16 +18,23 @@ forest_ylee <- function (data, rm, title=NULL, slab, xlim, alim, unit, xlab, cex
   ### set ilab position
   ilab_pos = 1.2*alim[2]
   
+  ### Get prediction interval
+  pred <- predict(rm)
+  
   ### forest plot with extra annotations
-  sav <- forest(rm, slab=slab, 
+  sav <- forest(rm, slab=slab, digits=numDigits,
                 header=c("Author(s) and Year", ""), 
                 xlim=xlim, alim=alim, cex=cex, atransf=atransf,
+                ylim=c(-2, length(rm$yi) + 3),
                 ilab=weights, ilab.xpos=ilab_pos, ilab.pos=2,
                 xlab=xlab, mlab="Random-effects model", refline=NA, pch=18, psize=psize,
-                colout=linecolor, col=linecolor, border=linecolor, lwd=4)
+                colout=linecolor, col=linecolor, border=linecolor, lwd=4, efac=0.4)
+  
+  addpoly(pred$pred, ci.lb = pred$pi.lb, ci.ub = pred$pi.ub, rows = -2, col=linecolor,
+          mlab = "Prediction Interval (95%)", efac=0.4)
   
   ### add vertical reference line at the pooled estimate
-  segments(coef(rm), -1, coef(rm), k, col='black', lty="dashed", lwd=2)
+  segments(coef(rm), -2, coef(rm), k, col='black', lty="dashed", lwd=2)
   
   ### now we add a bunch of text; since some of the text falls outside of the
   ### plot region, we set xpd=NA so nothing gets clipped
