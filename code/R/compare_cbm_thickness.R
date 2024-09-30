@@ -96,7 +96,7 @@ summary(rm_cbm_kidney)
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=2000, height=5000)
 forest_ylee(data=cbm_lean, rm=rm_cbm_lean, slab=cbm_lean$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 550), alim = c(0, 350), cex=2, numDigits=0L)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 600), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # CBM thickness of obese mice
@@ -126,7 +126,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_muscle.png", results_path), width=1300, height=600)
 forest_ylee(data=cbm_muscle, rm=rm_cbm_muscle, slab=cbm_muscle$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2, numDigits=0L)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-300, 300), alim = c(0, 150), cex=2, numDigits=0L)
 dev.off()
 
 # Heart
@@ -140,7 +140,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2, numDigits=0L)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-500, 700), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
@@ -329,7 +329,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_muscle_w_ob.png", results_path), width=1300, height=700)
 forest_ylee(data=cbm_muscle_w_ob, rm=rm_cbm_muscle_w_ob, slab=cbm_muscle_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-200, 300), alim = c(0, 150), cex=2, numDigits=0L)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 350), alim = c(0, 200), cex=2, numDigits=0L)
 dev.off()
 
 # Heart
@@ -343,7 +343,7 @@ dev.off()
 png(file=sprintf("%s/forest_cbm_kidney_w_ob.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney_w_ob, rm=rm_cbm_kidney_w_ob, slab=cbm_kidney_w_ob$Reference, 
             unit="nm",
-            xlab="Capillary basement membrane thickness (nm)", xlim = c(-450, 650), alim = c(0, 350), cex=2, numDigits=0L)
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-500, 700), alim = c(0, 400), cex=2, numDigits=0L)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
