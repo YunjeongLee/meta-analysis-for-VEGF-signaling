@@ -107,6 +107,11 @@ vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
                             weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
                             alternative="less", samedata=FALSE)
 
+# Gather p-values
+pvals = c(vegfr1_vs_vegfr2$coefficients["p.value"],
+          vegfr1_vs_nrp1$coefficients["p.value"],
+          vegfr2_vs_nrp1$coefficients["p.value"])
+
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Source <- "VEGFR1"
 vegfr2$Source <- "VEGFR2"
