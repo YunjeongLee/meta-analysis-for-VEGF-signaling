@@ -160,5 +160,5 @@ p = ggplot() +
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p)
-ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=3800, units="px")
+ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=4000, units="px")
 dev.off()
