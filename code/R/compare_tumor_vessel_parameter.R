@@ -133,6 +133,11 @@ vessel_size_obese_vs_tumor = wtd.t.test(x=vessel_size_obese$Average, y=vessel_si
                                         weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
                                         alternative="less", samedata=FALSE)
 
+# Adjust p-values
+vessel_size_unadj_pvals = c(vessel_size_lean_vs_obese$coefficients["p.value"], 
+                            vessel_size_lean_vs_tumor$coefficients["p.value"],
+                            vessel_size_obese_vs_tumor$coefficients["p.value"])
+
 # Vessel density
 vessel_density_lean_vs_obese = wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_obese$Average,
                                           weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
@@ -148,6 +153,11 @@ vessel_density_obese_vs_tumor = wtd.t.test(x=vessel_density_obese$Average, y=ves
                                            weight=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2), 
                                            weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
                                            alternative="greater", samedata=FALSE)
+
+# Adjust p-values
+vessel_density_unadj_pvals = c(vessel_density_lean_vs_obese$coefficients["p.value"], 
+                               vessel_density_lean_vs_tumor$coefficients["p.value"],
+                               vessel_density_obese_vs_tumor$coefficients["p.value"])
 
 # Merge dataframes for plotting -------------------------------------------
 # Vessel size
