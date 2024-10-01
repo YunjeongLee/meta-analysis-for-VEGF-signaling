@@ -154,7 +154,7 @@ p = ggplot() +
   #              label = generate_plabel(vegfr1_vs_nrp1$coefficients["p.value"])) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 4, tip.length = c(0.2, 0.1), label.size = 7, 
-               label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
+               label = generate_plabel(adj_pvals[1])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
