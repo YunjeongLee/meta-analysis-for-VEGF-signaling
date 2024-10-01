@@ -112,6 +112,9 @@ pvals = c(vegfr1_vs_vegfr2$coefficients["p.value"],
           vegfr1_vs_nrp1$coefficients["p.value"],
           vegfr2_vs_nrp1$coefficients["p.value"])
 
+# Adjust p-values
+adj_pvals = p.adjust(pvals, method="BH")
+
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Source <- "VEGFR1"
 vegfr2$Source <- "VEGFR2"
