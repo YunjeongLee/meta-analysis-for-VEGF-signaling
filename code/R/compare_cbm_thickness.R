@@ -158,6 +158,7 @@ cbm_kidney$Source <- "Kidney"
 cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
                     cbm_muscle[c("Source", "Average")],
                     cbm_heart[c("Source", "Average")],
+                    cbm_brain[c("Source", "Average")],
                     cbm_kidney[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
