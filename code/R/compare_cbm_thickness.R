@@ -198,6 +198,11 @@ p = ggplot() +
   labs(color="Heart") +
   lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
   new_scale_color() + 
+  geom_point(data = cbm_brain, aes(x = "Brain", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_brain, aes(x = "Brain", y = rm_cbm_brain$b), shape = 95, size = 20, colour = "brown") +
+  labs(color="Brain") +
+  lightness(scale_color_colormap("Brain", discrete = T,colormap = brewer.purd(rm_cbm_brain$k), reverse = T), scalefac(0.8)) +
+  new_scale_color() + 
   geom_point(data = cbm_kidney, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "black") +
   labs(color="Kidney") +
