@@ -82,6 +82,10 @@ summary(rm_cbm_muscle)
 rm_cbm_heart <- rma(yi = Average, sei = SE, data=cbm_heart)
 summary(rm_cbm_heart)
 
+# Brain (without obese data)
+rm_cbm_brain <- rma(yi = Average, sei = SE, data=cbm_brain)
+summary(rm_cbm_brain)
+
 # Kidney (without obese data)
 rm_cbm_kidney <- rma(yi = Average, sei = SE, data=cbm_kidney)
 summary(rm_cbm_kidney)
