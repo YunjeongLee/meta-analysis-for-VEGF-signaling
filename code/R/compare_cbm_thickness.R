@@ -49,6 +49,9 @@ cbm_muscle = cbm_lean %>% filter(str_detect(Reference, "Muscle"))
 cbm_heart = cbm_lean %>% filter(str_detect(Reference, "Heart"))
 cbm_kidney = cbm_lean %>% filter(str_detect(Reference, "Kidney"))
 
+# Merge retina, muscle, and heart CBM thickness to generate lean mice data
+cbm_lean_tis = cbm_lean %>% filter(str_detect(Reference, "Retina|Muscle|Heart"))
+
 # Remove substring from tissue dataframes
 cbm_retina$Reference <- str_remove(cbm_retina$Reference, " & Retina")
 cbm_muscle$Reference <- str_remove(cbm_muscle$Reference, " & Muscle")
