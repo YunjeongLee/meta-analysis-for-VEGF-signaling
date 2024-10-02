@@ -60,7 +60,7 @@ cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
 summary(rm_cbm_obese)
 
-# 2. Exclude kidney data
+# Exclude kidney data
 cbm_lean_wo_kid <- cbm_lean %>% 
   filter(!str_detect(Reference, "Kidney"))
 
