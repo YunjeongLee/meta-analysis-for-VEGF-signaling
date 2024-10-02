@@ -133,6 +133,13 @@ vessel_size_obese_vs_tumor = wtd.t.test(x=vessel_size_obese$Average, y=vessel_si
                                         weighty=1/(vessel_size_tumor$SE^2+rm_vessel_size_tumor$tau2),
                                         alternative="less", samedata=FALSE)
 
+# Adjust p-values
+vessel_size_unadj_pvals = c(vessel_size_lean_vs_obese$coefficients["p.value"], 
+                            vessel_size_lean_vs_tumor$coefficients["p.value"],
+                            vessel_size_obese_vs_tumor$coefficients["p.value"])
+
+vessel_size_adj_pvals = p.adjust(vessel_size_unadj_pvals, method="BH")
+
 # Vessel density
 vessel_density_lean_vs_obese = wtd.t.test(x=vessel_density_lean$Average, y=vessel_density_obese$Average,
                                           weight=1/(vessel_density_lean$SE^2+rm_vessel_density_lean$tau2), 
@@ -148,6 +155,14 @@ vessel_density_obese_vs_tumor = wtd.t.test(x=vessel_density_obese$Average, y=ves
                                            weight=1/(vessel_density_obese$SE^2+rm_vessel_density_obese$tau2), 
                                            weighty=1/(vessel_density_tumor$SE^2+rm_vessel_density_tumor$tau2),
                                            alternative="greater", samedata=FALSE)
+
+# Adjust p-values
+vessel_density_unadj_pvals = c(vessel_density_lean_vs_obese$coefficients["p.value"], 
+                               vessel_density_lean_vs_tumor$coefficients["p.value"],
+                               vessel_density_obese_vs_tumor$coefficients["p.value"])
+
+vessel_density_adj_pvals = p.adjust(vessel_density_unadj_pvals, method="BH")
+
 
 # Merge dataframes for plotting -------------------------------------------
 # Vessel size
@@ -190,10 +205,10 @@ p1 = ggplot() +
   xlab("") + ylab(TeX("Vessel size $(\\mu m^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 290, tip.length = c(0.7, 0.1), label.size = 7, 
-               label = generate_plabel(vessel_size_lean_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_size_adj_pvals[2])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 260, tip.length = c(0.3, 0.1), label.size = 7, 
-               label = generate_plabel(vessel_size_obese_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_size_adj_pvals[3])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
@@ -222,13 +237,13 @@ p2 = ggplot() +
   xlab("") + ylab(TeX("Vessel density $(no./mm^2)$")) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Tumor",
                y.position = 1600, tip.length = c(0.1, 0.3), label.size = 7, 
-               label = generate_plabel(vessel_density_lean_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_density_adj_pvals[2])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Obese adipose", xmax = "Tumor",
                y.position = 1100, tip.length = c(0.1, 0.5), label.size = 7, 
-               label = generate_plabel(vessel_density_obese_vs_tumor$coefficients["p.value"])) +
+               label = generate_plabel(vessel_density_adj_pvals[3])) +
   geom_bracket(data = df_size, aes(x = Source, y = Average), xmin = "Lean adipose", xmax = "Obese adipose",
                y.position = 1400, tip.length = c(0.1, 0.2), label.size = 7, 
-               label = generate_plabel(vessel_density_lean_vs_obese$coefficients["p.value"])) +
+               label = generate_plabel(vessel_density_adj_pvals[1])) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 

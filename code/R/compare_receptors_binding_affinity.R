@@ -107,6 +107,14 @@ vegfr2_vs_nrp1 = wtd.t.test(x=vegfr2$Average, y=nrp1$Average,
                             weighty=1/(nrp1$SE^2+rm_nrp1$tau2),
                             alternative="less", samedata=FALSE)
 
+# Gather p-values
+pvals = c(vegfr1_vs_vegfr2$coefficients["p.value"],
+          vegfr1_vs_nrp1$coefficients["p.value"],
+          vegfr2_vs_nrp1$coefficients["p.value"])
+
+# Adjust p-values
+adj_pvals = p.adjust(pvals, method="BH")
+
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Source <- "VEGFR1"
 vegfr2$Source <- "VEGFR2"
@@ -146,11 +154,11 @@ p = ggplot() +
   #              label = generate_plabel(vegfr1_vs_nrp1$coefficients["p.value"])) +
   geom_bracket(data = df, aes(x = Source, y = Average), xmin = "VEGFR1", xmax = "VEGFR2",
                y.position = 4, tip.length = c(0.2, 0.1), label.size = 7, 
-               label = generate_plabel(vegfr1_vs_vegfr2$coefficients["p.value"])) +
+               label = generate_plabel(adj_pvals[1])) +
   scale_x_discrete(limits=c("VEGFR1", "VEGFR2", "NRP1")) +
   theme(text = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, face="bold"))
 
 show(p)
-ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=3800, units="px")
+ggsave(sprintf("%s/binding_affinity.png", results_path), width=4500, height=4000, units="px")
 dev.off()
