@@ -152,6 +152,7 @@ cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_tis$Average, y=cbm_obese$Average,
 cbm_retina$Source <- "Retina"
 cbm_muscle$Source <- "Muscle"
 cbm_heart$Source <- "Heart"
+cbm_brain$Source <- "Brain"
 cbm_kidney$Source <- "Kidney"
 
 cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
