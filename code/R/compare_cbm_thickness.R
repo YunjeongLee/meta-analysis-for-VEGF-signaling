@@ -130,7 +130,7 @@ dev.off()
 
 # Student's t-test --------------------------------------------------------
 # Lean vs. Obese (without kidney data)
-cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_wo_kid$Average, y=cbm_obese$Average,
+cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_tis$Average, y=cbm_obese$Average,
                                weight=1/(cbm_lean_wo_kid$SE^2+rm_cbm_lean_wo_kid$tau2), 
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                alternative="two.tailed", samedata=FALSE)
