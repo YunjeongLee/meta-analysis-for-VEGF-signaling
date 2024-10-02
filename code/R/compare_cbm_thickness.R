@@ -57,6 +57,7 @@ cbm_lean_tis = cbm_lean %>% filter(str_detect(Reference, "Retina|Muscle|Heart"))
 cbm_retina$Reference <- str_remove(cbm_retina$Reference, " & Retina")
 cbm_muscle$Reference <- str_remove(cbm_muscle$Reference, " & Muscle")
 cbm_heart$Reference <- str_remove(cbm_heart$Reference, " & Heart")
+cbm_brain$Reference <- str_remove(cbm_brain$Reference, " & Brain")
 cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 
 # Meta-analysis -----------------------------------------------------------
