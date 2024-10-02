@@ -150,9 +150,9 @@ cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
 # Compare lean vs. obese (without kidney)
 p = ggplot() +
   geom_point(data = cbm_lean_tis, aes(x = "Lean murines", y = Average, colour = Reference), size = 7) +
-  geom_point(data = cbm_lean_tis, aes(x = "Lean murines", y = rm_cbm_lean_wo_kid$b), shape = 95, size = 20, colour = "darkblue") +
+  geom_point(data = cbm_lean_tis, aes(x = "Lean murines", y = rm_cbm_lean_tis$b), shape = 95, size = 20, colour = "darkblue") +
   labs(color="Lean murines") +
-  lightness(scale_color_colormap('Lean murines', discrete = T, colormap = brewer.blues(rm_cbm_lean_wo_kid$k), reverse = T), scalefac(0.8)) +
+  lightness(scale_color_colormap('Lean murines', discrete = T, colormap = brewer.blues(rm_cbm_lean_tis$k), reverse = T), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
   geom_point(data = cbm_obese, aes(x = "Obese murines", y = Average, colour = Reference), size = 7) +
