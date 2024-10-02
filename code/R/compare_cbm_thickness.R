@@ -47,6 +47,7 @@ colnames(cbm_obese) <- c("Reference", "Average", "SE")
 cbm_retina = cbm_lean %>% filter(str_detect(Reference, "Retina"))
 cbm_muscle = cbm_lean %>% filter(str_detect(Reference, "Muscle"))
 cbm_heart = cbm_lean %>% filter(str_detect(Reference, "Heart"))
+cbm_brain = cbm_lean %>% filter(str_detect(Reference, "Brain"))
 cbm_kidney = cbm_lean %>% filter(str_detect(Reference, "Kidney"))
 
 # Merge retina, muscle, and heart CBM thickness to generate lean mice data
