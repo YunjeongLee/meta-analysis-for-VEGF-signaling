@@ -163,7 +163,7 @@ p = ggplot() +
   theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 350))
 
 show(p)
-ggsave(sprintf("%s/cbm_lean_vs_obese_wo_kidney.png", results_path), width=2000, height=2500, units="px")
+ggsave(sprintf("%s/cbm_lean_vs_obese.png", results_path), width=2000, height=2500, units="px")
 dev.off()
 
 # Compare by tissue (without obese group)
