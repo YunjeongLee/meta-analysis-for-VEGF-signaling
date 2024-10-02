@@ -64,7 +64,7 @@ rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
 summary(rm_cbm_obese)
 
 # Capillary BM thickness of lean mice without kidney data
-rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_wo_kid)
+rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_tis)
 summary(rm_cbm_lean_wo_kid)
 
 # 3. Tissue variability
