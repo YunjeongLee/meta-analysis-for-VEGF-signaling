@@ -127,6 +127,13 @@ forest_ylee(data=cbm_heart, rm=rm_cbm_heart, slab=cbm_heart$Reference,
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2, numDigits=0L)
 dev.off()
 
+# Brain
+png(file=sprintf("%s/forest_cbm_brain.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_brain, rm=rm_cbm_brain, slab=cbm_brain$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-250, 250), alim = c(0, 150), cex=2, numDigits=0L)
+dev.off()
+
 # Kidney
 png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference, 
