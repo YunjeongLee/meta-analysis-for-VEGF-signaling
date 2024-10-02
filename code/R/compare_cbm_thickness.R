@@ -87,7 +87,7 @@ summary(rm_cbm_kidney)
 # Forest plot -------------------------------------------------------------
 # CBM thickness of lean mice
 png(file=sprintf("%s/forest_cbm_lean.png", results_path), width=2000, height=3000)
-forest_ylee(data=cbm_lean_wo_kid, rm=rm_cbm_lean_tis, slab=cbm_lean_wo_kid$Reference, 
+forest_ylee(data=cbm_lean_tis, rm=rm_cbm_lean_tis, slab=cbm_lean_tis$Reference, 
             unit="nm",
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-350, 450), alim = c(0, 250), cex=2, numDigits=0L)
 dev.off()
