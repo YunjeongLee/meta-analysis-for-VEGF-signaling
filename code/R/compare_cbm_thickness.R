@@ -63,10 +63,6 @@ cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
 summary(rm_cbm_obese)
 
-# Exclude kidney data
-cbm_lean_wo_kid <- cbm_lean %>% 
-  filter(!str_detect(Reference, "Kidney"))
-
 # Capillary BM thickness of lean mice without kidney data
 rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_wo_kid)
 summary(rm_cbm_lean_wo_kid)
