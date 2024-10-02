@@ -59,13 +59,13 @@ cbm_heart$Reference <- str_remove(cbm_heart$Reference, " & Heart")
 cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 
 # Meta-analysis -----------------------------------------------------------
-# Capillary BM thickness of obese mice
-rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
-summary(rm_cbm_obese)
-
 # Capillary BM thickness of lean mice without kidney data
 rm_cbm_lean_wo_kid <- rma(yi = Average, sei = SE, data=cbm_lean_tis)
 summary(rm_cbm_lean_wo_kid)
+
+# Capillary BM thickness of obese mice
+rm_cbm_obese <- rma(yi = Average, sei = SE, data=cbm_obese)
+summary(rm_cbm_obese)
 
 # 3. Tissue variability
 # Retina (without obese data)
