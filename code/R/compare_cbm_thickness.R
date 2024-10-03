@@ -10,7 +10,7 @@ rm(list = ls())
 setwd("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/R")
 
 # Add path ----------------------------------------------------------------
-subfolders = c("etc", "visualize")
+subfolders = c("etc", "visualize", "analysis")
 for (i in 1:length(subfolders)) {
   a = list.files(path = subfolders[i], pattern = "[.]R$", full.names = TRUE)
   for (j in 1:length(a)) {
@@ -27,7 +27,7 @@ dir.create(results_path, recursive = TRUE)
 # Load libraries ----------------------------------------------------------
 pkg_list = c("ggplot2", "metafor", "readxl", "weights", "latex2exp", "ggpubr", 
              "shades", "ggnewscale", "scales", "ggsignif", "colormap", "stringr", 
-             "dplyr", "pals")
+             "dplyr", "pals", "PMCMRplus", "pheatmap")
 instant_pkgs(pkg_list)
 
 # Load data ---------------------------------------------------------------
@@ -47,6 +47,7 @@ colnames(cbm_obese) <- c("Reference", "Average", "SE")
 cbm_retina = cbm_lean %>% filter(str_detect(Reference, "Retina"))
 cbm_muscle = cbm_lean %>% filter(str_detect(Reference, "Muscle"))
 cbm_heart = cbm_lean %>% filter(str_detect(Reference, "Heart"))
+cbm_brain = cbm_lean %>% filter(str_detect(Reference, "Brain"))
 cbm_kidney = cbm_lean %>% filter(str_detect(Reference, "Kidney"))
 
 # Merge retina, muscle, and heart CBM thickness to generate lean mice data
@@ -56,6 +57,7 @@ cbm_lean_tis = cbm_lean %>% filter(str_detect(Reference, "Retina|Muscle|Heart"))
 cbm_retina$Reference <- str_remove(cbm_retina$Reference, " & Retina")
 cbm_muscle$Reference <- str_remove(cbm_muscle$Reference, " & Muscle")
 cbm_heart$Reference <- str_remove(cbm_heart$Reference, " & Heart")
+cbm_brain$Reference <- str_remove(cbm_brain$Reference, " & Brain")
 cbm_kidney$Reference <- str_remove(cbm_kidney$Reference, " & Kidney")
 
 # Meta-analysis -----------------------------------------------------------
@@ -79,6 +81,10 @@ summary(rm_cbm_muscle)
 # Heart (without obese data)
 rm_cbm_heart <- rma(yi = Average, sei = SE, data=cbm_heart)
 summary(rm_cbm_heart)
+
+# Brain (without obese data)
+rm_cbm_brain <- rma(yi = Average, sei = SE, data=cbm_brain)
+summary(rm_cbm_brain)
 
 # Kidney (without obese data)
 rm_cbm_kidney <- rma(yi = Average, sei = SE, data=cbm_kidney)
@@ -121,6 +127,13 @@ forest_ylee(data=cbm_heart, rm=rm_cbm_heart, slab=cbm_heart$Reference,
             xlab="Capillary basement membrane thickness (nm)", xlim = c(-150, 220), alim = c(0, 120), cex=2, numDigits=0L)
 dev.off()
 
+# Brain
+png(file=sprintf("%s/forest_cbm_brain.png", results_path), width=1300, height=1000)
+forest_ylee(data=cbm_brain, rm=rm_cbm_brain, slab=cbm_brain$Reference, 
+            unit="nm",
+            xlab="Capillary basement membrane thickness (nm)", xlim = c(-250, 250), alim = c(0, 150), cex=2, numDigits=0L)
+dev.off()
+
 # Kidney
 png(file=sprintf("%s/forest_cbm_kidney.png", results_path), width=1300, height=1000)
 forest_ylee(data=cbm_kidney, rm=rm_cbm_kidney, slab=cbm_kidney$Reference, 
@@ -135,15 +148,23 @@ cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_tis$Average, y=cbm_obese$Average,
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                alternative="two.tailed", samedata=FALSE)
 
+# Perform ANOVA + Dunnett's T3 test ---------------------------------------
+rma_list = list(rm_cbm_retina, rm_cbm_muscle, rm_cbm_heart, rm_cbm_brain, rm_cbm_kidney)
+tissue_list = c("Retina", "Muscle", "Heart", "Brain", "Kidney")
+filename = sprintf('%s/cbm_posthoc.png', results_path)
+result = anova_posthoc(rma_list = rma_list, tissue_list = tissue_list, filename=filename)
+
 # Merge dataframes for plotting -------------------------------------------
 cbm_retina$Source <- "Retina"
 cbm_muscle$Source <- "Muscle"
 cbm_heart$Source <- "Heart"
+cbm_brain$Source <- "Brain"
 cbm_kidney$Source <- "Kidney"
 
 cbm_tissue <- rbind(cbm_retina[c("Source", "Average")],
                     cbm_muscle[c("Source", "Average")],
                     cbm_heart[c("Source", "Average")],
+                    cbm_brain[c("Source", "Average")],
                     cbm_kidney[c("Source", "Average")])
 
 # Scatter plot ------------------------------------------------------------
@@ -183,22 +204,36 @@ p = ggplot() +
   labs(color="Heart") +
   lightness(scale_color_brewer(palette="Oranges"), scalefac(0.8)) +
   new_scale_color() + 
+  geom_point(data = cbm_brain, aes(x = "Brain", y = Average, colour = Reference), size = 7) +
+  geom_point(data = cbm_brain, aes(x = "Brain", y = rm_cbm_brain$b), shape = 95, size = 20, colour = "brown") +
+  labs(color="Brain") +
+  lightness(scale_color_colormap("Brain", discrete = T,colormap = brewer.purd(rm_cbm_brain$k), reverse = T), scalefac(0.8)) +
+  new_scale_color() + 
   geom_point(data = cbm_kidney, aes(x = "Kidney", y = Average, colour = Reference), size = 7) +
   geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "black") +
   labs(color="Kidney") +
   lightness(scale_color_colormap('Kidney', discrete = T,colormap = brewer.purples(rm_cbm_kidney$k), reverse = T), scalefac(0.8)) +
-  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Kidney")) +
+  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Brain", "Kidney")) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
-               y.position = 480, tip.length = c(0.8, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
+               y.position = 560, tip.length = c(0.4, 0.1), label.size = 7, 
+               label = generate_plabel(result[[2]]$p.value[4,1])) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
-               y.position = 420, tip.length = c(0.6, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
+               y.position = 520, tip.length = c(0.3, 0.1), label.size = 7, 
+               label = generate_plabel(result[[2]]$p.value[4,2])) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
-               y.position = 360, tip.length = c(0.4, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_heart_vs_kidney$coefficients["p.value"])) +
-  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 500))
+               y.position = 470, tip.length = c(0.2, 0.1), label.size = 7, 
+               label = generate_plabel(result[[2]]$p.value[4,3])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Brain", xmax = "Kidney",
+               y.position = 420, tip.length = c(0.1, 0.1), label.size = 7, 
+               label = generate_plabel(result[[2]]$p.value[4,4])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Heart",
+               y.position = 300, tip.length = c(0.1, 0.3), label.size = 7,
+               label = generate_plabel(result[[2]]$p.value[2,1])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Brain",
+               y.position = 360, tip.length = c(0.1, 0.5), label.size = 7,
+               label = generate_plabel(result[[2]]$p.value[3,1])) +
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 600))
   
   show(p)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
