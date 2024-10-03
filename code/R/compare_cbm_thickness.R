@@ -224,7 +224,7 @@ p = ggplot() +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
                y.position = 360, tip.length = c(0.4, 0.1), label.size = 7, 
                label = generate_plabel(cbm_heart_vs_kidney$coefficients["p.value"])) +
-  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 500))
+  theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 600))
   
   show(p)
 ggsave(sprintf("%s/cbm.png", results_path), width=3500, height=2500, units="px")
