@@ -217,13 +217,13 @@ p = ggplot() +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
                y.position = 480, tip.length = c(0.8, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_retina_vs_kidney$coefficients["p.value"])) +
+               label = generate_plabel(result[[2]]$p.value[4,1])) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Muscle", xmax = "Kidney",
                y.position = 420, tip.length = c(0.6, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_muscle_vs_kidney$coefficients["p.value"])) +
+               label = generate_plabel(result[[2]]$p.value[4,2])) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
                y.position = 360, tip.length = c(0.4, 0.1), label.size = 7, 
-               label = generate_plabel(cbm_heart_vs_kidney$coefficients["p.value"])) +
+               label = generate_plabel(result[[2]]$p.value[4,3])) +
   theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 600))
   
   show(p)
