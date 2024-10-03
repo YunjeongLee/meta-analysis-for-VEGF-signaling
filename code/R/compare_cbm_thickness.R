@@ -152,6 +152,8 @@ cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_tis$Average, y=cbm_obese$Average,
 rma_list = list(rm_cbm_retina, rm_cbm_muscle, rm_cbm_heart, rm_cbm_brain, rm_cbm_kidney)
 tissue_list = c("Retina", "Muscle", "Heart", "Brain", "Kidney")
 filename = sprintf('%s/cbm_posthoc.png', results_path)
+result = anova_posthoc(rma_list = rma_list, tissue_list = tissue_list, filename=filename)
+
 # Merge dataframes for plotting -------------------------------------------
 cbm_retina$Source <- "Retina"
 cbm_muscle$Source <- "Muscle"
