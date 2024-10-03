@@ -224,6 +224,15 @@ p = ggplot() +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Heart", xmax = "Kidney",
                y.position = 470, tip.length = c(0.2, 0.1), label.size = 7, 
                label = generate_plabel(result[[2]]$p.value[4,3])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Brain", xmax = "Kidney",
+               y.position = 420, tip.length = c(0.1, 0.1), label.size = 7, 
+               label = generate_plabel(result[[2]]$p.value[4,4])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Heart",
+               y.position = 300, tip.length = c(0.1, 0.3), label.size = 7,
+               label = generate_plabel(result[[2]]$p.value[2,1])) +
+  geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Brain",
+               y.position = 360, tip.length = c(0.1, 0.5), label.size = 7,
+               label = generate_plabel(result[[2]]$p.value[3,1])) +
   theme(text = element_text(size = 20), legend.position='none') + ylim(c(0, 600))
   
   show(p)
