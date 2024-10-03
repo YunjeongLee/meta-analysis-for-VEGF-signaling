@@ -213,7 +213,7 @@ p = ggplot() +
   geom_point(data = cbm_kidney, aes(x = "Kidney", y = rm_cbm_kidney$b), shape = 95, size = 20, colour = "black") +
   labs(color="Kidney") +
   lightness(scale_color_colormap('Kidney', discrete = T,colormap = brewer.purples(rm_cbm_kidney$k), reverse = T), scalefac(0.8)) +
-  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Kidney")) +
+  scale_x_discrete(limits = c("Retina", "Muscle", "Heart", "Brain", "Kidney")) +
   xlab("") + ylab(TeX("Capillary basement membrane thickness (nm)")) +
   geom_bracket(data = cbm_tissue, aes(x = Source, y = Average), xmin = "Retina", xmax = "Kidney",
                y.position = 480, tip.length = c(0.8, 0.1), label.size = 7, 
