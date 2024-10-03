@@ -24,7 +24,6 @@ anova_posthoc <- function (rma_list, tissue_list, filename) {
   row.names(df) <- tissue_list[-1]
   colnames(df) <- head(tissue_list, -1)
   # Reverse the order of row
-  df = df[nrow(df):1, ]
   gt <- pheatmap(df, breaks=c(0, 0.001, 0.01, 0.05, 1), col=rev(brewer.blues(4)), 
                  angle_col=0, fontsize=25, cluster_rows=FALSE,
                  treeheight_row=FALSE, treeheight_col=FALSE,
