@@ -148,6 +148,7 @@ cbm_lean_vs_obese = wtd.t.test(x=cbm_lean_tis$Average, y=cbm_obese$Average,
                                weighty=1/(cbm_obese$SE^2+rm_cbm_obese$tau2),
                                alternative="two.tailed", samedata=FALSE)
 
+# Perform ANOVA + Dunnett's T3 test ---------------------------------------
 # Merge dataframes for plotting -------------------------------------------
 cbm_retina$Source <- "Retina"
 cbm_muscle$Source <- "Muscle"
