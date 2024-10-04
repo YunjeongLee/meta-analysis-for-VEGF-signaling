@@ -1,13 +1,17 @@
 import pandas as pd
+import os
+
+# Change directory
+os.chdir("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/python")
 
 # Import list of papers found in Google Scholar
-df_adip_size = pd.read_csv("data/papers/adipocyte_diameter.csv")
-df_adip_v = pd.read_csv("data/papers/adipose_vessel.csv")
-df_tumor_vsize = pd.read_csv("data/papers/tumor_vessel_size.csv")
-df_tumor_vdensity = pd.read_csv("data/papers/tumor_vessel_density.csv")
-df_cbm = pd.read_csv("data/papers/CBM_thickness.csv")
-df_vegfr12 = pd.read_csv("data/papers/Kd_for_VEGFR1_and_VEGFR2.csv")
-df_nrp1 = pd.read_csv("data/papers/Kd_for_NRP1.csv")
+df_adip_size = pd.read_csv("../../data/papers/adipocyte_diameter.csv")
+df_adip_v = pd.read_csv("../../data/papers/adipose_vessel.csv")
+df_tumor_vsize = pd.read_csv("../../data/papers/tumor_vessel_size.csv")
+df_tumor_vdensity = pd.read_csv("../../data/papers/tumor_vessel_density.csv")
+df_cbm = pd.read_csv("../../data/papers/CBM_thickness.csv")
+df_vegfr12 = pd.read_csv("../../data/papers/Kd_for_VEGFR1_and_VEGFR2.csv")
+df_nrp1 = pd.read_csv("../../data/papers/Kd_for_NRP1.csv")
 
 # Delete list of papers that weren't read
 df_adip_size.dropna(subset=['Note'], inplace=True)
@@ -19,14 +23,14 @@ df_vegfr12.dropna(subset=['Note'], inplace=True)
 df_nrp1.dropna(subset=['Note'], inplace=True)
 
 # Import list of papers selected for full-text assessment
-df_adip_size_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipocyte_diameter")
-df_adip_v_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipose_vessel_size")
-df_tumor_vsize_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="tumor_vessel_size")
-df_tumor_vdensity_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="tumor_vessel_density")
-df_cbm_mice_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="CBM_mice")
-df_cbm_rats_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="CBM_rats")
-df_vegfr12_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_VEGFR1_and_VEGFR2")
-df_nrp1_select = pd.read_excel("data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_NRP1")
+df_adip_size_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipocyte_diameter")
+df_adip_v_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="adipose_vessel_size")
+df_tumor_vsize_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="tumor_vessel_size")
+df_tumor_vdensity_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="tumor_vessel_density")
+df_cbm_mice_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="CBM_mice")
+df_cbm_rats_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="CBM_rats")
+df_vegfr12_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_VEGFR1_and_VEGFR2")
+df_nrp1_select = pd.read_excel("../../data/papers/paper_list_MetaAnalysis.xlsx", sheet_name="Kd_for_NRP1")
 
 # Merge dataframes
 # Search list

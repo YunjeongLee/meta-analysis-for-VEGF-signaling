@@ -120,7 +120,7 @@ dev.off()
 png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=550)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2, numDigits=1L)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2, numDigits=0L)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
@@ -141,7 +141,7 @@ dev.off()
 png(file=sprintf("%s/forest_nrp1_spr.png", results_path), width=1300, height=450)
 forest_ylee(data=nrp1_spr, rm=rm_nrp1_spr, slab=nrp1_spr$Reference,
             unit="nM", atransf=function(x)x/1e3, title="",
-            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-7000, 17000), alim = c(0, 10000), cex=2, numDigits=2L)
+            xlab=TeX("Binding affinity, $K_d$ (nM)"), xlim = c(-7000, 17000), alim = c(0, 10000), cex=2, numDigits=1L)
 dev.off()
 
 # VEGF:NRP1 (Radioligand)
