@@ -120,7 +120,7 @@ dev.off()
 png(file=sprintf("%s/forest_vegfr1_radio.png", results_path), width=1300, height=550)
 forest_ylee(data=vegfr1_radio, rm_vegfr1_radio, slab=vegfr1_radio$Reference,
             unit="pM", title="",
-            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2, numDigits=1L)
+            xlab=TeX("Binding affinity, $K_d$ (pM)"), xlim = c(-150, 280), alim = c(0, 150), cex=2, numDigits=0L)
 dev.off()
 
 # VEGF:VEGFR2 (SPR)
