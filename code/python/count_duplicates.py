@@ -1,4 +1,8 @@
 import pandas as pd
+import os
+
+# Change directory
+os.chdir("/Users/yunjeonglee/Documents/repos/meta-analysis-for-VEGF-signaling/code/python")
 
 # Import list of papers found in Google Scholar
 df_adip_size = pd.read_csv("data/papers/adipocyte_diameter.csv")
