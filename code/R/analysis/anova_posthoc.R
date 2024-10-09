@@ -14,7 +14,6 @@ anova_posthoc <- function (rma_list, tissue_list, filename) {
   # Perform ANOVA -----------------------------------------------------------
   anova_result = oneway.test(value ~ group, data = df)
   
-  
   # Perform Dunnett's T3 test -----------------------------------------------
   dt3_result = dunnettT3Test(value ~ group, data = df)
   
