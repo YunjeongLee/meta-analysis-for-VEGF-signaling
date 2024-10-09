@@ -156,36 +156,36 @@ summary(rm_nrp1_koff)
 png(file=sprintf("%s/forest_vegfr1vegf165_kon.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_kon, slab=vegfr1$Reference,
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
-            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-40, 75), alim = c(0, 45), cex=2)
+            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-70, 90), alim = c(-30, 50), cex=2, numDigits=1L)
 dev.off()
 
 png(file=sprintf("%s/forest_vegfr2vegf165_kon.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_kon, slab=vegfr2$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
-            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-.12e+2, 1.7e+1), alim = c(0, .95e+1), cex=2)
+            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-20, 25), alim = c(-5, 15), cex=2, numDigits=1L)
 dev.off()
 
 png(file=sprintf("%s/forest_nrp1vegf165_kon.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1, rm=rm_nrp1_kon, slab=nrp1$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00B5>M<U+207B><U+00B9> s<U+207B><U+00B9>")),
-            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-7, 17), alim = c(0, 10), cex=2)
+            xlab=TeX("Association rate, $k_{on}$ ($\\mu M^{-1} s^{-1}$)"), xlim = c(-10, 20), alim = c(-2, 12), cex=2, numDigits=2L)
 dev.off()
 
 # koff
 png(file=sprintf("%s/forest_vegfr1vegf165_koff.png", results_path), width=1300, height=500)
 forest_ylee(data=vegfr1, rm=rm_vegfr1_koff, slab=vegfr1$Reference,
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00D7>10<U+207B><U+00B3> s<U+207B><U+00B9>")),
-            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-0.5e-3, 0.9e-3), alim = c(0, 0.5e-3), cex=2, atransf=function(x) x*1e3)
+            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-.8e-3, 0.9e-3), alim = c(-0.25e-3, 0.5e-3), cex=2, numDigits=2L, atransf=function(x) x*1e3)
 dev.off()
 png(file=sprintf("%s/forest_vegfr2vegf165_koff.png", results_path), width=1300, height=700)
 forest_ylee(data=vegfr2, rm=rm_vegfr2_koff, slab=vegfr2$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00D7>10<U+207B><U+00B3> s<U+207B><U+00B9>")),
-            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-6.7e-3, 9e-3), alim = c(0, 5e-3), cex=2, atransf=function(x) x*1e3)
+            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-8e-3, 9e-3), alim = c(-2.5e-3, 5e-3), cex=2, numDigits=2L, atransf=function(x) x*1e3)
 dev.off()
 png(file=sprintf("%s/forest_nrp1vegf165_koff.png", results_path), width=1300, height=500)
 forest_ylee(data=nrp1, rm=rm_nrp1_koff, slab=nrp1$Reference, 
             unit = stri_unescape_unicode(gsub("<U\\+(....)>", "\\\\u\\1", "<U+00D7>10<U+207B><U+00B3> s<U+207B><U+00B9>")),
-            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-7e-3, 23e-3), alim = c(0, 15e-3), cex=2, atransf=function(x) x*1e3)
+            xlab=TeX("Dissociation rate, $k_{off}$ ($\\times 10^{-3} s^{-1}$)"), xlim = c(-10e-3, 25e-3), alim = c(0, 15e-3), cex=2, numDigits=2L, atransf=function(x) x*1e3)
 dev.off()
 
 # Student's t-test --------------------------------------------------------
