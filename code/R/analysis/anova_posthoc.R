@@ -11,9 +11,11 @@ anova_posthoc <- function (rma_list, tissue_list, filename) {
   df = do.call(rbind.data.frame, data)
   colnames(df) <- c("group", "value")
   
+  # Test homogeneity of variance --------------------------------------------
+  hov = bartlett.test(value ~ group, data = df)  
+  
   # Perform ANOVA -----------------------------------------------------------
   anova_result = oneway.test(value ~ group, data = df)
-  
   
   # Perform Dunnett's T3 test -----------------------------------------------
   dt3_result = dunnettT3Test(value ~ group, data = df)
@@ -32,7 +34,7 @@ anova_posthoc <- function (rma_list, tissue_list, filename) {
                  legend=FALSE)
   ggsave(filename, plot=gt, width=2000, height=1500, units="px")
   
-  return(list(anova_result, dt3_result)) 
+  return(list(anova_result, dt3_result, hov)) 
 }
 
 rnorm_fixed <- function(mean, se, n) {
