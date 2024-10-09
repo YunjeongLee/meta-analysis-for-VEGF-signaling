@@ -34,7 +34,7 @@ anova_posthoc <- function (rma_list, tissue_list, filename) {
                  legend=FALSE)
   ggsave(filename, plot=gt, width=2000, height=1500, units="px")
   
-  return(list(anova_result, dt3_result)) 
+  return(list(anova_result, dt3_result, hov)) 
 }
 
 rnorm_fixed <- function(mean, se, n) {
