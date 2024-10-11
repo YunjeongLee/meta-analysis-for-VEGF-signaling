@@ -226,7 +226,7 @@ nrp1_vs_vegfr1kon = wtd.t.test(x=vegfr1$kon, y=nrp1$kon,
                                 alternative="greater", samedata=FALSE)
 
 
-
+# Multiple testing
 
 
 # Merge dataframes for plotting -------------------------------------------
