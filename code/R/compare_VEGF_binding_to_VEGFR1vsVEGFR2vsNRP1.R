@@ -226,8 +226,18 @@ nrp1_vs_vegfr1kon = wtd.t.test(x=vegfr1$kon, y=nrp1$kon,
                                 alternative="greater", samedata=FALSE)
 
 
-# Multiple testing
+# Gather p-values
+pvals_kon = c(vegfr1_vs_vegfr2kon$coefficients["p.value"],
+          nrp1_vs_vegfr1kon$coefficients["p.value"],
+          nrp1_vs_vegfr2kon$coefficients["p.value"])
 
+pvals_koff = c(vegfr1_vs_vegfr2koff$coefficients["p.value"],
+          nrp1_vs_vegfr1koff$coefficients["p.value"],
+          nrp1_vs_vegfr2koff$coefficients["p.value"])
+
+# Adjust p-values
+adj_pvals_kon = p.adjust(pvals_kon, method="BH")
+adj_pvals_koff = p.adjust(pvals_koff, method="BH")
 
 # Merge dataframes for plotting -------------------------------------------
 vegfr1$Ligand <- "VEGFR1"
